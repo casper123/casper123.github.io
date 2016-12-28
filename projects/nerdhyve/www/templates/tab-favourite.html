@@ -1,0 +1,32 @@
+<ion-view hide-nav-bar="true">
+  <ion-header-bar align-title="left" class="bar-light">
+    <h2 class="title" style="text-align:center; color:#e47d25;">Favorite</h2>
+    <div class="buttons">
+      <button class="button" ng-click="search()">
+        <i class="icon ion-ios-search-strong"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div ng-hide="showfav" class="list" style="float:left;">
+
+      <a ng-repeat="item in list" ng-click="showProductModal(item.data.item_id)" class="item home-item card col-45 no-padding pull-left">
+        <div class="item item-body no-padding">
+          <div class="img-container-list"><img class="full-image" image-lazy-loader="lines" image-lazy-src="http://curiouslabx.com/projects/allshook/novitrix/{{item.image_data[0].item_image}}"></div>
+          <div class="item-details"><p class="no-margin">{{item.data.item_title | limitTo : 15}}</p>
+          <p class="small">{{item.data.category}} <span class="price">${{item.data.price | number}}</span></p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <div ng-show="showfav" class="row conv-row">
+      <div class="col col-80 col-offset-10">
+        <h1 class="icon ion-android-favorite-outline dark"></h1>
+        <h5 class="dark">You have not marked any products in your favourite list</h5>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

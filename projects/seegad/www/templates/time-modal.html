@@ -1,0 +1,65 @@
+<ion-modal-view>
+	<ion-header-bar class="bar bar-stable" no-tap-scroll="true">
+    <div align="left" class="buttons">
+    <button class="button header-btn" ng-click="closeModal()">
+          Cancel
+        </button>
+    </div>
+    <h2 class="title header-title">&nbsp;</h2>
+    <div align="right" class="buttons">
+    <button class="button header-btn" ng-click="timeStepTwo()">
+          Next
+        </button>
+    </div>
+  </ion-header-bar>
+  <ion-content style="background:#fafafa;">
+  		<div class="list" id="timBlockList">
+  			<div class="item" style="padding-top:10px; padding-bottom:10px;">
+  						<p class="small blue-default">&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size:12px;">31st March 2016</font>&nbsp;&nbsp;&nbsp;&nbsp;
+  						1st April 2016&nbsp;<i class="icofont icofont-ui-calendar" style="color:#c9c8c8; font-size:10px;"></i></p>
+  			</div>
+        <a class="item row" style="padding-top:10px; padding-bottom:10px;" href="">
+          <div class="col col-20 grey-dark small button button-clear button-blocK">4:00 PM</div>
+          <div class="col col-80"></div>
+        </a>
+  			<a class="item row" style="padding-top:10px; padding-bottom:10px;" href="">
+  				<div class="col col-20 grey-dark small button button-clear button-blocK button button-clear button-block">5:00 PM</div>
+          <div class="col col-80">
+            <button class="button button-clear button-block smaller" style="background:#fff; border:solid 1px #dedddd; border-radius:5px; font-family:'Open Sans Semibold' !important; color:#cecece;">Phone Call - 45 mins</button>
+          </div>
+  			</a>
+  			<a class="item row" style="padding-top:10px; padding-bottom:10px;" href="">
+          <div class="col col-20 grey-dark small button button-clear button-blocK">6:00 PM</div>
+          <div class="col col-80"></div>
+        </a>
+        <a class="item row" style="padding-top:10px; padding-bottom:10px;" href="">
+          <div class="col col-20 grey-dark small button button-clear button-blocK">7:00 PM</div>
+          <div class="col col-80">
+            <div class="col col-80">
+              <button ng-click="showTimerPop()" class="button button-clear button-block smaller" style="background:#0e77b9; font-family:'Open Sans Semibold' !important; color:#fff; margin-left:20px !important;border-radius:5px; ">Meeting with client - 1.3 hrs</button>
+            </div>
+          </div>
+        </a>
+        <a class="item row" style="padding-top:10px; padding-bottom:10px;" href="">
+          <div class="col col-20 grey-dark small button button-clear button-blocK">8:00 PM</div>
+          <div class="col col-80">
+            <div class="col col-80">
+              <button class="button button-clear button-block smaller" style="background:#0e77b9; font-family:'Open Sans Semibold' !important; color:#fff;border-radius:5px; ">&nbsp;</button>
+            </div>
+          </div>
+        </a>
+        <a class="item row" style="padding-top:10px; padding-bottom:10px;" href="">
+          <div class="col col-20 grey-dark small button button-clear button-blocK">9:00 PM</div>
+          <div class="col col-80"></div>
+        </a>
+        <a class="item row" style="padding-top:10px; padding-bottom:10px;" href="">
+          <div class="col col-20 grey-dark small button button-clear button-blocK">10:00 PM</div>
+          <div class="col col-80"></div>
+        </a>
+        <a class="item row" style="padding-top:10px; padding-bottom:10px;" href="">
+          <div class="col col-20 grey-dark small button button-clear button-blocK">11:00 PM</div>
+          <div class="col col-80"></div>
+        </a>
+  		</div>
+  </ion-content>
+</ion-modal-view>

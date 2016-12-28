@@ -1,0 +1,21 @@
+<ion-view title="Muscles">
+  	<ion-content scroll="false">
+	  	<div class="row slider-container">
+		  	<div class="col-10 col-center"><a id="previous" ng-click="previous()" class="icon ion-ios7-arrow-left custom-icon pull-right col-center"></a></div>
+		  	<div class="col-80">
+			  	<ion-slide-box show-pager="false">
+				  	<ion-slide ng-repeat="cat in category_list">
+				    	<div class="col col-center">
+				    		<a style="text-decoration:none;" href="#/tab/recipe/list/{{cat.id}}/{{cat.name}}">
+			    				<img class="img-responsive" style="display: inline !important" src="http://curiouslabx.com/projects/workoutfactory/workoutFactory/{{cat.image}}">
+			    				<h2>{{cat.name}}</h2>
+			    				<p>{{cat.description}}</p>
+				    		</a>
+				    	</div>
+				  	</ion-slide>
+				</ion-slide-box>
+			</div>
+			<div class="col-10 col-center"><a id="next" ng-click="next()" class="col-center icon ion-ios7-arrow-right custom-icon"></a></div>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,40 @@
+<ion-view show-tab view-title="Contact Us">
+<ion-content>    
+  <div class="row">
+    <div class="col col-75 col-offset-10" style="text-align:center; padding:30px 0px;">Snap Flix</div>
+  </div>
+
+  <div class="row">
+    <div class="col col-75 col-offset-10">
+      <form ng-submit="contactUs(contact)">
+        <!-- <div class="padding">
+          <input type="text" ng-model="contact.to" value="xyz@gmail.com" placeholder="To" />
+        </div> -->
+        <div class="padding">
+          <label class="item item-input">
+            <span class="input-label">From</span>  
+            <input type="text" ng-model="contact.from" placeholder="From" value="{{user.email}}" />
+          </label>
+        </div>
+        
+        <div class="padding">
+          <label class="item item-input">
+            <span class="input-label">Subject</span>
+            <input type="text" ng-model="contact.subject" ng-init="subject" value="" placeholder="Subject" required />
+          </label>
+        </div>
+
+        <div class="padding">
+            <label class="item item-input">
+              <span class="input-label">Message</span>
+              <textarea  ng-model="contact.message" placeholder="Message"></textarea>
+            </label>
+        </div>
+        <div class="padding">
+          <input class="button button-block button-assertive" type="submit" value="Send"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>
+</ion-view>

@@ -1,0 +1,98 @@
+<style type="text/css">
+  @media (max-width: 480px) {
+    #sidebar{visibility:hidden !important; height:0px !important;}
+    .wrapper{border:none !important;}
+  }
+
+  #canvas{
+    background-color: #fff;
+    border:solid 1px;
+  }
+</style> 
+
+
+
+
+<section class="wrapper">
+
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="breadcrumbs-alt">
+        <li><a href="#app/home">RETURN TO LIST</a></li>
+      </ul>
+
+
+
+      <div class="row">
+        <div class="col-lg-12">
+          <section class="panel">
+            <header class="panel-heading">
+              Complete Delivery
+            </header>
+            <div class="panel-body">
+
+              <div class="row">
+                <div class="col-md-6">
+                  <form class="form-horizontal bucket-form" id="signupForm" method="get" action="">
+
+                  <canvas save-val={{saveVal}} width="500" height="200" id="canvas" sign></canvas>
+                    
+                    <div class="form-group ">
+                      <label for="agree" class="control-label col-lg-3 col-sm-3">Check ID</label>
+                      <div class="col-lg-6 col-sm-9">
+                        <input type="checkbox" name="agree" id="agree" class="css-checkbox form-control checkbox" /><label for="agree" class="css-label">Check ID</label>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-lg-offset-3 col-lg-6">
+                        <button ng-click="completeTask()" class="btn btn-primary">Save</button>
+                        <a href="#/app/detail/{{task_id}}" class="btn btn-default">Cancel</a>
+                        <div class="btn-toolbar" style="width:320px; margin-left:auto; margin-right:auto;">
+                        <!-- <div class="btn-group btn-lg btn-group-justified" style="width:320px;">
+                          <a class="btn btn-success " href="#" id="dd_saveButton" style="font-size:18px !important;"><i class="fa fa-check"></i>COMPLETE</a>
+                          <a class="btn btn-danger" href="#" style="font-size:18px !important;"><i class="fa fa-minus-circle"></i>DELAYED</a>
+                        </div> -->
+                        <div class="btn-group btn-lg btn-group-justified" style="width:320px;">
+                          <a class="btn btn-white" href="#" style="font-size:18px !important;"><i class="fa fa-envelope"></i>EMAIL RECIEPT</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>             
+
+
+
+  </div>
+</div>
+
+<div class="row" >
+  <div class="col-sm-12" >
+    <section class="panel" >
+      <div class="panel-body" id="activities">
+        <div class="col-xs-6 col-sm-6" >
+          <ul class="list-inline">
+            <li>CHECK ID</li>
+            <li>Bob Smith</li>
+          </ul>
+          <ul class="list-inline">
+            <li>CHECK AGE</li>
+            <li>21</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+</section>

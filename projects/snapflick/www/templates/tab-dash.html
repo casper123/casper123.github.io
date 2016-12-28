@@ -1,0 +1,71 @@
+<ion-view show-tab hide-back-button="true" view-title="Snapflix">
+  
+  <ion-content class="" style="padding:5%;">
+    <div class="row">
+      <div class="col">
+      </div>
+    </div>
+    <div class="row" ng-hide="searchItem">
+      <div class="col">
+      	<a ng-click="scanQr()">
+          <img src="img/scan.jpeg" class="scan-image"></img>
+        </a>
+      </div>
+    </div>
+
+    <div class="row item" style="margin-top:1%;paddig:0px;">
+      <div class="col">
+        <label class="item-input-wrapper" id="search-input-home">
+          <i class="button-assertive icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Search" ng-model="searchQuery.text" ng-change="search()">
+        </label>  
+      </div>
+      <div class="col col-20">
+        <button ng-click="clearSearch()" class="button button-assertive button-clear"><b>X</b></button>
+      </div>
+    </div>
+    <!-- <div id="search-bar-home">
+        </div> -->
+
+    <div ng-include src="'templates/check-connection.html'"></div>
+    <div ng-show="searchItem" class="list" style="padding-top:51px;">
+      <div ng-repeat="movie_date in items">
+        <div class="item item-divider">{{movie_date.date}}</div>
+          <a ng-repeat="movie in movie_date.movies" class="item item-thumbnail-left" href="#/tab/dash/movieDetail/{{movie.movie_id}}/{{movie.movie_name}}">
+              <img ng-src="http://curiouslabx.com/projects/snap_flix/{{movie.movie_main_img || 'images/140x140.gif'}}">
+              <h2>{{movie.movie_name}}</h2>
+              <p>{{movie.movie_synopsis}}</p>
+              <p>US Charts Rated {{movie.movie_us_rate}} | {{movie.movie_total_time}}</p>
+          </a>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:2%;" ng-hide="searchItem">
+      <div class="col col-offset-33">
+        <span class="heading-mid">-OR-</span>
+      </div>
+    </div>
+    <div class="row" ng-hide="searchItem">
+      <div class="col">
+        <a href="#/tab/dash/browse" class="button button-full button-assertive">
+             Click Here to Browse Movie
+        </a>
+      </div>
+    </div>
+
+    <div class="row item" style="margin-top:10%;padding:2px;" ng-hide="searchItem">
+      <div class="col col-20 ">
+        <a href="#/tab/dash/save" class="button button-assertive nav-btn-font">Saved</a>
+      </div>
+      <div class="col col-33">
+        <a href="#/tab/dash/inviteFriend" class="button button-assertive nav-btn-font">Invite Friends</a>
+      </div>
+      <div class="col col-20">
+        <a href="#/tab/dash/profile" class="button button-assertive nav-btn-font">Profile</a>
+      </div>
+      <div class="col col-30">
+        <a class="button button-assertive nav-btn-font" href="#/tab/dash/topEarners">Top Earners</a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

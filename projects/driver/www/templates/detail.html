@@ -1,0 +1,123 @@
+<style type="text/css">
+
+	.wrapper{border:none !important; }
+
+	#sidebar{visibility:hidden !important; height:0px !important; width:0px !important;}
+
+    .angular-google-map-container { height: 200px; }
+</style> 
+  <section class="wrapper">
+  
+<div class="row">
+    <div class="col-md-12">
+        <ul class="breadcrumbs-alt">
+            <li><a href="#app/home">RETURN TO LIST</a></li>
+        </ul>
+
+        <div id="map-canvas">
+            <ui-gmap-google-map center="map.center" zoom="map.zoom">
+                <ui-gmap-marker coords="marker.coords" idkey="'one'"></ui-gmap-marker>
+            </ui-gmap-google-map>
+        </div>
+
+        <div class="btn-toolbar" style="width:320px; margin-left:auto; margin-right:auto;">
+            <div class="btn-group btn-lg btn-group-justified" style="width:320px;">
+                <a class="btn btn-white"  href="tel:{{task.recp_phone}}" style="font-size:18px !important;"><i class="fa fa-phone"></i>CALL</a>
+                <a ng-click="locationTask()" class="btn btn-white" href="geo:{{task.latitude}},{{task.longitude}}" style="font-size:18px !important;"><i class="fa fa-map-marker"></i>MAP</a>
+    		</div>
+ 
+            <div ng-show="task.delivery_status >= 3" class="btn-group btn-lg btn-group-justified" style="width:320px;">
+                <a class="btn btn-success" href='#/app/complete/{{task.id}}' style="font-size:18px !important;"><i class="fa fa-pencil"></i>COMPLETE</a>
+                <a class="btn btn-danger" href='#/app/delay/{{task.id}}' style="font-size:18px !important;"><i class="fa fa-minus-circle"></i>DELAY</a>
+            </div>
+            <div class="clear"></div>
+  
+            <div ng-show="task.delivery_status == 2" class="btn-group btn-lg btn-group-justified" style="width:320px;">
+                <a ng-click="beginTask()" class="btn btn-primary" href="" style="font-size:18px !important;"><i class="fa fa-truck"></i>BEGIN</a>
+                <a href='#/app/delay/{{task.id}}' class="btn btn-danger" style="font-size:18px !important;"><i class="fa fa-minus-circle"></i>DELAY</a>
+            </div>
+            <div class="clear"></div>
+              
+             <div ng-show="task.delivery_status == 1" class="btn-group btn-lg btn-group-justified" style="width:320px;">
+                <a ng-click="assignTask()" href='' class="btn btn-warning" style="font-size:18px !important;"><i class="fa fa-check"></i>CLAIM</a>
+            </div>
+        </div>
+    </div>                  
+</div>
+
+<div class="row" >
+    <div class="col-sm-12" >
+        <section class="panel" >
+             <div class="panel-body" id="activities">
+                <div class="col-xs-6 col-sm-6" >
+                    <ul class="list-inline">
+                        <li>Recipient Name</li>
+                        <li>{{task.recp_name}}</li>
+                     </ul>
+                     <ul class="list-inline">
+                        <li>Phone #</li>
+                        <li>{{task.recp_phone}}</li>
+                     </ul>
+                     <ul class="list-inline">
+                        <li>Notes</li>
+                        <li>{{task.notes}}</li>
+                     </ul>
+                </div>
+                <div class="col-xs-6 col-sm-6" >
+                    <ul class="list-inline">
+                        <li>Address</li>
+                        <li>{{task.dest_address}}</li>
+                     </ul>
+                     <ul class="list-inline">
+                        <li>Suite/APT</li>
+                        <li>{{task.dest_house}}</li>
+                     </ul>
+                     <ul class="list-inline">
+                        <li>City</li>
+                        <li>{{task.dest_city}}</li>
+                     </ul>
+                     <ul class="list-inline">
+                        <li>State</li>
+                        <li>{{task.dest_state}}</li>
+                     </ul>
+                     <ul class="list-inline">
+                        <li>Zipcode</li>
+                        <li>{{task.dest_zip}}</li>
+                     </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="row" >
+    <div class="col-sm-12" >
+        <section class="panel" >
+            <div class="panel-body" id="activities">
+                <ul class="list-inline">
+                    <li>Field 1 Title</li>
+                    <li>{{task.field1_desc}}</li>
+                </ul>
+                <ul class="list-inline">
+                    <li>Field 2 Title</li>
+                    <li>{{task.field2_desc}}</li>
+                </ul>
+                <ul class="list-inline">
+                    <li>Field 3 Title</li>
+                    <li>{{task.field3_desc}}</li>
+                </ul>
+                <ul class="list-inline">
+                    <li>Field 4 Title</li>
+                    <li>{{task.field4_desc}}</li>
+                </ul>
+                <ul class="list-inline">
+                    <li>Field 5 Title</li>
+                    <li>{{task.field5_desc}}</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+</section>

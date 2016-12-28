@@ -1,0 +1,82 @@
+<ion-modal-view class="big-modal profile-modal">
+	<ion-header-bar class="bar bar-stable" no-tap-scroll="true">
+		<div align="left" class="buttons">
+			<button class="button header-btn" ng-click="closeModal()">
+	        	Cancel
+	      	</button>
+	    </div>
+    	<h2 class="title header-title">Create Expense</h2>
+    	<div align="right" class="buttons">
+			<button class="button header-btn" ng-click="saveExpense(expense)">
+	        	Save
+	      	</button>
+	    </div>
+  	</ion-header-bar>
+  	<ion-content>
+  		<div class="row">
+  			<div align="center" class="col">
+  				<span class="smaller" style="font-family:'Open Sans Bold' !important; color:#98A0A5;">AMOUNT (USD)</span>
+  				<input type="number" placeholder="$12.00" class="expsense-title blue-default" style="text-align:center; width:100%;" ng-model="expense.amount"/>
+  			</div>
+  		</div>
+  		<div class="list">
+			<div class="item item-divider">
+		    	Expense Details
+		  	</div>
+		    <label class="item item-input item-stacked-label">
+    			<div class="input-label">
+      				Select Project
+    			</div>
+    			<select ng-model="expense.projectId" style="height: 50px; display: block; border: 0px; padding: 10px 0px; width: 100%; background: #fff; margin-left: -7px;">
+		      		<option ng-repeat="proj in projects | unique:'id'" value="{{proj.id}}">{{proj.title}}</option>
+		      	</select>
+  			</label>
+  			<label class="item item-input item-stacked-label">
+    			<div class="input-label">
+      				Select Category
+    			</div>
+    			<select ng-model="expense.categoryId" style="height: 50px; display: block; border: 0px; padding: 10px 0px; width: 100%; background: #fff; margin-left: -7px;">
+		      		<option ng-repeat="cat in category track by $index" value="{{cat.id}}">{{cat.title}}</option>
+		      	</select>
+  			</label>
+  			<label class="item item-input item-stacked-label">
+    			<div class="input-label">
+      				Select Milestone
+    			</div>
+    			<select ng-model="expense.milestoneId" style="height: 50px; display: block; border: 0px; padding: 10px 0px; width: 100%; background: #fff; margin-left: -7px;">
+		      		<option ng-repeat="mile in milestone | filter:expense.projectId" value="{{mile.id}}">{{mile.title}}</option>
+		      	</select>
+  			</label>
+		 	<div class="item item-divider">
+		    	Notes
+		  	</div>
+		  	<div class="item grey-light">
+		    	<textarea ng-model="expense.notes" style="width:100%; height:100px;" placeholder="Optional Section to add notes"></textarea>
+		    </div>
+		  	<div class="item item-divider">
+		    	Expense Date
+		  	</div>
+		  	<div class="item item-stacked-label" href="#">
+			    <span class="grey-mild">Date</span>
+			    <span class="item-note grey-dark" >
+			    	<input type="date" ng-model="expense.date" >
+			    </span>
+			</div>
+			<div class="item item-divider">
+		    	Billable
+		  	</div>
+		  	<div class="item item-toggle grey-mild">
+		    	Billable Expense
+		    	<label class="toggle toggle-positive">
+		    		<input type="checkbox" value="on">
+		    		<div class="track">
+		    			<div class="handle"></div>
+		       		</div>
+		     	</label>
+		  	</div>
+		  	<div class="item item-divider grey-light">
+		    	&nbsp;
+		  	</div>
+		</div>
+  	</ion-content>
+</ion-modal-view>

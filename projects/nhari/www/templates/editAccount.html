@@ -1,0 +1,40 @@
+<ion-view view-title="Edit Acount">
+    <ion-content>
+        <div>    
+            <ion-refresher pulling-text="Pull to refresh..." on-refresh="">
+            </ion-refresher>
+            <div class="list">
+                
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Edit your First Name</span>
+                    <input ng-model="user.first_name" type="text" placeholder="First Name">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Edit your Last Name</span>
+                    <input ng-model="user.last_name" type="text" placeholder="Last Name">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Edit your Email</span>
+                    <input ng-model="user.email" type="email" placeholder="Email">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Edit your Password</span>
+                    <input ng-model="user.pass" type="password" placeholder="Password">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Edit your Phone</span>
+                    <input ng-model="user.number" type="text" placeholder="Phone">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Edit your Address</span>
+                    <input ng-model="user.address" type="text" placeholder="Address">
+                </label>
+                <button class="button button-block button-positive" ng-click="done(user)">
+                    Update
+                </button>
+            </div>
+        </div>
+
+        
+  </ion-content>
+</ion-view>

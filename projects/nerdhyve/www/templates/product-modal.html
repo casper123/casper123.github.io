@@ -1,0 +1,77 @@
+<ion-modal-view class="big-modal">
+  <ion-header-bar align-title="left" class="bar-light">
+    <div class="buttons">
+      <button class="button" ng-click="closeModal()">
+        <i class="ion-arrow-left-c"></i>
+      </button>
+    </div>
+    <h2 class="title" style="text-align:center; color:#e47d25;">{{item.item_title}}</h2>
+  </ion-header-bar>
+  <ion-content>
+    <div class="row" style="width:100%; max-height:500px; padding:0px; overflow:hidden;" align="center">
+      
+      <ion-slide-box auto-play="true" show-pager="false">
+          <ion-slide ng-repeat="img in image">
+              <img src="http://curiouslabx.com/projects/allshook/novitrix/{{img.item_image}}" style="width:100%;">
+          </ion-slide>
+        </ion-slide-box>
+        
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h1 style="text-align:left;">{{item.item_title}}</h1>
+      </div>
+    </div>
+    <div class="row row-center">
+      <div class="col">
+        <h1 class="price" style="float:none; text-align:left;">$ {{item.price | number}} (USD)</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>{{item.description}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <h4 class="title">Overview</h4>
+    </div>
+    <div class="row">
+        {{item.overview}}
+    </div> 
+    <div class="row">
+      <h4 class="title">Shipping Policies</h4>
+    </div>
+    <div class="row">
+      <p>{{item.shipping}}</p>
+    </div>
+
+    <div class="row" ng-if="item.quantity <= 0">
+      <div class="col" style="text-align:center;">
+        <button style="border: solid 1px;border-radius: 50px;width: 50px;min-height: 50px; margin:10px !important;" class="button button-clear button-calm" ng-click="addFavourite(item.item_id)">
+        <i class="icon ion-android-favorite-outline"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row" ng-if="item.quantity > 0">
+      <div class="col col" style="text-align:center;">
+        <button style="border: solid 1px;border-radius: 50px;width: 50px;min-height: 50px; margin:10px !important;" class="button button-clear button-calm" ng-click="addFavourite(item.item_id)">
+        <i class="icon ion-android-favorite-outline"></i>
+        </button>
+        <button style="border: solid 1px;border-radius: 50px;width: 50px;min-height: 50px; margin:10px !important;" ng-hide="buy" class="button button-clear button-assertive" ng-click="showBuyModal(item.item_id)">
+          <i class="icon ion-android-cart"></i>
+        </button>
+        <button style="border: solid 1px;border-radius: 50px;width: 50px;min-height: 50px; margin:10px !important;" ng-hide="trade" class="button button-clear button-dark" ng-click="showTradeModal(item.item_id)">
+          <i class="icon ion-arrow-swap"></i>
+        </button>
+      </div>
+    </div>
+  
+    <div ng-show="sold" align="center" class="col">
+      <button class="button button-clear button-assertive">Out of Stock</button>
+    </div>
+    <div ng-show="own" align="center" class="col">
+      <button class="button button-clear button-assertive">You can't buy your own product.</button>
+    </div>
+  </ion-content>
+</ion-modal-view>

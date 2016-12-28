@@ -1,0 +1,28 @@
+<ion-modal-view class="big-modal">
+	<ion-header-bar align-title="left" class="bar-light">
+    <div class="buttons">
+      <button class="button" ng-click="closeModal()">
+        <i class="ion-arrow-left-c"></i>
+      </button>
+    </div>
+    <h2 class="title" style="text-align:center; color:#e47d25;">John Doe</h2>
+  </ion-header-bar>
+  <ion-content>
+  <div class="list">
+
+    <a ng-repeat="msg in msgDetail track by $index" class="item" href="#">
+      
+      <h4 class="assertive">{{msg.from}}</h4>
+      <div class="item-text-wrap">
+        <p>{{msg.message_desc}}</p>
+      </div>
+    </a>
+    <div class="item item-input-inset">
+      <textarea style="margin-left:2px" rows="2" cols="60" wrap="soft" placeholder="Type message here..." ng-model="message"></textarea>
+    <button class="button button-small" ng-click="send(message)">
+      Send
+    </button>
+  </div>
+  </div>
+  </ion-content>
+</ion-modal-view>

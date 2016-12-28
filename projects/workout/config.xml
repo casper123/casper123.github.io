@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.curiouslabx.workoutfactory" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Workout Factory</name>
+    <description>
+        Your daily workout routines.
+    </description>
+    <author email="curiouslabx@gmail.com" href="http://curiouslabx.com/">
+      Curious LabX
+    </author>
+    <content src="index.html" />
+    
+    <access origin="*" />
+    <access origin=".pushwoosh.com" />
+
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="Orientation" value="portrait" />
+
+    <!-- Don't store local date in an iCloud backup. Turn this to "cloud" to enable storage 
+         to be sent to iCloud. Note: enabling this could result in Apple rejecting your app.
+    -->
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="SplashScreen" value="ic_launcher" />
+    <preference name="SplashScreenDelay" value="10000" />
+
+    <feature name="StatusBar">
+      <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
+
+    <feature name="SocialSharing">
+      <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+    </feature>
+</widget>

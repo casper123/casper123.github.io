@@ -1,0 +1,121 @@
+
+<div class="menu-overlay" ng-click="closeMenuLeft()" on-swipe-left="closeMenuLeft()"></div>
+<ion-side-menus enable-menu-with-back-views="true" class="bg-assertive">
+  <ion-side-menu-content on-swipe-right="openMenuLeft()">
+    <ion-nav-bar class="bar-assertive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+          <a class="pl10" menu-toggle="left" ng-click="openMenuLeft()"><i class="material-icons">short_text</i></a>
+            <a class="ml30" ng-if="menuBtn" ng-click="postAdd()"><i class="material-icons light">add_circle_outline</i></a>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <a class="pr10" ng-if="searchMenu" ng-click="filter()"><i class="icon ion-funnel"></i></a>        
+        <a class="pr10" menu-toggle="right"><i class="material-icons">power_input</i></a>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" width="230" class="animate">
+        
+    <ion-content class="bg-assertive">
+        
+      <div class="text-center pt30">
+        <h4 ng-show="menuBtn" class="text-center light">Welcome,<h6 class="light">{{currentUser.email}}</h6></h4>
+      </div>
+        
+      <div class="p20">
+
+        <a href="#/home" class="item row row-center p20" nav-clear menu-close ng-click="closeMenuLeft()">
+          <i class="material-icons mr20">home</i>
+          <p class="up font-sm">home</p>
+        </a>
+        <a ng-click="search()" class="item row row-center p20">
+          <i class="material-icons mr20">search</i>
+          <p class="up font-sm">Search</p>
+        </a>
+        
+        <a ng-click="redirect()" ng-show="menuBtn" class="item row row-center p20">
+          <i class="material-icons mr20">assignment_ind</i>
+          <p class="up font-sm">Edit Account</p>
+        </a>
+
+        <a href="#/app/userfavourites" ng-show="menuBtn" class="item row row-center p20" nav-clear menu-close ng-click="closeMenuLeft()">
+          <i class="icon ion-heart" style="color:#fff; font-size:20px; margin-right:30px;"></i>
+          <p class="up font-sm">Favourite</p>
+        </a>
+
+        <a href="#/app/useritems" ng-show="menuBtn" class="item row row-center p20" nav-clear menu-close ng-click="closeMenuLeft()">
+          <i class="material-icons mr20">view_carousel</i>
+          <p class="up font-sm">my ads</p>
+        </a>
+
+        <a ng-click="contact()" class="item row row-center p20">
+          <i class="material-icons mr20">assignment_ind</i>
+          <p class="up font-sm">Contact Us</p>
+        </a>
+
+        <a href="#/app/help" class="item row row-center p20" nav-clear menu-close ng-click="closeMenuLeft()">
+          <i class="icon ion-information-circled" style="color:#fff; font-size:20px; margin-right:30px;"></i>
+          <p class="up font-sm">FAQ</p>
+        </a>
+
+        <a href="#/app/" class="item row row-center p20" nav-clear menu-close ng-click="closeMenuLeft()">
+          <i class="icon ion-information-circled" style="color:#fff; font-size:20px; margin-right:30px;"></i>
+          <p class="up font-sm">about</p>
+        </a>
+
+        <a href="#/app/terms" class="item row row-center p20" nav-clear menu-close ng-click="closeMenuLeft()">
+          <i class="icon ion-information-circled" style="color:#fff; font-size:20px; margin-right:30px;"></i>
+          <p class="up font-sm">terms and <br>conditions</p>
+        </a>
+
+        <a ng-click="login()" ng-hide="menuBtn" class="item row row-center p20">
+          <i class="material-icons mr20">assignment_ind</i>
+            <p class="up font-sm">Log in</p>
+        </a>
+
+        <a ng-click="register(1)" ng-hide="menuBtn" class="item row row-center p20">
+          <i class="material-icons mr20">assignment_ind</i>
+          <p class="up font-sm">Register</p>
+        </a>
+
+        <a ng-click="register(2)" ng-hide="menuBtn" class="item row row-center p20">
+          <i class="material-icons mr20">assignment_ind</i>
+          <p class="up font-sm">Register As <br>Seller</p>
+        </a>
+
+        <a ng-click="doLogout()" ng-show="menuBtn" class="item row row-center p20" nav-clear menu-close ng-click="closeMenuLeft()">
+          <i class="material-icons mr20">lock</i>
+          <p class="up font-sm">log out</p>
+        </a>
+
+        <a href="https://www.facebook.com" class="item row row-center p20" nav-clear menu-close ng-click="closeMenuLeft()">
+          <i class="icon ion-social-facebook" style="color:#fff; font-size:20px; margin-right:30px;"></i>
+          <p class="up font-sm">facbook</p>
+        </a>
+
+        <a href="https://plus.google.com" class="item row row-center p20" nav-clear menu-close ng-click="closeMenuLeft()">
+          <i class="icon ion-social-googleplus" style="color:#fff; font-size:20px; margin-right:30px;"></i>
+          <p class="up font-sm">google</p>
+        </a>
+
+        <a href="https://twitter.com/?lang=en" class="item row row-center p20" nav-clear menu-close ng-click="closeMenuLeft()">
+          <i class="icon ion-social-twitter" style="color:#fff; font-size:20px; margin-right:30px;"></i>
+          <p class="up font-sm">twitter</p>
+        </a>
+            
+      </div>
+    </ion-content>
+  </ion-side-menu>
+    
+  <ion-side-menu side="right" width="220" class="bg-assertive">
+    <ion-content class="padding" ng-controller="CategsCtrl">
+      <a ng-repeat="categ in categories" class="item row row-center p20" href="#/app/items/{{categ.category_id}}" nav-clear menu-close> 
+          <p class="up font-sm">{{categ.category_title}}</p>
+      </a>  
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

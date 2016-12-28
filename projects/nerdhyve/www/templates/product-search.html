@@ -1,0 +1,30 @@
+<ion-view hide-nav-bar="true">
+  <ion-header-bar align-title="left" class="bar-light">
+    <div class="buttons">
+      <button class="button" ng-click="goBack()">
+        <i class="ion-arrow-left-c"></i> Back
+      </button>
+    </div>
+    <h2 class="title" style="text-align:center; color:#e47d25;">{{categoryName}}</h2>
+    <div class="buttons">
+      <button class="button" ng-click="sortItems()">
+        <i class="icon ion-funnel"></i>
+      </button>
+      <button class="button" ng-click="search()">
+        <i class="icon ion-ios-search-strong"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list" style="float:left;">
+      <a ng-repeat="list in products | orderBy:sortParam" ng-click="showProductModal(list.itemDetails.item_id)" href="" class="item home-item card col-45 no-padding pull-left">
+        <div class="item item-body no-padding">
+          <div class="img-container-list"><img class="full-image" image-lazy-src="http://curiouslabx.com/projects/allshook/novitrix/{{list.images[0].item_image || 'images/Photo-Not-Available.jpg'}}"></div>
+          <div class="item-details"><p class="no-margin">{{list.itemDetails.item_title | limitTo : 20}}</p>
+          <p class="small">{{list.category}} <span class="price">$ {{list.itemDetails.price | number}}</span></p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

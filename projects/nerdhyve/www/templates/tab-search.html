@@ -1,0 +1,15 @@
+<ion-view hide-nav-bar="true">
+  <ion-header-bar align-title="left" class="bar-light">
+    <h2 class="title" style="text-align:center; color:#e47d25;">Browse Products</h2>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+      <a class="item item-thumbnail-left item-icon-right" ng-repeat="list in list" href="#/tab/search/searchProducts/{{list.category_id}}/{{list.category_title}}">
+        <img src="http://curiouslabx.com/projects/allshook/novitrix/{{list.thumbnail}}" style="border-radius:10px;">
+        <p>{{list.category_title}}</p>
+        <p class="small">{{list.items_count}} products</p>
+        <i class="icon ion-chevron-right"></i>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

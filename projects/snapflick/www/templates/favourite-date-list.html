@@ -1,0 +1,16 @@
+<ion-view hide-tabs view-title="{{categoryName | date: 'MMM dd, yyyy'}}">
+  <ion-content>
+	<div class="list">
+		<div class="row" ng-repeat="movie in movies">
+	   		<a class="item item-thumbnail-left" href="#/tab/dash/save/movieDetail/{{movie.movie_id}}/{{movie.movie_name}}" style="width:80%;">
+		      	<img ng-src="http://curiouslabx.com/projects/snap_flix/{{movie.movie_main_img || 'images/140x140.gif'}}">
+		      	<h2>{{movie.movie_name}}</h2>
+		      	<p>{{movie.movie_synopsis}}</p>
+		      	<p>US Charts Rated {{movie.movie_us_rate}} | {{movie.movie_total_time}}</p>
+	    	</a>
+	    	<button class="button button-small button-assertive" ng-click="deleteMovie('{{movie.um_id}}')" style="font-size:100%;font-weight:bold; width:20%;">Remove
+			</button>
+    	</div>
+	</div>
+  </ion-content>
+</ion-view>

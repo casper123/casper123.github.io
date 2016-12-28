@@ -1,0 +1,54 @@
+<ion-view hide-nav-bar="true">
+  <div class="appinio-stripe"></div>
+
+  <ion-pane class="padding register-screen apn-app-questions">
+
+    <i class="ion-social-apple" style="position:absolute;z-index:999;top:20px;font-size: 30px;"></i>
+
+    <div ng-repeat="question in currentQuickie|limitTo:1" class="survey-animation">
+
+
+      <ion-content scroll overflow-scroll="true" id="main-content" class="has-content-header">
+
+        <div class="wrap">
+          <div class="content-header">
+            <app-question-text></app-question-text>
+          </div>
+
+<!--          <div class="loading-overlay"
+               ng-class="{'hide': question.imagesReady >= AllImages || AllImages == 0 }">
+            <div class="indicator">
+              <ion-spinner icon="spiral"></ion-spinner>
+            </div>
+          </div>-->
+
+          <div id="content-wrapper">
+            <app-mc ng-if="question.qtype == 'mc'" question="question" is-quickie="question.isQuickie"></app-mc>
+            <app-vstext ng-if="question.qtype == 'vstext'" question="question" is-quickie="question.isQuickie"></app-vstext>
+            <app-vsimage ng-if="question.qtype == 'vsimage'" question="question" is-quickie="question.isQuickie"></app-vsimage>
+            <app-starslider ng-if="question.qtype == 'starslider'" question="question" is-quickie="question.isQuickie"></app-starslider>
+            <app-numericslider ng-if="question.qtype == 'numericslider'" question="question"></app-numericslider>
+            <app-thumbslider ng-if="question.qtype == 'thumbslider'" question="question"></app-thumbslider>
+            <app-propertyslider ng-if="question.qtype == 'propertyslider'" question="question"></app-propertyslider>
+            <app-birthday ng-if="question.qtype == 'birthday'" question="question"></app-birthday>
+            <app-zipcode ng-if="question.qtype == 'zipcode'" question="question"></app-zipcode>
+          </div>
+
+          <div class="push"></div>
+        </div>
+
+        <div id="content-footer" style="text-align: center">
+
+          <button style="margin-top: 0;"  ng-disabled="!question.valid" ng-click="nextQuestion()" class="apn-main-btn bg-color" ng-class="{'is-invalid': !question.valid}">
+            <div>{{'next' | translate}}</div>
+          </button>
+
+        </div>
+      </ion-content>
+    </div>
+
+    <div class="appinio-bottom-logo">
+      appinio
+    </div>
+  </ion-pane>
+</ion-view>

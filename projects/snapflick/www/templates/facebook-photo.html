@@ -1,0 +1,12 @@
+<ion-view show-tab view-title="Facebook Photos">
+<ion-content>
+	<div class="row block_row">
+		<label ng-show="errorMessage" class="alert alert-danger item">
+	            {{errorMessage}}
+	    </label>
+	  	<div ng-repeat="photo in facebookPhotos" class="col col-33 pull-left">
+	  		<img ng-src="{{photo.picture}}" ng-click="addPicture('{{photo.source}}')" />
+  		</div>
+	</div>
+</ion-content>
+</ion-view>

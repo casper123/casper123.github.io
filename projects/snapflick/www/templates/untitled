@@ -1,0 +1,15 @@
+<ion-view hide-tabs view-title="Browse Sub Categories">
+  <ion-content class="">
+  	<ul class="list" >
+  		<div ng-repeat="category in categories ">
+		    <a href="#/tab/dash/moviesByCat/{{category.movie_category_name}}/{{category.movie_cat_id}}">
+		    	<li class="item" ng-if="category.total_movies!=0">
+				{{category.movie_category_name}}
+				<span class="badge badge-positive">{{category.total_movies}}</span>
+			</li>
+			</a>
+		</diV>
+		
+	</ul>
+  </ion-content>
+</ion-view>

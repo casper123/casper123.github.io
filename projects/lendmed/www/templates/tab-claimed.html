@@ -1,0 +1,89 @@
+<ion-view view-title="<img src='img/logo.png' alt='Medical Lending' class='top_logo'>">
+  <ion-content class="has-header light_bg">
+   <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
+  <div class="main-content">
+    <div class="card" ng-repeat="request in requests" ng-init="myIndex = $index">
+      <div class="item item-divider min-head">
+        <span ng-show="request.status == 0" >Pending</span>
+        <span ng-show="request.status == 1" >Approved</span>
+        <span ng-show="request.status == 2" >Processing</span>
+        <span ng-show="request.status == 3" >Ready For Pickup</span>
+        <span ng-show="request.status == 4" >En Route</span>
+        <span ng-show="request.status == 5" >Received</span>
+        <span ng-show="request.status == 7" >Sendback</span>
+        <span class="caret"></span>
+        <span ng-show="request.is_urgent" class="urgent-head">(URGENT)</span>
+        <span ng-if="request.request_sub_type == 1" class="margin-left"><i class="ion-locked"></i></span>
+        <span ng-if="request.request_sub_type == 2" class="margin-left"><i class="ion-plane"></i></span> 
+      </div>
+      <div class="item item-divider inner-head">
+        <img ng-show="request.is_urgent" src="img/urgent-warn.png" class="urgent">
+        <span ng-class="request.is_urgent ? 'text-in col-offset-10' : 'text-in'" class="text-in">{{ request.posted | myDateFormat}} &nbsp; </span>
+        <span class="text-in"><i class="ion-icon ion-clock"></i> &nbsp; {{ request.posted | myTimeFormat}} &nbsp;</span>
+        <span class="text-in"><i class="ion-icon ion-eye"></i>&nbsp; {{request.views}} &nbsp;</span>
+      </div>
+      <div class="row item item-text-wrap padding-zero">
+        <div class="col col-70">
+          <div class ="row">
+            <span class="col">
+              {{request.name}}
+              <br />
+              {{request.quantity}} {{request.units}} {{request.item_name}}
+              <br />
+              <br />
+              <br />
+            </span>
+          </div>
+          <div class="row">
+            <p class="col">
+              <span >{{request.comments}}</span> 
+              <span ng-if="request.comments > 0">Comments</span> 
+              <span ng-if="request.comments <= 1">Comment</span> 
+              <i class="ion-icon ion-arrow-right-b"></i>
+            </p>
+            <a href="#/tab/claimed/requestDetails/{{request.id}}" class="col col-offset-67">
+              <span class="detail-btn padding-zero">
+                Details &nbsp;<i class="ion-ios-arrow-forward"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col col-30 buttons">
+          <button class="button button-positive" ng-if="request.status == 3" ng-click="addDriverModal('{{request.id}}')">Add Driver</button>
+
+          <button ng-class="request.lot_no != '' ? 'button-balanced' : 'button-positive'" class="button " ng-if="request.status == 3" ng-click="addDetailModal('{{request.id}}')">Add More Details</button>
+
+          <div class="btn-group">
+            <button type="button" class="button dropdown-toggle" ng-class='statusClass(request.status)' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="icon ion-checkmark-circled"></i>
+              <span ng-show="request.status == 0" >Pending</span>
+              <span ng-show="request.status == 1" >Approved</span>
+              <span ng-show="request.status == 2" >Processing</span>
+              <span ng-show="request.status == 3" >Ready For Pickup</span>
+              <span ng-show="request.status == 4" >En Route</span>
+              <span ng-show="request.status == 5" >Received</span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a ng-click="updateRequest(request.request_id, 1)" href="#">Claimed</a></li>
+              <li><a ng-click="updateRequest(request.request_id, 2)" href="#">Processing</a></li>
+              <li><a ng-click="updateRequest(request.request_id, 3)" href="#">Ready For Pickup</a></li>
+              <li><a ng-click="updateRequest(request.request_id, 4)" href="#">En Route</a></li>
+            </ul>
+          </div>
+
+          <button ng-click="cancelClaimedRequest(request.request_id)" class="button button-assertive">
+              <i class="icon ion-close-circled"></i> CANCEL
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="item" ng-if="requests.length == 0">
+      <span>You don't have any claimed request</span>
+    </div>
+  </div>   
+  </ion-content>
+</ion-view>

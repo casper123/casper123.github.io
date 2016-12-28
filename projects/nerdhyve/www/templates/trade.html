@@ -1,0 +1,19 @@
+<ion-modal-view class="big-modal">
+  <ion-header-bar align-title="left" class="bar-light">
+    <div class="buttons">
+      <button class="button" ng-click="closeTradeModal()">
+        <i class="ion-arrow-left-c"></i>
+      </button>
+    </div>
+    <h2 class="title" style="text-align:center; color:#e47d25;">Select your product to Trade</h2>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+      <a class="item item-thumbnail-left" ng-click="showConfirm(add.itemDetails.item_id)" ng-repeat="add in userAdd">
+        <img src="http://curiouslabx.com/projects/allshook/novitrix/{{add.images[0].item_image || 'images/Photo-Not-Available.jpg'}}">
+        <p>{{add.itemDetails.item_title}}</p>
+        <p class="small">{{add.itemDetails.categoty_title}} <span class="small price" style="float:none;">${{add.itemDetails.price | number}} ({{add.itemDetails.quantity}} in stock)</span></p>
+      </a>
+    </div>
+  </ion-content>
+</ion-modal-view>

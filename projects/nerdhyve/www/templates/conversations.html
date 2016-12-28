@@ -1,0 +1,34 @@
+<ion-view view-title="Conversation">
+  <ion-content>
+  	<!-- <div class="row conv-row" ng-show="conversationList.length==0">
+  		<div class="col col-80 col-offset-10">
+  			<h1 class="icon ion-chatboxes dark"></h1>
+  			<h2 class"dark">No Convos&tyet</h2>
+  			<h5 class="dark">User conversations to connect directly with sellers if you have questions about their items</h5>
+  		</div>
+  	</div> -->
+
+    <div class="list">
+      <a class="item item-thumbnail-left" ng-repeat="list in msgList track by $index" ng-click="detail(list.conversation_id)">
+        <img src="http://curiouslabx.com/projects/allshook/novitrix/{{list.from === user.username ? list.to_profile_image : list.from_profile_image || 'images/Photo-Not-Available.jpg'}}">
+        <h3>{{list.from === user.username ? list.to : list.from}}</h3>
+        
+        <h6 class="subdued">
+         {{list.create_date}}
+        </h6>
+      </a>
+
+      <!-- <a class="item item-thumbnail-left" ng-click="detail()">
+        <img src="../img/user.png">
+        <h3>Emma Watson</h3>
+        <p>For Women's Tshirt</p>
+      </a>
+
+      <a class="item item-thumbnail-left" ng-click="detail()">
+        <img src="../img/user.png">
+        <h3>Ketty Pary</h3>
+        <p>For Women's Sandal</p>
+      </a> -->
+    </div>
+  </ion-content>
+</ion-view>

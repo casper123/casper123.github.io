@@ -1,0 +1,35 @@
+<ion-modal-view class="big-modal profile-modal">
+	<ion-header-bar class="bar bar-stable" no-tap-scroll="true">
+		<div class="buttons">
+			<button class="button header-btn" ng-click="historyClose()">
+		      Cancel
+		    </button>
+	    </div>
+    	<h2 class="title header-title">History</h2>
+    	<div align="right" class="buttons">
+			<!-- <button class="button header-btn" ng-click="">
+	      Save
+	    </button> -->
+	    </div>
+  	</ion-header-bar>
+  	<ion-content>
+  		<div class="row conv-row" ng-if= "taskHistory == ''">
+	  		<div class="col col-80 col-offset-10">
+	  			<h1 class="icon ion-chatboxes dark"></h1>
+	  			<h2 class"dark">No History</h2>
+	  			<h5 class="dark">This task has no history.</h5>
+	  		</div>
+	  	</div>
+  		<div class="item" ng-if="hist.hours > 0" ng-repeat="hist in taskHistory">
+	  		<div class="row">
+	  			<div class="col">
+	  				{{hist.firstname}} {{hist.lastname}}<br>
+	  				<span class="small ligth">{{hist.dateCreated | date: 'MMM d'}}<span ng-if="hist.startTime">,  {{hist.startTime | date: 'HH:mm'}} - {{hist.endTime | date: 'HH:mm'}}</span></span>
+	  			</div>
+	  			<div class="col col-offset-10" align="right">
+	  				{{hist.hours}} hrs
+	  			</div>
+	  		</div>
+  		</div>
+  	</ion-content>
+</ion-modal-view>

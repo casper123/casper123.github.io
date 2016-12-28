@@ -1,0 +1,125 @@
+<ion-view class="no-header">
+	<div class="tabs-striped tabs-top tabs-background-light tabs-color-dark ">
+	<div class="tabs top-form-tabs">
+		<!--   <a class="tab-item form-tab active" ng-click="showPharForm()">Pharmaceutical</a>
+  		<a class="tab-item form-tab" ng-click="showNonPharForm()">Non-Pharm</a> -->
+	</div>
+  	<ion-content scroll="false" class="padding has-tabs-top">
+  		<div class="row" ng-hide="pharmProduct">
+			<div class="col-80 col-offset-10">
+		    	<form ng-submit="doRequest(requestdata)">
+				    <label ng-show="errorMessage" class="assertive">
+						<strong>Error:</strong> {{errorMessage}}
+					</label>
+					<div class="list list-inset req-form">
+						<h1 class="item-divider" style="text-align:center;">{{requestTypeName}} Product</h1>
+						<select class="item item-input" ng-model="requestdata.request_type" ng-change="showRequestType({{'requestdata.request_type'}})">
+							<option value="1" selected>Pharmaceutical</option>
+							<option value="0">Non Pharmaceutical</option>
+						</select>
+						<!-- <div class="button-bar">
+							<h4>Request Type &nbsp;</h4>
+							<label class="item item-radio">
+								<input type="radio" class="button">
+								<div class="item-content">
+							      Pharmaceutical
+							    </div>
+							    <i class="radio-icon ion-checkmark"></i>
+							</label>
+							<label class="item item-radio">
+								<input type="radio" class="button">
+								<div class="item-content">
+							      Non Pharmaceutical
+							    </div>
+							    <i class="radio-icon ion-checkmark"></i>
+							</label>
+						</div> -->
+						<!-- <input type="hidden" ng-model="requestdata.request_type" value="1"> -->
+						
+						<label class="item-input">
+						    <i class="icon ion-android-person"></i>
+						      <input type="text" placeholder="Employee Name" ng-model="requestdata.employee">
+						</label>
+						<label class="item-input" ng-hide="pharmAutoComplete">
+							<i class="icon ion-search"></i>
+								<ion-autocomplete ng-model="requestdata.addeditem" value="" items-method="callbackMethod(query)" item-view-value-key="name" item-value-key="id" placeholder="NDC" cancel-label="Cancel" ></ion-autocomplete>
+						</label>
+						<label class="item item-input" ng-hide="nonPharmAutoComplete">
+							<i class="icon ion-search placeholder-icon"></i>
+								<ion-autocomplete ng-model="requestdata.addeditem" value="" items-method="callbackMethod(query)" items-clicked-method="clickedMethod(callback)" item-view-value-key="name" item-value-key="id" placeholder="Select An Item" cancel-label="Done" multiple-select="true" ></ion-autocomplete>
+						</label>
+			  			<div class="row ">
+				  			<label class="item-input">
+							    <i class="icon ion-pound"></i>
+							    <input type="tel" placeholder="Quantity" ng-model="requestdata.quantity">
+							</label>
+							<label class="item-input">
+							    <i class="icon ion-beaker"></i>
+							    <input type="text" placeholder="Dosage (mg/.5mL)" ng-model="requestdata.units">
+							</label>
+			  			</div>
+			  								   
+						<label class="item-input">
+						    <i class="icon ion-android-chat"></i>
+						    <input type="text" placeholder="Comments" ng-model="requestdata.comments">
+						</label>
+
+						<div class="row ">
+							<div class="col-33">
+								<ion-toggle ng-model="requestdata.is_driver" toggle-class="toggle-positive">Driver Required:</ion-toggle>
+							</div>
+							<div class="col-33">
+								<ion-toggle ng-model="requestdata.is_urgent" toggle-class="toggle-positive">Urgent:</ion-toggle>
+							</div>
+							<div class="col-33">
+								<label class="item item-input item-select">
+							    <div class="input-label">
+							      Request To
+							    </div>
+							    <select ng-model="requestdata.is_public" ng-change="showRequestTypeOption({{'requestdata.is_public'}})">
+							      <option selected value="0">Public</option>
+							      <option value="1">Private</option>
+							      <option value="2">Direct</option>
+							    </select>
+							  </label>
+							</div>
+						</div>
+												
+						<div class ="row item" ng-show="showCheckboxes">
+							<div class="col">
+								<span class="is-d-radio">Select Network</span>
+								<div class="row" ng-repeat="pvtNetwork in pvtNetworks">
+									<input type="checkbox" ng-model="requestdata.pvtNetworkIds[$index]" value="pvtNetwork.id">
+									<span class="is-d-radio">{{pvtNetwork.name}}</span>
+								</div>
+							</div>
+						</div>
+
+						<div class ="row " ng-show="showDropdownList">
+							<div class="col">
+								<span class="is-d-radio">Select Company: </span>
+								<select ng-model="requestdata.pvtNetworkId"  >
+									<option ng-repeat="pvtNetwork in pvtNetworks" value="{{pvtNetwork.id}}">
+										{{pvtNetwork.name}}
+									</option>
+								</select>
+							</div>
+						</div>
+						<input type="hidden" ng-model="requestdata.request_type"/>
+				        <label class="">
+						    <a ng-click="showActionsheet()" class="button button-block button-positive">
+			              		<i class="icon ion-camera "></i>Take Photo of Badge     
+			            	</a>
+						</label>
+			   		</div>
+					<label class="">
+			          	<button class="button button-block button-positive" type="submit">Request Now!</button>
+			        </label>
+			    </form>
+			</div>
+  		</div>
+  </ion-content>
+</ion-view>
+
+
+

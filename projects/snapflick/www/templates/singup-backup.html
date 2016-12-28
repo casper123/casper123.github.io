@@ -1,0 +1,99 @@
+  <div class="row">
+    <div class="col col-75 col-offset-10">
+      <form ng-submit="register(user)">
+        <div class="padding">
+          <label ng-show="errorMessage" class="alert alert-danger item">
+            {{errorMessage}}
+          </label>
+          <label ng-show="noNetwork" class="alert alert-danger item">
+            It looks like you have poor or no network connection.
+          </label>
+        </div>
+        <div class="padding">
+          <input type="text" ng-model="user.f_name" value=""  placeholder="First Name" class="signup-input" id="su-input-firstname" required />
+        </div>
+        <div class="padding">
+          <input class="signup-input" id="su-input-lastname" type="text" ng-model="user.l_name" value=""placeholder="Last Name"  />
+        </div>
+        <div class="padding">Date Of Birth:
+            <input class="signup-input" id="su-input-dob" type="date" required ng-model="user.dob" value="" placeholder="mm dd, yyyy"  />
+        </div>
+
+        
+        <!-- <div class="padding">
+          	<select ng-model="user.day" required>
+				      <option value="{{day}}" ng-repeat="day in days">{{day}}</option>
+			      </select>
+      			<select ng-model="user.month">
+      				<option value="1">Jan</option>
+      				<option value="2">Feb</option>
+      				<option value="3">Mar</option>
+      				<option value="4">Apr</option>
+      				<option value="5">May</option>
+      				<option value="6">June</option>
+      				<option value="7">July</option>
+      				<option value="8">Aug</option>
+      				<option value="9">Sept</option>
+      				<option value="10">Oct</option>
+      				<option value="11">Nov</option>
+      				<option value="12">Dec</option>					
+      			</select>
+      			<select ng-model="user.year" >
+      				<option value="{{year}}" ng-repeat="year in years">{{year}}</option>
+      			</select>
+        </div> -->
+        
+        <div class="padding item-content">Gender:</div>
+        <div class="padding">
+  			  <label class="item item-radio">
+            <input class="signup-input" id="su-input-gender-male" type="radio" ng-model="user.gender" value="1"  />
+            <div class="item-content">Male</div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+        </div>
+        <div class="padding">
+          <label class="item item-radio">
+            <input class="signup-input" id="su-input-gender-female" type="radio" ng-model="user.gender"value="2"  />
+            <div class="item-content">Female</div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+        </div>
+      
+		    <div class="padding">
+          <input class="signup-input" id="su-input-email" type="Email" required ng-model="user.email" value="" placeholder="Email Address"  />
+        </div>
+        
+        <div class="padding">
+        	<input class="signup-input" id="su-input-password" type="password" required ng-model="user.password" value=""  placeholder="Password"/>
+        </div>
+        
+        <div class="padding">
+        	<input class="signup-input" id="su-input-verify-password" type="password" required ng-model="user.passwordVerify" value=""  placeholder="Verify Password"/>
+        </div>
+
+        <div class="padding">
+            <input class="signup-input" id="su-input-city" type="text" required ng-model="user.city" value="" placeholder="City"  />
+        </div>
+
+        <div class="padding">
+            <input class="signup-input" id="su-input-state" type="text" required ng-model="user.state" value="" placeholder="State"  />
+        </div>
+
+        <div class="padding">
+            <input class="signup-input" id="su-input-country" type="text" required ng-model="user.country" value="" placeholder="Country"  />
+        </div>
+
+      <div class="padding">
+        <input class="button button-block button-assertive" type="submit" value="Sign Up"/>
+      </div>
+
+      <!-- <div>
+        <a href="#/user/login" class="col button button-calm button-block">Member Login</a>
+      </div> -->
+
+      <!-- <div>
+         <a class="col button button-balanced button-block" ng-click="facebookLogin()">Login With Facebook</a>
+      </div> -->
+      </form>
+    </div>
+  </div>

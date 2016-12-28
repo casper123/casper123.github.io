@@ -1,0 +1,37 @@
+<ion-modal-view class="big-modal" ng-controller="PushCtrl">
+  <ion-header-bar class="bg-color" no-tap-scroll="true">
+    <div class="title">
+      <h2 class="apn-header-title">{{'notifications' | translate}}</h2>
+      <div class="header-icon-right" ng-click="closeNotificationList()">
+        <i class="ion-ios-close-empty"></i>
+      </div>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="row">
+      <div class="col col-80 col-offset-10">
+        <h2 class="screen-head">{{'push_notifications' | translate}}</h2>
+        <p class="in-color centered small-text">{{'push_notifications_description'| translate}}</p>
+      </div>
+    </div>
+    <div style="text-align: center">
+      <button style="margin-bottom:20px;" class="apn-main-btn bg-color"
+              ng-click="xptest(voucherDetails)">
+        <div>20 XP bekommen</div>
+      </button>
+    </div>
+    <div class="list">
+      <ion-toggle ng-change="updatePermission('survey')"
+                  ng-model="push.survey" toggle-class="apn-toggle">Umfrage verfügbar</ion-toggle>
+      <ion-toggle ng-change="updatePermission('questionAnswered')"
+                  ng-model="push.questionAnswered" toggle-class="apn-toggle">Frage vom Freund</ion-toggle>
+      <ion-toggle ng-change="updatePermission('questionAsked')"
+                  ng-model="push.questionAsked" toggle-class="apn-toggle">Freund hat geantwortet</ion-toggle>
+      <ion-toggle ng-change="updatePermission('friendRequest')"
+                  ng-model="push.friendRequest" toggle-class="apn-toggle">Freundschaftsanfrage</ion-toggle>
+      <ion-toggle ng-change="updatePermission('quickieCommunity')"
+                  ng-model="push.quickieCommunity" toggle-class="apn-toggle">Frage beendet</ion-toggle>
+
+    </div>
+  </ion-content>
+</ion-modal-view>

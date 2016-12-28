@@ -1,0 +1,69 @@
+<ion-view hide-nav-bar="true">
+  <ion-header-bar class="bar  bar-stable" no-tap-scroll="true">
+    <h2 class="title header-title">Edit Account</h2>
+    <div align="right" class="buttons">
+      <button class="button header-btn" ng-click="updateAccount(user)">
+        Save
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list account-list">
+      <div class="succes-color" align="center" ng-show="update">
+        Your account updated successfully.
+      </div>
+      <div class="item item-divider">
+        Account Details
+      </div>
+
+      <div class="item item-icon-left">
+        <i class="icon ion-person" style="font-size:20px !important;">
+        <span class="grey-dark" style="font-size: small;"> &nbsp; First Name </span></i>
+        <span class="item-note blue-default" style="margin-top: -13px; padding-top:13px;"><input type="text" style="text-align:right" class="item-note blue-default" ng-model="user.firstName" placeholder="First Name"></span>
+      </div>
+      <div class="item item-icon-left">
+        <i class="icon ion-person" style="font-size:20px !important;">
+        <span class="grey-dark" style="font-size: small;"> &nbsp; Last Name</span></i>
+        <span class="item-note blue-default" style="margin-top: -13px; padding-top:13px;"><input type="text" style="text-align:right" class="item-note blue-default" ng-model="user.lastName" placeholder="Last Name"></span>
+      </div>
+      <div class="item item-icon-left">
+        <i class="icon ion-email" style="font-size:20px !important;">
+          <span class="grey-dark" style="font-size: small;"> &nbsp; Email Address</span></i>
+        <span class="item-note blue-default" style="margin-top: -13px; padding-top:13px;">
+          <input type="email" style="text-align:right" class="item-note blue-default" ng-model="user.email" placeholder="Email Address">
+        </span>
+      </div>
+      <div class="item item-icon-left">
+        <i class="icon ion-ios-telephone" style="font-size:20px !important;">
+          <span class="grey-dark" style="font-size: small;"> &nbsp; Phone</span></i>
+        <span class="item-note blue-default" style="margin-top: -13px; padding-top:13px;">
+          <input type="tel" style="text-align:right" class="item-note blue-default" ng-model="user.mobilePhone" placeholder="Phone Number">
+        </span>
+      </div>
+      <div class="item item-icon-left">
+        <i class="icon ion-briefcase" style="font-size:20px !important;">
+        <span class="grey-dark" style="font-size: small;"> &nbsp; Job Title</span></i>
+        <span class="item-note blue-default" style="margin-top: -13px; padding-top:13px;"><input type="text" style="text-align:right" class="item-note blue-default" ng-model="user.jobTitle" placeholder="Job Title"></span>
+      </div>
+      <div class="item item-toggle item-icon-left">
+        <i class="icon ion-ios-bell account-icon" style="font-size:20px !important;"></i>
+        <span class="grey-dark">Notifications</span>
+
+        <label align="left" class="toggle toggle-positive">
+          <input type="checkbox" value="on">
+          <div class="track">
+            <div style="text-align:right" class="handle"></div>
+          </div>
+        </label>
+      </div>
+    
+      <div class="item item-divider">
+        Logout
+      </div>
+      <a class="item item-icon-left" ng-click="logout()">
+        <i class="icon ion-android-exit account-icon"></i>
+        <span class="grey-dark">Logout</span>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

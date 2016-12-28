@@ -1,0 +1,42 @@
+<ion-view view-title="Video Details">
+  <ion-content>
+   <div class="list card">
+
+  <div class="item item-avatar">
+    <img src="{{videoDetails.snippet.thumbnails.medium.url}}">
+    <h2>{{videoDetails.snippet.title}}</h2>
+    <p>{{videoDetails.snippet.publishedAt}}</p>
+  </div>
+
+  <div class="item item-body">
+    <img class="full-image" src="{{videoDetails.snippet.thumbnails.medium.url}}">
+    <p>
+      {{videoDetails.snippet.description}}
+    </p>
+    <p>
+		<a href="#" class="subdued">{{videoDetails.statistics.likeCount}} Like</a>
+		<a href="#" class="subdued">{{videoDetails.statistics.dislikeCount}} Dislike</a> 
+		<a href="#" class="subdued">{{videoDetails.statistics.viewCount}} View Count</a> 
+		<a href="#" class="subdued">{{videoDetails.statistics.favoriteCount}} Favorite Count</a> 
+		<a href="#" class="subdued">{{videoDetails.statistics.commentCount}} Comment Count</a> 
+    </p>
+  </div>
+
+  <div class="item tabs tabs-secondary tabs-icon-left">
+    <a class="tab-item" href="#">
+      <i class="icon ion-thumbsup"></i>
+      Like
+    </a>
+    <a class="tab-item" href="#">
+      <i class="icon ion-chatbox"></i>
+      Comment
+    </a>
+    <a class="tab-item" href="#">
+      <i class="icon ion-share"></i>
+      Share
+    </a>
+  </div>
+
+</div>
+  </ion-content>
+</ion-view>

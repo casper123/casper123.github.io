@@ -1,0 +1,50 @@
+<ion-modal-view class="dropdown_modal">
+
+  <div class="list">
+
+    <div class="row">
+      <div class="col" style="padding:15px;">
+        <img src="./img/appinio_logo_small.png" width="25px" />
+      </div>
+    </div>
+
+    <div class="row" ng-click="openVoucherList();closeDropDown();">
+      <div class="col">
+        <p>Gutscheine</p>
+      </div>
+    </div>
+
+    <div class="row" ng-click="openCharityList();closeDropDown();">
+      <div class="col">
+        <p>Spenden</p>
+      </div>
+    </div>
+
+    <div class="row" ng-click="openNotificationList();closeDropDown();">
+      <div class="col">
+        <p>Benachrichtigungen</p>
+      </div>
+    </div>
+
+    <div class="row" ng-click="openSettingsModal();closeDropDown();">
+      <div class="col">
+        <p>Einstellungen</p>
+      </div>
+    </div>
+
+    <div class="row" ng-click="openLinksList();closeDropDown();">
+      <div class="col">
+        <p>Mehr</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row bottom-drag">
+    <div class="col">
+      <i ng-click="closeDropDown()" class="ion-ios-close-empty close-btn"></i>
+    </div>
+  </div>
+
+  <div class="bottom-stripe"></div>
+</ion-modal-view>

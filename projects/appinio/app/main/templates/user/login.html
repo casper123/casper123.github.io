@@ -1,0 +1,68 @@
+<ion-view hide-nav-bar="true" view-title="{{'log in' | translate}}">
+  <div class="appinio-stripe"></div>
+
+  	<ion-pane class="padding register-screen">
+
+      <!-- <div ng-if="loggedinLoading != false" class="loading-wrapper white">
+        <ion-spinner icon="dots"></ion-spinner>
+      </div> -->
+
+      <!-- <div ng-show="loggedinLoading == false"> -->
+      <div>
+        <div class="row">
+          <div class="col col-80 col-offset-10" style="padding:20px;">
+            <h2 class="screen-head white">{{'login' | translate}}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form">
+            <label class="col">
+              <input type="email" class="apn-input" ng-class="{invalid: loginError}" ng-model="user.email" placeholder="{{'your_email' | translate}}"
+                     required>
+            </label>
+            <label class="col">
+              <input type="password" class="apn-input" ng-class="{invalid: loginError}" ng-model="user.password"
+                     placeholder="{{'your_password' | translate}}" required/>
+            </label>
+            <div class="col">
+              <button class="apn-main-btn white full" ng-click="doLogin(user)">
+                <div>{{'login' | translate}}</div>
+              </button>
+            </div>
+
+            <p class="small-text" style="margin-top:10px;" ng-click="resetPassword()">{{'forgot_pw' | translate}}</p>
+            <p ng-if="loginError" class="small-text error" style="margin-top:30px;">
+              {{'wrong_pw' | translate}}
+            </p>
+            <p ng-if="loginErrorLocked" class="small-text error" style="margin-top:30px;">
+              {{'locked_account' | translate}}
+            </p>
+            <p ng-if="loginErrorVersion" class="small-text error" style="margin-top:30px;">
+              Du benutzt eine alte Appinio Version. Bitte installiere die aktuellste Version um Appinio nutzen zu können.
+            </p>
+          </div>
+        </div>
+
+        <div ng-if="!loginError && !loginErrorLocked && !loginErrorVersion">
+          <div class="row" style="padding:10px;padding-top:20px;">
+            <div class="col">
+              <button class="apn-main-btn bg-color facebook full" ng-click="startFacebookLogin()">
+                <div><i class="ion-social-facebook"></i> Facebook Login</div>
+              </button>
+            </div>
+          </div>
+          <div class="row" style="margin-top:20px;padding:10px;">
+            <div class="col">
+              <button class="apn-main-btn white full grey" ng-click="startTutorial()">
+                <div>{{'im_new' | translate}}</div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="appinio-bottom-logo">
+        appinio
+      </div>
+	</ion-pane>
+</ion-view>

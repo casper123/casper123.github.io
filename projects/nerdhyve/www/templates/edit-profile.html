@@ -1,0 +1,78 @@
+<ion-view view-title="Edit Profile">
+  <ion-content>
+  	<div class="list">
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">First Name</span>
+        <input type="text" ng-model="user.first_name">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Last Name</span>
+        <input type="text" ng-model="user.last_name">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">User Name</span>
+        <input type="text" ng-model="user.username">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Date of Birth</span>
+        <input type="date" ng-model="user.dob">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">City</span>
+        <input type="text" ng-model="user.city">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">State</span>
+        <input type="text" ng-model="user.state">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Country</span>
+        <input type="text" ng-model="user.country">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Address</span>
+        <input type="text" ng-model="user.address">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Phone</span>
+        <input type="text" ng-model="user.number">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Email</span>
+        <input type="text" ng-model="user.email">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Password</span>
+        <input type="password" ng-model="user.pass">
+        <span style="color:red; font-size:10px">**must be atleast 6 charactors</span>
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Re-type Password</span>
+        <input type="password" ng-model="user.retype">
+      </label>
+
+      <div class="item item-image">
+            <img style="max-width:200px; padding:20px;" src="http://curiouslabx.com/projects/allshook/novitrix/{{user.profile_image || 'images/Photo-Not-Available.jpg'}}">
+      </div>
+
+      <button ng-click="uploadPostPhoto()" class="button button-block button-assertive">
+        <i class="icon ion-camera"> Upload Photo</i>
+      </button>
+      <button class="button button-block button-dark" ng-click="editProfile(user)">
+      	<i class="icon ion-edit"> Update</i>
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

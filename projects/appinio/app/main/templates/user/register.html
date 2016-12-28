@@ -1,0 +1,153 @@
+<ion-view hide-nav-bar="true" view-title="{{'signup' | translate}}">
+
+  <div class="appinio-stripe"></div>
+
+  <ion-pane class="register-screen" style="height:100%;">
+
+    <ion-slide-box on-slide-changed="slideHasChanged($index)" style="height:100%;    background: none;
+    background-color: black;" show-pager="true" ng-hide="slider">
+      <ion-slide class="slide-one">
+        <div class="row">
+          <div class="col heading-containter col-80 col-offset-10">
+            <h2 class="screen-head white">{{'onboarding_share_opinion' | translate}}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <i class="ion-trophy dummy-icon"></i>
+        </div>
+        <div class="row">
+          <div class="col text-container col-80 col-offset-10">
+            <p>{{'onboarding_share_opinion_description' | translate}}</p>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide class="slide-two">
+        <div class="row">
+          <div class="col heading-containter col-80 col-offset-10">
+            <h2 class="screen-head white">{{'onboarding_ask_questions' | translate}}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <i class="ion-trophy dummy-icon"></i>
+        </div>
+        <div class="row">
+          <div class="col text-container col-80 col-offset-10">
+            <p>{{'onboarding_ask_questions_description' | translate}}</p>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide class="slide-three">
+        <div class="row">
+          <div class="col heading-containter col-80 col-offset-10">
+            <h2 class="screen-head white">{{'onboarding_fun' | translate}}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <i class="ion-trophy dummy-icon"></i>
+        </div>
+        <div class="row">
+          <div class="col text-container col-80 col-offset-10">
+            <p>{{'onboarding_fun_description' | translate}}</p>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide class="slide-four">
+        <div class="row">
+          <div class="col heading-containter col-80 col-offset-10">
+            <h2 class="screen-head white">{{'onboarding_charity' | translate}}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <i class="ion-trophy dummy-icon"></i>
+        </div>
+        <div class="row">
+          <div class="col text-container col-80 col-offset-10">
+            <p>{{'onboarding_charity_description' | translate}}</p>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide class="slide-five">
+        <div class="row">
+          <div class="col heading-containter col-80 col-offset-10">
+            <h2 class="screen-head white">{{'onboarding_promise' | translate}}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <i class="ion-trophy dummy-icon"></i>
+        </div>
+        <div class="row">
+          <div class="col text-container col-80 col-offset-10">
+            <p>{{'onboarding_promise_description' | translate}}</p>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+    <div class="row skip-container" ng-hide="!signup">
+      <button ng-click="skipIntroduction()" class="apn-main-btn white big"
+              ng-if="!currentsliderIndex || currentsliderIndex == 0">
+        <div>{{'skip navigation' | translate}}</div>
+      </button>
+      <button ng-click="skipIntroduction()" class="apn-main-btn white big"
+              ng-if="currentsliderIndex>=4">
+        <div>{{'register' | translate}}</div>
+      </button>
+    </div>
+
+    <div class="padding" ng-hide="signup">
+      <div class="row">
+        <div class="col col-80 col-offset-10" style="padding:20px;">
+          <h2 class="screen-head white">{{'register' | translate}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col form">
+          <label class="col">
+            <input type="text" class="apn-input" ng-model="user.email" placeholder="{{'your_email' | translate}}"
+                   required>
+          </label>
+          <label class="col">
+            <input type="password" class="apn-input" ng-model="user.password"
+                   placeholder="{{'your_password' | translate}}" required/>
+          </label>
+          <div class="col">
+            <button class="apn-main-btn white full" ng-click="doRegister(user)">
+              <div>{{'signup' | translate}}</div>
+            </button>
+            <p class="small-text" style="margin-top: 15px;">
+              Es gelten unsere <a ng-click="openLinkAGB()">AGB's</a> und <a ng-click="openLinkPrivacy()">Datenschutzbestimmungen</a>
+            </p>
+          </div>
+          <div class="row" ng-if="registerError">
+            <div class="col col-80 col-offset-10 social-text error-color" style="padding:10px;">
+              <h2 ng-if="emailError">Die Email Adresse ist bereits vergeben</h2>
+              <h2 ng-if="uuidError">Mit diesem Gerät ist wurde bereits ein Account angelegt</h2>
+              <h2 ng-if="otherError">Es ist ein Fehler aufgetreten. Bitte versuche es später noch einmal</h2>
+            </div>
+          </div>
+          <div class="row" style="padding-top:20px;padding-bottom: 10px;">
+            <div class="col col-80 col-offset-10 social-text">
+              <h2>{{'or_fb' | translate}}</h2>
+            </div>
+          </div>
+          <div class="row">
+            <button class="apn-main-btn bg-color facebook full" ng-click="startFacebookLogin()">
+              <div><i class="ion-social-facebook"></i> Facebook Login</div>
+            </button>
+          </div>
+          <div class="col" style="padding-top:10px;margin-top:20px;">
+            <button class="apn-main-btn white full grey" ui-sref="user.login">
+              <div>{{'back_to_login' | translate}}</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="appinio-bottom-logo">
+      appinio
+    </div>
+
+  </ion-pane>
+</ion-view>
+

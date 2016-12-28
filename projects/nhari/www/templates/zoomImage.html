@@ -1,0 +1,12 @@
+<ion-modal-view ng-click="closeZoom()">
+	<ion-scroll zooming="true"
+		    direction="xy" 
+		    delegate-handle="zoom-pane" 
+		    class="zoom-pane" 
+		    min-zoom="1" 
+            scrollbar-x="true" 
+            scrollbar-y="true" 
+		    overflow-scroll="false">
+		<img style="width:100%" ng-src="http://www.nhari.nl/mobileapp/{{imageSrc}}" >
+	</ion-scroll>	
+</ion-modal-view>

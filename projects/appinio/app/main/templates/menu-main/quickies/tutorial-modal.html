@@ -1,0 +1,40 @@
+<ion-modal-view style="background: none !important;">
+
+  <ion-pane class="level-up">
+
+    <div class="arrow-container">
+      <img src="./img/arrow-level-up.png" />
+      <img src="./img/arrow-level-up.png" />
+      <img src="./img/arrow-level-up.png" />
+    </div>
+
+    <div class="row">
+      <div class="col col-80 col-offset-10" style="padding:10px;">
+        <h2 class="screen-head white">Level up</h2>
+      </div>
+    </div>
+
+    <div class="avatar-wrapper-big bg-color">
+      <div><i class="">1</i></div>
+    </div>
+
+    <p class="small-text" ng-if="helpType == 'thumbslider'">
+      DAuMEN RUMDEREHEN
+    </p>
+
+    <p class="small-text" ng-if="helpType == 'starslider'">
+      Sterne machen!!
+    </p>
+
+    <p class="small-text" ng-if="helpType == 'numericslider'">
+      asdasdasdas nummmer
+    </p>
+
+
+    <button class="apn-main-btn white full grey" ng-click="closeTutorialModal()">
+      <div>Ok</div>
+    </button>
+
+  </ion-pane>
+
+</ion-modal-view>

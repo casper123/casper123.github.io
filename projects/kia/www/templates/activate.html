@@ -1,0 +1,85 @@
+<div class="popup_div">
+  <!-- <div class="cross">
+    <a href="" ng-click="closeActivate()"><i class="icon ion-close"></i></a>
+  </div> -->
+   <div class="row">
+      <div class="col col-90">&nbsp;</div>
+    <!--   <div class="col col-10"><a href="" ng-click="closeActivate()"><i class="ion-ios7-close-empty"></i></a></div> -->
+        <div class="col col-10"><a href="#/user/home"><i class="ion-ios7-close-empty"></i></a></div>
+    </div>
+  <div class="iniciar-form">
+    
+    <form action="" id="activate" name="activate" method="post" enctype="multipart/form-data">
+      <span class="button-set2 ui-btn ui-corner-all " id="spanactive" ></span>
+      <h2><span>ACTIVAR CUENTA</span></h2>
+               <label ng-show="errorMessage2" class="alerta">
+            <strong>Error:</strong> {{errorMessage2}}
+         </label>
+      <div class="row">
+        <div class="col col-10">&nbsp;</div>
+        <div class="col col-80 div_input">
+           <label for="basic">Tarjeta</label>
+           <input required type="text" ng-model="user.tarjeta" id="tarjeta" value="" data-mini="true" class="my_input" />
+        </div>
+        <div class="col col-10">&nbsp;</div>
+      </div>  
+      <div class="row">
+        <div class="col col-10">&nbsp;</div>
+        <div class="col col-80 div_input">
+             <label for="basic">Documento de identidad</label>
+            <input required type="text" ng-model="user.cedula" id="cedula" value="" data-mini="true" class="my_input"/>
+        </div>
+        <div class="col col-10">&nbsp;</div>
+      </div>  
+      <div class="row">
+        <div class="col col-10">&nbsp;</div>
+        <div class="col col-80 div_input">
+             <label for="basic">Correo Electrónico</label>
+            <input required type="text" ng-model="user.correo" id="correo" value="" data-mini="true" class="my_input"/>
+        </div>
+        <div class="col col-10">&nbsp;</div>
+      </div> 
+     <div class="row">
+        <div class="col col-10">&nbsp;</div>
+        <div class="col col-80 div_input">
+             <label for="basic">Contraseña </label>
+             <input required type="password" ng-model="user.contrasena" id="contrasena" value="" data-mini="true" class="my_input"/>
+        </div>
+        <div class="col col-10">&nbsp;</div>
+      </div> 
+      <div class="row">
+        <div class="col col-10">&nbsp;</div>
+        <div class="col col-80 div_input">
+             <label for="basic">Confirmar Contraseña  </label>
+              <input required type="password" ng-model="user.contrasena2" id="contrasena2" value="" data-mini="true" class="my_input"/>
+        </div>
+        <div class="col col-10">&nbsp;</div>
+      </div>  
+    </form>
+    
+    <div class="row">
+        <div class="col col-10">&nbsp;</div>
+        <div class="col col-80" style="text-align:center;">
+              <fieldset data-role="controlgroup" >
+                 <input required type="checkbox" style="margin: -26px 0 0;" ng-model="user.accept" id="checkbox-3" class="custom" />
+                Acepto términos y condiciones.
+              </fieldset>
+        </div>
+        <div class="col col-10">&nbsp;</div>
+      </div>  
+    <div class="row" style="text-align:center;">
+        <div class="col col-20">&nbsp;</div>
+        <div class="col col-60 " >
+    <a href="" ng-click="doActivate(user)" ><img src="img/aceptarBtn.png" class="img img-responsive" alt="" style="margin: auto;"></a> 
+        </div>
+        <div class="col col-20">&nbsp;</div>
+      </div>
+
+    
+    <div class="bottom-text-set">
+      <p>¿Olvidó su contraseña?</p>
+      <p><a href="#/user/register">Crear una cuenta nueva</a></p>
+    </div>
+    <div class="clr"></div>
+  </div>
+</div>

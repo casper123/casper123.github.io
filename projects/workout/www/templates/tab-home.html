@@ -1,0 +1,53 @@
+<ion-view title="Workout Factory">
+
+  <ion-content>
+       <div class="row padding-style">
+      <div class="col">
+      <div class="thumb_row">
+        <div class="col-xs-6 col-sm-6 col-md-6 list-block-container" ng-repeat="item in random_recipe">
+          <a class="list-block thumbnail" href="#/tab/home/home_item/{{item.id}}">
+            <img src="img/loading.gif" ng-src="http://curiouslabx.com/projects/workoutfactory/workoutFactory/{{item.location}}" class="img-responsive" style="height:145px;" />
+              <h2 class="text-center">{{item.name | limitTo : 20}}</h2>
+              <p class="post-icon-color">
+                <i class="icon ion-ios7-clock-outline"></i>&nbsp;{{item.time}}&nbsp;mins&nbsp;&nbsp;
+              </p>
+            </a>
+        </div>
+      </div>
+      </div>
+    </div>
+	
+	
+	    <div class="row" style="background:#434a54;">
+      <ion-scroll direction="x" style="width:100%;">
+        <div class="row">
+          <div class="col col-50 special-box" ng-repeat="recipee in latest_recipe_forSlider">
+            <a href="#/tab/home/recipie_details/{{recipee.id}}">
+              <img src="img/loading.gif" ng-src="http://curiouslabx.com/projects/workoutfactory/workoutFactory/{{recipee.image}}" rn-src="recipee.image" class="img-responsive" />
+              <div class="col col-75 scroll-heading"><h4>Calories :  {{recipee.nutration  | limitTo : 20}}..</h4></div>
+            </a>
+          </div>
+        </div>
+      <ion-scroll>
+    </div>
+
+      <div class="row padding-style">
+      <div class="col">
+      <div class="thumb_row">
+          <a class="list-block" ng-repeat="item in bottomExcersice" href="#/tab/home/home_item/{{item.id}}">
+				<div class="col-xs-12 col-sm-12 col-md-12 list-block-container homePageImage"  style="background: url(http://curiouslabx.com/projects/workoutfactory/workoutFactory/{{item.location}}); background-size: cover; background-repeat: no-repeat; background-position: center; height: 500px;">
+            
+              <div class="col col-100 footer-heading"><h4>{{item.name}}</h4></div>
+	      
+              <p class="post-icon-color">
+                <i class="icon ion-ios7-clock-outline"></i>&nbsp;{{item.time}}&nbsp;mins&nbsp;&nbsp;
+              </p>
+            
+        </div>
+		</a>
+      </div>
+      </div>
+    </div>
+      
+  </ion-content>
+</ion-view>

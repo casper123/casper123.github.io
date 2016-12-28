@@ -1,0 +1,135 @@
+username:babar
+password: 12345
+
+FOR POST
+ 
+USER AUTHENTICATION
+ 
+URL : http://service.drivento.com/methods
+Parameters : POST['username'] , POST['password']
+Response : JSON with TOKEN and HASH
+====================
+ 
+ACTIVITY ASSIGN TO USER ["DONE"]
+ 
+URL : http://service.drivento.com/methods
+Parameters : POST['claim'] , POST['activity_id'], POST['user_id'],
+POST['token']
+Response : JSON
+====================
+ 
+BEGINNING ACTIVITY
+ 
+URL : http://service.drivento.com/methods
+Parameters : POST['beginning'] , POST['activity_id'], POST['user_id'],
+POST['token']
+Response : JSON
+ 
+====================
+ 
+MAKING ACTIVITY AS COMPLETE ["DONE"]
+ 
+URL : http://service.drivento.com/methods
+Parameters : POST['complete'] , POST['activity_id'], POST['user_id'],
+POST['token']
+Response : JSON
+ 
+====================
+ 
+DELAYED ACTIVITY ["done"]
+ 
+URL : http://service.drivento.com/methods
+Parameters : POST['delayed'] , POST['activity_id'], POST['user_id'],
+POST['token']
+Response : JSON
+ 
+====================
+ 
+DISTANCE OF DELIVERY LOCATION
+ 
+URL : http://service.drivento.com/methods
+Parameters : POST['destination'] , POST['lat'], POST['lon'],
+POST['token']
+Response : JSON
+ 
+====================
+ 
+DILIVERY LOCATION
+ 
+URL : http://service.drivento.com/methods
+Parameters : POST['location'], POST['token']
+Response : JSON
+ 
+====================
+ 
+DRIVER STATUS
+ 
+URL : http://service.drivento.com/methods
+Parameters : POST['status'], POST['token']
+Response : JSON
+ 
+====================
+ 
+For Get
+ 
+ACTIVITIES ASSIGN TO USER
+ 
+you can pass parameters like that given below...
+ 
+http://service.drivento.com/methods/getUserAssignments/cffa3ddf62267497e5fda7ad5144317a/2
+ 
+First parameter is page name
+page name = methods
+2nd is method name = getUserAssignments
+3rd is token = cffa3ddf62267497e5fda7ad5144317a
+4th is user_id = 2
+dResponse : JSON
+ 
+====================
+ 
+USER COMPANY'S ACTIVITIES
+ 
+you can pass parameters like that given below...
+ 
+binarylogix.com/delivery_2/methods/getCompanyUnassign/cffa3ddf62267497e5fda7ad5144317a/2
+ 
+First parameter is page name
+page name = methods
+2nd is method name = getUserAssignments
+3rd is token = cffa3ddf62267497e5fda7ad5144317a
+4th is user_id = 2
+ 
+Response : JSON
+ 
+====================
+ 
+USER AVAILABILITY
+ 
+you can pass parameters like that given below...
+ 
+binarylogix.com/delivery_2/methods/userAvailability/cffa3ddf62267497e5fda7ad5144317a/2
+ 
+First parameter is page name
+page name = methods
+2nd is method name = getUserAssignments
+3rd is token = cffa3ddf62267497e5fda7ad5144317a
+4th is user_id = 2
+ 
+Response : JSON
+ 
+====================
+ 
+USER ASSIGN ACTIVITIES
+ 
+you can pass parameters like that given below...
+ 
+binarylogix.com/delivery_2/methods/activityDetails/cffa3ddf62267497e5fda7ad5144317a/2/16
+ 
+First parameter is page name
+page name = methods
+2nd is method name = getUserAssignments
+3rd is token = cffa3ddf62267497e5fda7ad5144317a
+4th is user_id = 2
+5th is activity_id = 16
+ 
+Response : JSON

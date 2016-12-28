@@ -1,0 +1,64 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Details</h1>
+    <div class="buttons">
+      <button class="button button-clear pr10" ng-click="closeDetails()"><i class="material-icons assertive">power_settings_new</i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="p20">
+     <ion-slide-box auto-play="true" show-pager="false">
+        <div class="row" style="padding-top:40px;">
+            <div class="col">
+                <ion-slide-box style="width:100%;" auto-play="true" show-pager="false">
+                    <ion-slide style="width:100%;" ng-repeat="img in image_data">
+                        <img src="http://www.nhari.nl/mobileapp/{{img.item_image}}" style="width:100%;">
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+        </div>
+      </ion-slide-box>
+      <div class="row">
+        <div class="col col-20 col-offset-90">
+          <span class="badge badge-assertive">${{item.price}}</span>
+        </div>
+      </div>
+      <div class="list">
+        <div class="row">
+          <div class="col">
+            <div class="item item-icon-left">
+              <i class="icon ion-person"></i>
+              {{item.item_title}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div ng-if="item.location" class="item item-icon-left">
+              <i class="icon ion-location"></i>
+              {{item.location}}
+            </div>
+            <div ng-if="!item.location" class="item item-icon-left">
+              <i class="icon ion-location"></i>
+              N.A
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="item item-icon-left">
+              <i class="icon ion-calendar"></i>
+              {{item.create_date}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="item item-icon-left">
+              <i class="icon ion-chatbox-working"></i>
+              {{item.description}}
+            </div>
+          </div>
+        </div>
+      </div>
+  </ion-content>
+</ion-modal-view>

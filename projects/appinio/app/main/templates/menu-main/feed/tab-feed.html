@@ -1,0 +1,35 @@
+<ion-view>
+  <ion-content has-bouncing="false" style="top:210px;">
+
+    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+
+    <div class="list feed-list" style="margin-top:-2px;">
+      <div ng-repeat="f in feedData|orderBy:'-date'|limitTo:limit">
+        <div class="apn-list-item  item-icon-right" ng-class="{addon:f.text}" ng-click="::decideAction(f.type, f)">
+          <div class="avatar-wrapper bg-color">
+            <div>
+              <i ng-if="::!f.user" class="ion-social-facebook"></i>
+              <img ng-if="::f.user" ng-src="{{f.user.avatar || f.user.imageUrl || './img/avatar/avatar03.png'}}"/>
+            </div>
+          </div>
+          <div class="content">
+            <div ng-if="!f.type">{{f}}</div>
+
+            <div class="head" ng-if="::f.user">{{::f.user.nickname || 'Anonymous'}}</div>
+            <div class="head" ng-if="::!f.user">appinio</div>
+            <div class="main">{{::f.date | niceDate}} <span
+              class="in-color">{{'feed_' + f.type | translate}}</span></div>
+          </div>
+        </div>
+        <div ng-if="::f.text" style="padding:10px;padding-top:0;">
+          {{::f.text}}
+          <img ng-if="::f.postUrl" ng-src="{{f.postUrl}}" width="100%" style="padding-top:5px;"/>
+        </div>
+      </div>
+    </div>
+
+    <ion-infinite-scroll on-infinite="loadMore()" distance="5%" ng-if="feedData.length>=limit">
+    </ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>

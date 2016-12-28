@@ -1,0 +1,128 @@
+<ion-view hide-nav-bar="true" view-title="Sign Up">
+<ion-content class="background-screen">    
+  <!-- <div class="row">
+    <div class="col col-75 col-offset-10" style="text-align:center; padding:30px 0px;">Snap Flix</div>
+  </div> -->
+  <div class="row">
+    <button class="button button-clear col-10" ng-click="$ionicGoBack()"><i class="ion-chevron-left" class="custom-back-btn"></i></button>
+    <h4 class="col col-75 su-heading" >Sign Up <br>
+      <hr class="under-line-title">
+    </h4>
+  </div>
+  <div class="row error-message" ng-show="message">
+    <h4>{{message}}</h4>
+  </div>
+  <div class="row">
+    <a style="padding:0px; margin-bottom:10px;" class="col col-75 col-offset-10">
+      <img src="img/signup-screen/facebookautofill.png" class="auto-fill-from-fb-btn" />
+    </a>
+  </div>
+  <form ng-submit="register(user)">
+    <div class="row">
+      <div class="col col-75 col-offset-10">
+        <label ng-show="errorMessage" class="alert alert-danger item">
+          {{errorMessage}}
+        </label>
+        <label ng-show="noNetwork" class="alert alert-danger item">
+          It looks like you have poor or no network connection.
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <input type="text" ng-model="user.f_name" value="" placeholder="First Name" class="su-input-text su-input-text signup-input col col-75 col-offset-10" id="su-input-firstname" required />
+    </div>
+    <div class="row">
+      <input class="su-input-text signup-input col col-75 col-offset-10" id="su-input-lastname" type="text" ng-model="user.l_name" value=""placeholder="Last Name"  />
+    </div>
+    <div class="row">
+      <input class="su-input-text signup-input col col-75 col-offset-10" id="su-input-dob" type="date" required ng-model="user.dob" value="" placeholder="mm dd, yyyy"  />
+      </div>
+    </div>
+        <!-- <div class="padding">
+          	<select ng-model="user.day" required>
+				      <option value="{{day}}" ng-repeat="day in days">{{day}}</option>
+			      </select>
+      			<select ng-model="user.month">
+      				<option value="1">Jan</option>
+      				<option value="2">Feb</option>
+      				<option value="3">Mar</option>
+      				<option value="4">Apr</option>
+      				<option value="5">May</option>
+      				<option value="6">June</option>
+      				<option value="7">July</option>
+      				<option value="8">Aug</option>
+      				<option value="9">Sept</option>
+      				<option value="10">Oct</option>
+      				<option value="11">Nov</option>
+      				<option value="12">Dec</option>					
+      			</select>
+      			<select ng-model="user.year" >
+      				<option value="{{year}}" ng-repeat="year in years">{{year}}</option>
+      			</select>
+        </div> -->
+        
+    <!--  <div class="row">
+      <span class="col col-75 col-offset-10">
+        Gender:
+      </span>
+    </div> -->
+    
+    <div class="row">
+      <span class="su-label col col-20 col-offset-10">Gender</span>
+      <label class="col col-67">
+        <ion-radio ng-model="user.gender" ng-value="1" class="su-radio-btn signup-input">Male</ion-radio>
+        <ion-radio ng-model="user.gender" ng-value="2" class="su-radio-btn signup-input">Female</ion-radio>
+      </label>
+    </div>
+   <!--  <div class="row">
+      <label class="item item-radio col col-75 col-offset-10 padding-zero signup-input">
+        <input id="su-input-gender-male" type="radio" ng-model="user.gender" value="1"  />
+        <div class="item-content">Male</div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+    </div>
+    <div class="row">
+      <label class="item item-radio col col-75 col-offset-10 padding-zero signup-input">
+        <input type="radio" ng-model="user.gender"value="2"  />
+        <div class="item-content">Female</div>
+          <i class="radio-icon ion-checkmark"></i>
+      </label>
+    </div> -->
+    <div class="row">
+      <input class="su-input-text signup-input col col-75 col-offset-10" id="su-input-email" type="Email" required ng-model="user.email" value="" placeholder="Email Address"  />
+    </div>
+    <div class="row">  
+      <input class="su-input-text signup-input col col-75 col-offset-10" id="su-input-password" type="password" required ng-model="user.password" value=""  placeholder="Password"/>
+    </div>
+
+    <div class="row">
+      <input class="su-input-text signup-input col col-75 col-offset-10" id="su-input-verify-password" type="password" required ng-model="user.passwordVerify" value=""  placeholder="Verify Password"/>
+    </div>
+
+    <div class="row">
+      <input class="su-input-text signup-input col col-75 col-offset-10" id="su-input-city" type="text" required ng-model="user.city" value="" placeholder="City"  />
+    </div>
+    <div class="row">
+      <input class="su-input-text signup-input col col-75 col-offset-10" id="su-input-state" type="text" required ng-model="user.state" value="" placeholder="State"  />
+    </div>
+    <div class="row">
+        <input class="su-input-text signup-input col col-75 col-offset-10" id="su-input-country" type="text" required ng-model="user.country" value="" placeholder="Country"  />
+    </div>
+    <div class="row">
+        <input class="col col-75 col-offset-10 button button-block su-submit-btn" type="submit" style=" margin-top:10px;" value="Create Account"/>
+    </div>
+    <div class="row">
+      <p class="col col-75 col-offset-10 lg-link">By creating an account,you agree to the <a href="#/user/register/termsOfUse" class="button-clear button-light">Terms of Use</a> and you acknowldge that you have read the <a href="#/user/register/privacyPolicy" class="button-clear button-light">Privacy Policy</a>. </p>
+    </div>
+
+      <!-- <div>
+        <a href="#/user/login" class="col button button-calm button-block">Member Login</a>
+      </div> -->
+
+      <!-- <div>
+         <a class="col button button-balanced button-block" ng-click="facebookLogin()">Login With Facebook</a>
+      </div> -->
+    
+    </form>
+  </ion-content>
+</ion-view>

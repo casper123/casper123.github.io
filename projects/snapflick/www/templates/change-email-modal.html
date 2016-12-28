@@ -1,0 +1,37 @@
+<ion-modal-view class="change-modal">
+    <ion-content>
+      <div class="row">
+        <div class="col">
+          <button class="button button-small button-assertive" style="float:right;" ng-click="close()">X</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-75 col-offset-10">
+          <form ng-submit="changeEmail(user_data)">
+            <div ng-show="successMessage" class="alert alert-success padding">
+              {{successMessage}}
+            </div>
+            <div ng-show="errorMessage" class="alert alert-danger padding">
+              {{errorMessage}}
+            </div>
+            <div class="padding">
+              <span>Current Email: {{user.email}}<span>
+            </div>
+            <div class="padding">
+              <label class="item item-input">
+                <input type="email" ng-model="user_data.new_email" placeholder="New Email">
+              </label>
+            </div>
+            <div class="padding">
+              <label class="item item-input">
+                <input type="email" ng-model="user_data.verify_email" placeholder="Verify New Email">
+              </label>
+            </div>
+            <div class="padding">
+              <input class="button button-block button-positive" type="submit" value="Save"/>
+            </div>
+          </form>
+        </div>
+      </div>
+    </ion-content>
+  </ion-modal-view>

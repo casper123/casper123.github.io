@@ -1,0 +1,44 @@
+<ion-modal-view style="background:transparent;">
+  	<ion-pane class="create-modal" scroll="false">
+  	<div style="height:73%;">&nbsp;</div>
+    <div style="height:100%; width:100%; position:absolute; top:0px; left:0px;" ng-click="closeModal()">&nbsp;</div>
+  	<div class="create-buttons-container row">
+  		<div class="col col-20" style="padding:0px;">&nbsp;</div>
+  		<div class="col" style="z-index:100;padding:0px;">
+  			<img rwdimgmap src="img/shortcut.png" style="width:100%; margin-top:-10px;" alt="" usemap="#Map" />
+        <map name="Map" id="Map">
+          <area alt="" title="" ng-click="showExpense()" shape="poly" coords="26,67,63,75,75,118,53,135,27,136,7,114,12,83" />
+          <area alt="" title="" ng-click="showTime()" shape="poly" coords="174,5,205,10,223,31,217,57,198,71,174,70,153,50,159,25" />
+          <area alt="" title="" ng-click="showTask()" shape="poly" coords="333,71,358,78,371,106,368,120,352,136,324,139,306,120,302,96,314,75" />
+      </map>
+		</div>
+		<div class="col col-20" style="padding:0px;">&nbsp;</div>
+  	</div>	
+  	</ion-pane>
+  	<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-icon-top tabs-color-active-positive no-bg">
+
+  <!-- Task Tab -->
+  <ion-tab class="no-visible" title="Tasks" icon="icon-task" href="#/tab/task"></ion-tab>
+
+  <!-- Expenses Tab -->
+  <ion-tab class="no-visible" title="Expenses" icon="icon-expense" href="#/tab/expense"></ion-tab>
+
+  <!-- Plus Modal -->
+  <ion-tab style="overflow:initial;" title="" class="minusIcon" icon="ion-ios-minus-empty" href="" ng-click="closeModal()">
+  </ion-tab>
+
+  <!-- Team Tab -->
+  <ion-tab class="no-visible" title="Team" icon="icon-team" href="#/tab/team"></ion-tab>
+
+  <!-- Account Tab -->
+  <ion-tab class="no-visible" title="Account" icon="icon-account" href="#/tab/account"></ion-tab>
+
+
+</ion-tabs>
+
+</ion-modal-view>

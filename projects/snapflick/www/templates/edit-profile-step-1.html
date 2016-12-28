@@ -1,0 +1,53 @@
+<ion-view show-tab view-title="Edit Profile">
+  <ion-content>    
+	<form ng-submit="editProfile(user)">
+		<label ng-show="successMessage" class="alert alert-success item">
+            {{successMessage}}
+        </label>
+		<label class="item item-input">
+			<input type="text" name="firstName" value=""  placeholder="First Name" required />
+		</label>
+		
+		<label class="item item-input">					
+			<input type="text" name="lastName"  value=""placeholder="Last Name" required />
+		</label>
+		
+		<label class="item item-input">
+			<input type="text" name="country"  value="" placeholder="Country" required />
+		</label>
+		
+		<label class="item item-input">
+			<input type="text" name="state"  value="" placeholder="State" required />
+		</label>
+		
+		<label class="item item-input">
+			<input type="text" name="city"  value="" placeholder="City" required />
+		</label>
+		
+		<label class="item item-input">
+			<input type="date" name="dob"  value="" placeholder="Date Of Borth" required />
+		</label>
+		
+		<h4>Gender:</h4>
+		<label class="item item-radio">	
+			<input type="radio" ng-model="user.gender" value="1"  />
+			<div class="item-content">Male</div>
+			<i class="radio-icon ion-checkmark"></i>
+		</label>
+		<label class="item item-radio">
+			<input type="radio" ng-model="user.gender"value="2"  />
+			<div class="item-content">Female</div>
+			<i class="radio-icon ion-checkmark"></i>
+		</label>
+		
+		<!-- <label class="item item-input">
+			<input type="password" name = "password" value="" required placeholder="Password"/>
+		</label>
+		 -->
+		<label class="item item-input">
+			<input class="button button-assertive" type="button" value="Submit"/>		
+		</label>
+		<input type="hidden" name="id" value=""/>
+	</form>
+  </ion-content>
+</ion-view>

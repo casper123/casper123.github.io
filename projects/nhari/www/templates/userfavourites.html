@@ -1,0 +1,18 @@
+<ion-view view-title="Favourites">
+    <ion-content class="padding">
+        <div class="list">
+            <div class="text-center item" ng-hide="items.length">You have no favourites.</div>
+
+            <div class="item row" ng-repeat="item in items"> 
+                <div class="col col-20">
+                    <a class="material-icons balanced" href="#/app/item/{{item.data.item_id}}">pageview</a>
+                </div>
+                <div class="col col-70">
+                    {{item.data.item_title}}                       
+                </div>
+                <div class="col col-10">
+                    <i class="material-icons assertive" ng-click="removeFavourite(item.data.item_id)">clear</i>  
+                </div>
+        </div>
+  </ion-content>
+</ion-view>

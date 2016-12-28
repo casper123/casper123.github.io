@@ -1,0 +1,85 @@
+<ion-modal-view class="big-modal" ng-controller="VoucherCtrl">
+    <ion-header-bar class="bg-color" no-tap-scroll="true">
+      <div class="title">
+        <h2 class="apn-header-title">{{'vouchers' | translate}}</h2>
+        <div class="header-icon-right" ng-click="closeVoucherList()">
+          <i class="ion-ios-close-empty"></i>
+        </div>
+        <div class="header-icon-right left" ng-show="showDetails" ng-click="backToList()">
+          <i class="ion-ios-arrow-left" style="font-size: 25px;"></i>
+        </div>
+      </div>
+    </ion-header-bar>
+    <ion-content>
+
+      <ion-slide-box delegate-handle="voucher" on-slide-changed="slideHasChanged($index)" show-pager="false" style="height:100%;">
+        <ion-slide>
+          <div class="list drag-top">
+
+            <div class="apn-list-item item-icon-right" ng-repeat="v in vouchers|filter:{visible:true}" ng-click="showVoucher(v)">
+              <div class="avatar-wrapper bg-color in-avatar">
+                <span class="avatar-badge in-avatar bg-color" ng-if="v.codes.length>0">{{v.codes.length}}</span>
+                <div>
+<!--                  <img ng-src="{{::v.imageUrl}}"/>-->
+                  <img src="" image-cache="v.imageUrl" />
+                </div>
+              </div>
+              <div class="content">
+                <div class="head">{{::v.value/100|number:0}}€ {{::v.name}}</div>
+                <div class="main"><span class="in-color">{{::v.price}} Coins</span></div>
+              </div>
+              <i class="icon ion-ios-arrow-right dark"></i>
+            </div>
+
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div ng-if="voucherLoading" class="loading-wrapper">
+            <ion-spinner icon="dots"></ion-spinner>
+          </div>
+
+          <div ng-if="!voucherLoading">
+            <div class="row">
+              <div class="col col-80 col-offset-10">
+                <h2 class="screen-head">{{voucherDetails.value/100|number:0}}€ {{voucherDetails.name}}</h2>
+              </div>
+            </div>
+
+            <div class="padded-wrapper" ng-if="voucherDetails.bannerUrl != null">
+              <img class="voucher-img" src="" image-cache="voucherDetails.bannerUrl" width="100%" />
+<!--              <img class="voucher-img" ng-src="{{voucherDetails.bannerUrl}}" />-->
+            </div>
+
+            <div class="padded-wrapper no-top">
+              <p class="long-text">{{voucherDetails.description}}</p>
+            </div>
+
+            <div class="padded-wrapper centered" ng-click="showConditions(voucherDetails.name, voucherDetails.conditions)">
+              <span class="in-color">
+                Gutscheinbedingungen
+              </span>
+              <span class="shop-info"><i class="ion-information"></i></span>
+            </div>
+
+            <div class="padded-wrapper centered">
+
+              <button style="margin-bottom:20px;" class="apn-main-btn bg-color"
+                      ng-click="buyCoupon(voucherDetails)">
+                <div>für <span class="in-color">{{voucherDetails.price}} Coins</span> kaufen</div>
+              </button>
+
+              <div ng-if="voucherDetails.codes.length > 0" style="margin-bottom:10px;">
+                <p>Gutscheincode</p>
+                <button ng-repeat="c in voucherDetails.codes" style="margin-bottom: 10px;"
+                        ng-click="copyCode(c)"
+                        class="apn-main-btn bg-color">
+                  <div>{{c}}</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+      </ion-slide-box>
+
+    </ion-content>
+</ion-modal-view>

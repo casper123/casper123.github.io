@@ -1,0 +1,57 @@
+/* Empty. Add your own CSS if you like */
+.btn-info{
+	background: #1FB5AD !important;
+	border-color: #1FB5AD !important;
+	color:#fff !important;
+	text-align: center !important;
+}
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
+	background: #000 !important;
+	border-color: #1FB5AD !important;
+	
+}
+.activities-table .table th, .table td { 
+    border-top:1px solid rgba(255,255,255,0.05) !important
+ }
+ 
+ .activities-table tbody tr:active td{background: #6c6f6f; color: #fff;}
+ .active-activites-table  tbody tr:hover td{background: #1FB5AD; color: #fff;}
+ 
+ .table>thead>tr>th {border: 0px !important;}
+ .activity-info td {border:0px !important;}
+ 
+ i.fa.fa-angle-right {font-size:70px;}
+ .distance span {font-size:25px; color:#000;}
+  .distance p {font-size:10px; color:#000; text-align: center;}
+ ul.sidebar-menu li a {padding:0px !important; margin:0px !important;}
+ul.sidebar-menu li a:hover i, ul.sidebar-menu li a:focus i {color:#fff !important;}
+
+input[type=checkbox].css-checkbox {
+							display:none;
+						}
+
+						input[type=checkbox].css-checkbox + label.css-label {
+							padding-left:33px;
+							height:28px; 
+							display:inline-block;
+							line-height:28px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:28px;
+							vertical-align:middle;
+							cursor:pointer;
+
+						}
+
+						input[type=checkbox].css-checkbox:checked + label.css-label {
+							background-position: 0 -28px;
+						}
+						label.css-label {
+				background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_a5d15a17ca1603760c25ed65f8eeb6a7.png);
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}

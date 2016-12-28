@@ -1,0 +1,22 @@
+<ion-modal-view class="modal" style="background:#000000;">
+  <ion-content>
+    <div class="row">
+      <div class="col col-10 col-offset-80">
+        <a  href="" ng-click="setMainImage()">
+          <i class="button button-light ion-image">
+          </i>
+        </a>
+      </div>
+      <div class="col col-10">
+        <a ng-click="deleteImage()" href="">
+          <i class="button button-assertive ion-trash-a"></i> Delete
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img src="{{path}}" class="col col-66 col-offset-20" /> Main Image
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

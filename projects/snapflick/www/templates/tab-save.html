@@ -1,0 +1,65 @@
+<ion-view hide-tabs view-title="Saved Movies">
+  <ion-content>
+  	<div class="row">
+  		<div class="col col-50">
+  			<button class="button button-full" ng-click="showCalList()">List</button>
+  		</div>
+  		<div class="col col-50">
+  			<button class="button button-full" ng-click="showCalender()">Calender</button>
+  		</div>
+  	</div>
+  	<div class="row" ng-if="movieCount == 0">
+  		<div class="col">
+  			<p>{{message}}</p>
+  			<a href="#/tab/dash/browse" class="button button-assertive">Browse Movies</a>
+  		</div>
+  	</div>
+	
+  	<ion-list ng-show="showList" class="list">
+	    <!-- <ion-item  class="item" style="padding:0px;"> -->
+		 <!-- <div class="row" ng-repeat="movie in movies | orderBy: 'movie_release_date'">	
+		 <a href="#/tab/dash/save/movieDetail/{{movie.movie_id}}/{{movie.movie_name}}" class="item item-thumbnail-left" style="width:80%;">
+				<img ng-src="http://curiouslabx.com/projects/snap_flix/{{movie.movie_main_img || 'images/images/MovieBackgroundPlaceholder.png'}}">
+
+				<h2>{{movie.movie_name}}</h2>
+		      	<p>{{movie.movie_synopsis}}</p>
+		      	<p>US Charts Rated {{movie.movie_us_rate}} | {{movie.movie_total_time}}</p>
+			</a>
+			<button class="button button-small button-assertive" ng-click="deleteMovie('{{movie.um_id}}')" style="font-size:100%;font-weight:bold; width:20%;">Remove
+			</button>
+		</div> -->
+		<div ng-show="showMessage" class="save-message">
+			<h4>{{message}}</h4>
+			<a href="#/tab/dash/browse" class="button button-positive">Browse Movies</a>
+		</div>
+		<div ng-repeat="movie_date in items | date">
+				<div class="row item-">{{movie_date.date | date: 'MMM dd, yyyy'}}</div>
+				<div class="row" ng-repeat="movie in movie_date.movies" style="margin-top:0px;">
+	   			<a  class="item item-thumbnail-left" style="width:95%;border:none;" href="#/tab/dash/movieDetail/{{movie.movie_id}}/{{movie.movie_name}}">
+		      		<img ng-src="http://curiouslabx.com/projects/snap_flix/{{movie.movie_main_img || 'images/MovieBackgroundPlaceholder.png'}}">
+		      		<h2>{{movie.movie_name}}</h2> 
+		      		<span style="font-size:10px;" ng-if="movie.current_status == 0">(Coming Soon)</span> <span style="font-size:10px;" ng-if="movie.current_status == 1">(In Theaters)</span> 
+		      		<p>{{movie.movie_synopsis}}</p>
+		      		<p>US Charts Rated {{movie.movie_us_rate}} | {{movie.movie_total_time}}</p>
+	    		</a>
+	    		<button class="button button-clear button-assertive" ng-click="deleteMovie('{{movie.um_id}}')" style="width:5%;margin-right:2%;"><i class="ion-icon ion-trash-a"></i>
+				</button>
+			</div>
+	    </div>
+			<!-- <ion-option-button class="button-calm  add-remove item" ng-click="deleteMovie('{{movie.um_id}}')"> 
+				Remove</ion-option-button> -->  
+		<!-- <div ng-repeat="movie_date in items">
+			<div class="item item-divider">{{movie_date.date | date: 'MMM dd, yyyy'}}</div>
+	   		<a ng-repeat="movie in movie_date.movies" class="item item-thumbnail-left" href="#/tab/dash/movieDetail/{{movie.movie_id}}/{{movie.movie_name}}">
+		      	<img ng-src="http://curiouslabx.com/projects/snap_flix/{{movie.movie_main_img || 'images/MovieBackgroundPlaceholder.png'}}">
+		      	<h2>{{movie.movie_name}}</h2> 
+		      	<span style="font-size:10px;" ng-if="movie.current_status == 0">(Coming Soon)</span> <span style="font-size:10px;" ng-if="movie.current_status == 1">(In Theaters)</span> 
+		      	<p>{{movie.movie_synopsis}}</p>
+		      	<p>US Charts Rated {{movie.movie_us_rate}} | {{movie.movie_total_time}}</p>
+	    	</a>
+	    </div> -->
+	    </ion-item>
+  	</ion-list>
+	<div ng-show="!showList" ng-bind-html="calender"></div>
+  </ion-content>
+</ion-view>

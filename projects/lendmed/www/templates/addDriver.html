@@ -1,0 +1,65 @@
+<ion-modal-view view-title="Add Driver" >
+   <ion-header-bar class="login_but">
+    <h1 class="title">Add Driver</h1>
+    <div class="buttons">
+      <button class="button button-assertive" ng-click="closeupdateRequest()">Cancel</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="has-header" >
+  <div class="row">
+	  <div class="col-50 col-offset-25">
+    <form ng-submit="addDriver(driverData)">
+	    <label ng-show="errorMessage" class="assertive">
+			<strong>Error:</strong> {{errorMessage}}
+		</label>
+
+    
+		<div class="list list-inset">
+				
+			<label class="item item-input">
+			    <i class="icon ion-android-person"></i>
+			      <input type="text" placeholder="Driver Name" ng-model="driverData.driver_name">
+			</label>	  	
+			   
+			<!--<label class="item item-input">
+			    <i class="icon ion-android-chat"></i>
+			      <input type="text" placeholder="Comments" ng-model="driverData.comments">
+			</label> -->
+
+			<div class="row">
+		        <div class="col">
+		           <a ng-click="showActionsheet()" class="item item-icon-left">
+		              <i class="icon ion-upload"></i>
+		              Upload Picture     
+		            </a>
+		        </div>
+       		</div>
+       		<!-- <div class="row">
+		        <div class="col">
+		           <a ng-click="showActionsheet()" class="item item-icon-left">
+		              <i class="icon ion-upload"></i>
+		              Signature     
+		            </a>
+		        </div>
+       		</div> -->
+
+		</div>
+			
+		
+		 
+		<label class="item">
+          <button class="button button-block button-positive" type="submit">Add Now!</button>
+        </label>
+
+		  
+		</div>
+
+
+
+          </form>
+  </div>
+  </ion-content>
+</ion-modal-view>
+
+
+

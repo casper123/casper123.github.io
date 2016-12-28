@@ -1,0 +1,53 @@
+<ion-view hide-nav-bar="true">
+  <div class="appinio-stripe"></div>
+
+  <ion-pane class="padding register-screen">
+
+    <div>
+      <div class="row">
+        <div class="col col-80 col-offset-10" style="padding:20px;">
+          <h2 class="screen-head white">Name</h2>
+        </div>
+      </div>
+      <div class="row">
+        <p class="small-text">asdasdasd ads asd asddassaddsa sadas dsa asddasasdadsdas asdadsads asd</p>
+      </div>
+      <div class="row">
+        <form class="col form" name="formnames">
+          <label class="col">
+            <p class="small-text">Nutzername</p>
+            <input type="text" class="apn-input" name="unique"
+                   ng-class="{invalid: uniqueNameValid == false || (formnames.unique.$invalid && formnames.unique.$touched),
+                   valid:uniqueNameValid && formnames.unique.$valid}"
+                   ng-model-options="{ debounce: { 'default': 500, 'blur': 0 } }"
+                   ng-change="checkUniqueName(userNames.uniqueName)"
+                   ng-minlength="3"
+                   ng-model="userNames.uniqueName" required>
+          </label>
+          <label class="col">
+            <p class="small-text">Name</p>
+            <input type="text" class="apn-input" ng-class="{invalid: loginError, valid:userNames.nickname.length>0}" ng-model="userNames.nickname"
+                   placeholder="Anzeigename (optional)" required/>
+          </label>
+
+          <p ng-if="uniqueNameValid == false" class="small-text error" style="margin-top:30px;">
+            Dieser Name wird bereits verwendet.
+          </p>
+
+        </form>
+      </div>
+    </div>
+
+    <div class="row skip-container" style="padding-left:25px;padding-right:25px;">
+      <button class="apn-main-btn white full" style="width:100%;" ng-class="{grey: uniqueNameValid == false || formnames.unique.$invalid}"
+              ng-disabled="uniqueNameValid == false || formnames.unique.$invalid"
+              ng-click="checkNamesAndStart(userNames)">
+        <div>Los geht's</div>
+      </button>
+    </div>
+
+    <div class="appinio-bottom-logo">
+      appinio
+    </div>
+  </ion-pane>
+</ion-view>

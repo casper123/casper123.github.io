@@ -1,0 +1,58 @@
+<ion-modal-view class="big-modal">
+  <ion-header-bar align-title="left" class="bar-light">
+    <div class="buttons">
+      <button class="button" ng-click="closeModal()">
+        <i class="ion-arrow-left-c"></i>
+      </button>
+    </div>
+    <h2 class="title" style="text-align:center; color:#e47d25;">Trade Details</h2>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+      <div class="item item-divider">{{details.myTradeItem.username}}</div>
+      <div class="item">
+        <img class="col" ng-src="http://curiouslabx.com/projects/allshook/novitrix/{{details.myTradeItem.item_image || 'images/Photo-Not-Available.jpg'}}" />
+      </div>
+      <div class="item">
+        <h1 style="text-align:left;">{{details.myTradeItem.item_title}}</h1>
+        <p>
+          Quantity: {{details.myTradeItem.quantity}}<br/>
+          Payment Status: {{details.myTradeItem.payment_status}}<br/>
+          Delivery Status: {{details.myTradeItem.shipping_status}}<br/>
+          Tracking Number: {{details.myTradeItem.tracking_code}}<br/>
+        </p>
+      </div>
+
+      <div class="item item-divider">{{details.userTradeItem.username}}</div>
+      <div class="item">
+        <img class="col" ng-src="http://curiouslabx.com/projects/allshook/novitrix/{{details.userTradeItem.item_image || 'images/Photo-Not-Available.jpg'}}" />
+      </div>
+      <div class="item">
+        <h1 style="text-align:left;">{{details.userTradeItem.item_title}}</h1>
+        <p>
+          Quantity: {{details.userTradeItem.quantity}}<br/>
+          Payment Status: {{details.userTradeItem.payment_status}}<br/>
+          Delivery Status: {{details.userTradeItem.shipping_status}}<br/>
+          Tracking Number: {{details.userTradeItem.tracking_code}}<br/>
+        </p>
+      </div>
+      <div class="item item-divider">Tracking Details</div>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Tracking Number</span>
+        <input type="text" placeholder="34234234" ng-model="add.tracking">
+      </label>
+      <label class="item item-divider">
+      Delivery Status for {{details.userTradeItem.username}}'s item
+      </label>
+      <ion-list>
+        <ion-radio ng-model="add.status" ng-value="'Pending'">Pending </ion-radio>
+        <ion-radio ng-model="add.status" ng-value="'En Route'">En Route</ion-radio>
+        <ion-radio ng-model="add.status" ng-value="'Delivered'">Delivered</ion-radio>  
+      </ion-list>
+    </div>
+    <div class="button-bar">
+      <a class="button button-calm" ng-click="saveData(details.userTradeItem.trade_id, details.userTradeItem.trade_item_id, add)">Save</a>
+      <a class="button button-assertive" ng-click="dispute()">Dispute</a>
+    </div>
+  </ion-content>
+</ion-modal-view>

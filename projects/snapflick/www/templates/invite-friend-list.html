@@ -1,0 +1,25 @@
+<ion-view  show-tab view-title="Invite Friends">
+<ion-content>    
+  <div class="row">
+    <div class="col">
+      <p>For every active Friend you refer, you'll earn $1 in rewards for being an early member that help us grow Snap Flix.</p>
+      <p>Rewards may be redeemable for FREE movie tickets or concessions as we partner with cinemas in the future.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="button button-positive button-block" ng-click="showActionsheet()">Invite Friends</button>
+    </div>
+  </div>
+  <div class="list">
+    <a class="item item-thumbnail-left item-icon-right" href="#/tab/dash/profile/{{connection.user_id}}" ng-repeat="connection in connections">
+      <img src="http://curiouslabx.com/projects/snap_flix/{{connection.image_path || 'images/140x140.gif'}}">
+      <h2>{{(connection.f_name).charAt(0).toUpperCase() + (connection.f_name).slice(1) +' '+ (connection.l_name).charAt(0).toUpperCase() + (connection.l_name).slice(1)}}</h2><!-- 
+      <p ng-show="{{connection.city}}">{{connection.city}}, {{connection.country}}</p> -->
+
+      <p>{{(connection.city).charAt(0).toUpperCase() + (connection.city).slice(1)}}, {{(connection.state).charAt(0).toUpperCase() + (connection.state).slice(1)}} , {{(connection.country).charAt(0).toUpperCase() + (connection.country).slice(1)}}</p>
+      <p>${{connection.points_earned || '0'}} Earned</p>
+    </a>
+  </div>
+</ion-content>
+</ion-view>

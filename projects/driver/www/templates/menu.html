@@ -1,0 +1,73 @@
+<ion-side-menus>
+
+<ion-pane ion-side-menu-content>
+<!-- <ion-nav-bar class="bar-stable bar-dark nav-title-slide-ios7"></ion-nav-bar> -->
+<header class="header fixed-top clearfix " style="background:#49B6AC;">
+  <div> 
+    <a href="#app/home" class="logo">
+      <img src="assets/images/logo.png" alt="" width="120px">
+    </a>
+  </div>
+
+
+  <div class="top-nav clearfix">
+    <!--search & user start-->
+    <ul class="nav pull-right top-menu">
+     <li></li>
+     <!-- user login dropdown start-->
+     <li class="dropdown">
+      <a data-toggle="dropdown" class="dropdown-toggle" href="">
+        <img alt="" src="assets/images/avatar1_small.jpg">
+        <span class="username">{{currentUser.userName}}</span>
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu extended logout">
+        <li><a href="#/app/home"><i class=" fa fa-suitcase"></i>My Profile</a></li>
+        <li><a href="#/app/home"><i class="fa fa-cog"></i> Company Settings</a></li>
+        <li><a href="#/app/home"><i class="fa fa-cog"></i>Manage Users</a></li>
+        <li><a href="" ng-click="signout()"><i class="fa fa-key"></i> Log Out</a></li>
+      </ul>
+    </li>
+  </ul>
+  <!--search & user end-->
+</div>
+<div class="top-status clearfix" style="background:#32313A; ">
+  <div class="btn-toolbar" style="margin-left:auto;margin-right:auto;padding:10px;width:320px;">
+    <div class="btn-group btn-group-justified" style="width:250px;display:inline;">
+      <a ng-class="currentUser.status == 0 ? 'btn btn-default' : 'btn btn-info'" class="btn btn-default" href="">OFF DUTY</a>
+      <a ng-class="currentUser.status == 2 ? 'btn btn-default' : 'btn btn-info'" href="">IDLE</a>
+      <a ng-class="currentUser.status == 1 ? 'btn btn-default' : 'btn btn-info'" href="">EN-ROUTE</a>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-warning" type="button"><i class="fa fa-dollar"></i></button>
+    </div>
+  </div>               
+</div>
+
+</header>
+
+<ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+
+</ion-pane>
+
+ <!--  <ion-side-menu side="left">
+    <ion-content>
+      <ion-list>
+
+        <ion-item nav-clear menu-close href="#/app/home">
+          <p class="text-center">{{user.username}}</p>
+        </ion-item>
+
+        <ion-item nav-clear menu-close href="#/app/setting">
+          <i class="icon ion-settings"></i> Account Settings
+        </ion-item>
+        
+        <ion-item nav-clear menu-close href="" ng-click="signout()">
+          <i class="icon ion-log-out"></i> Logout</a>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ion-side-menu> -->
+</ion-side-menus>

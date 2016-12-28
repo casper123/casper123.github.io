@@ -1,0 +1,29 @@
+<ion-view title="{{page_title}}">
+	<ion-content>
+		<div class="row">
+		 	<div class="col-xs-12 col-sm-12 col-md-6 btn-toolbar">
+			  	<div class="btn-group btn-group-justified">
+				  	<div class="btn-group">
+		    			<button class="btn" ng-class="{'btn-info':selectedTab === 'recent'}" ng-class="btn btn-info" type="button" ng-click="predicate='createDate'; reverse=true; selectedTab = 'recent'">Most Recent</button>
+		  			</div>
+					<div class="btn-group">
+					    <button class="btn" ng-class="{'btn-info':selectedTab === 'popular'}" type="button" ng-click="predicate='favourite'; reverse=true; selectedTab = 'popular'">Most Popular</button>
+					</div>
+			  	</div>
+			</div>
+		</div>
+	  	<div masonry class="thumb_row">
+	  		<div class="col-xs-6 col-sm-4 col-md-3 list-block-container masonry-brick" ng-repeat="item in recipe_list | orderBy:predicate:true">
+	  			<a class="list-block thumbnail" href="#/tab/recipe/list_item/{{item.id}}">
+	  				<img src="img/loading.gif" ng-src="http://curiouslabx.com/projects/workoutfactory/workoutFactory/{{item.images[0]['location']}}" class="img-responsive" />
+		      		<h2 class="text-center">{{item.name}}</h2>
+		      		<p style="display:none;">{{item.createDate}}</p>
+		      		<p class="post-icon-color">
+			        	<i class="icon ion-ios7-clock-outline"></i>&nbsp;{{item.time}}&nbsp;mins&nbsp;&nbsp;
+			        	<i class="icon ion-ios7-heart-outline"></i>&nbsp;{{item.favourite}}
+			      	</p>
+		      	</a>
+	  		</div>
+	  	</div>
+	</ion-content>
+</ion-view>

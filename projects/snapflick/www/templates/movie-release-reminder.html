@@ -1,0 +1,33 @@
+<ion-view view-title="Movie Release Reminder">
+  <ion-content class="has-header" style="margin-bottom:10px;">
+    <div class="row">
+      <div class="col">
+        <h1>{{movie.movie_name}}</h1>
+        <p style="margin-left:1%;" ng-hide="daysLeftNow">
+          <span >Release Date : {{movie.movie_release_date}}</span>
+          <br /><span>{{daysLeft}} days left.<span>
+        </p>
+        <p style="margin-left:1%;" ng-hide="movieRelease">Movie has been released.</p>
+       <!--  <p ng-hide="daysAgo" style="margin-left:1%;"> 
+          <span>{{dayAgo}} days ago.</span>
+        </p> -->
+        
+      </div>
+    </div>
+		<div class="row">
+      <div class="col">
+        <button class="button button-block button-positive" ng-click="remindMeAgain({{1}})">Remind me again</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="button button-block button-positive" ng-click="remindMeAgain({{2}})">Remind me tommorow</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="button button-block button-positive" ng-click="dontRemindMe({{'movie.movie_id'}})">Don't remind me</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,52 @@
+<ion-view hide-nav-bar="true">
+  <div class="appinio-stripe"></div>
+
+  <ion-pane class="padding register-screen">
+
+    <div class="fixed-back-btn">
+      <i class="ion-ios-close-empty" ui-sref="user.login"></i>
+    </div>
+
+    <div class="padding">
+      <div class="row">
+        <div class="col col-80 col-offset-10" style="padding:20px;">
+          <h2 class="screen-head white">{{'register' | translate}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col form">
+          <label class="col">
+            <input type="email" class="apn-input" ng-model="user.email" placeholder="{{'your_email' | translate}}"
+                   required>
+          </label>
+          <label class="col">
+            <input type="password" class="apn-input" ng-model="user.password"
+                   placeholder="{{'your_password' | translate}}" required/>
+          </label>
+          <label class="col" ng-show="isRefed">
+            <input type="text" class="apn-input" ng-model="user.refedBy"
+                   placeholder="Werbecode"/>
+          </label>
+          <div class="col">
+            <button class="apn-main-btn white full" ng-click="doRegister(user)">
+              <div>{{'signup' | translate}}</div>
+            </button>
+            <p class="small-text" style="margin-top: 15px;">
+              Es gelten unsere <a ng-click="openLinkAGB()">AGB's</a> und <a ng-click="openLinkPrivacy()">Datenschutzbestimmungen</a>
+            </p>
+          </div>
+          <div class="row" ng-if="registerError">
+            <div class="col col-80 col-offset-10 social-text error-color" style="padding:10px;">
+              <h2 ng-if="emailError">Die Email Adresse ist bereits vergeben</h2>
+              <h2 ng-if="uuidError">Mit diesem Gerät ist wurde bereits ein Account angelegt</h2>
+              <h2 ng-if="otherError">Es ist ein Fehler aufgetreten. Bitte versuche es später noch einmal</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="appinio-bottom-logo">
+      appinio
+    </div>
+  </ion-pane>
+</ion-view>

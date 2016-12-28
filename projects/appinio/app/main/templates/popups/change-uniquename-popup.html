@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col">
+    <h2 class="screen-head">{{'change_uniquename' | translate}}</h2>
+    <p class="in-color small-text" ng-if="!data.name || data.name.length<=15">{{'change_uniquename_description' | translate}}</p>
+    <p class="error-color small-text" ng-if="data.name.length>15">Maximal 15 Zeichen</p>
+
+    <div class="centered">
+      <input type="text" ng-model="data.name" placeholder="{{'uniquename' | translate}}" />
+    </div>
+  </div>
+</div>
+
+<div class="cancel-button" ng-click="closeCurrentPopup()">
+  <i class="ion-ios-close-empty"></i>
+</div>

@@ -1,0 +1,87 @@
+<style>
+  .scroll-content .scroll{
+    height: 100%;
+  }
+</style>
+
+<ion-view title="Red Kia">
+	<search-bar ng-model="search"></search-bar>
+	<ion-nav-buttons side="left">
+    	<button style="color:#ffffff;" menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  	</ion-nav-buttons>
+  	<ion-content class="has-header" style"height: 100%;">
+    <div class="row" style="padding:0px;">
+        <div style="padding:0px;" class="col col-33">
+            <select  ng-model="department" class="button button-calm col btn-kia-selected" ng-options='department.nombre for department in department_redkia' ng-change="getLocation(city.id_Ciudad, department.id, dealer.id_Concesionario)">
+              <option value="" selected="selected">Departamento</option>
+            </select>
+        </div>
+        <div style="padding:0px;" class="col col-33">
+            <select   ng-model="city" class="button button-calm col btn-kia-selected" ng-options='city.nombre for city in cities' ng-change="getLocation(city.id_Ciudad, department.id, dealer.id_Concesionario)">
+              <option value="" selected="selected">Ciudad</option>
+            </select>
+       </div>
+        <div style="padding:0px;" class="col col-33">
+            <select  ng-model="dealer" class="button button-calm col btn-kia-selected" ng-options='dealer.nombre for dealer in dealer_redkia' ng-change="getLocation(city.id_Ciudad, department.id, dealer.id_Concesionario)">
+              <option value="" selected="selected">Concesionario</option>
+            </select>
+       </div>
+    </div>
+  		<!-- <div class="row" style="padding:0px; height:10%;">
+        <div style="padding:0px;" class="col col-50">
+          <button class="button button-calm col btn-kia btn-kia-right-border">Departamento</button>
+        </div>
+        <div style="padding:0px;" class="col col-50">
+          <button class="button button-calm col btn-kia"> Ciudad</button>
+        </div>
+      </div> -->
+	  	<div class="row" style="height:90%;">
+	  		<div class="map-show col">
+          <google-map  draggable="true" center="map.center" zoom="map.zoom">
+            <markers models="locations" coords="'self'" icon="'icon'" click="'onClick'">
+                <windows show="'show'">
+                  <div ng-non-bindable style="text-align:center;">Gerente : {{descriptionUser}}<br/>Dirección : {{direction}}<br/>Teléfono : {{phone}}<br/> Correo : {{email}}<br/>Horario : {{timings}}<br/>{{timings2}}<br/>{{service}}</div>
+                </windows>              
+              </markers>
+          </google-map>
+		  	</div>
+	  	</div>
+	  	<!-- <div class="row">
+	  		<div class="col col-33">
+	  			<button class="button button-calm col">Departamento</button>
+	  		</div>
+	  		<div class="col col-33">
+	  			<button class="button button-calm col">Ciudad</button>
+	  		</div>
+	  		<div class="col col-33">
+	  			<button class="button button-calm col">Concesionario</button>
+	  		</div>
+	  	</div> -->
+	  	<!-- <div class="row">
+  			<div class="col col-33 map2-row2-left">
+  				<select id="select-choice-1" name="select-choice-1">
+  					<option value="standard">Cundinamarca</option>
+  					<option value="rush">Rush: 3 days</option>
+  					<option value="express">Express: next day</option>
+  					<option value="overnight">Overnight</option>
+  				</select>
+  			</div>
+  			<div class="col col-33 map2-row2-middle">
+  				<select id="select-choice-1" name="select-choice-1">
+  					<option value="standard">Bogotá</option>
+  					<option value="rush">Rush: 3 days</option>
+  					<option value="express">Express: next day</option>
+  					<option value="overnight">Overnight</option>
+  				</select>
+  			</div>
+  			<div class="col col-33 map2-row2-right">
+  				<select id="select-choice-1" name="select-choice-1">
+  					<option value="standard">Metrokia</option>
+  					<option value="rush">Rush: 3 days</option>
+  					<option value="express">Express: next day</option>
+  					<option value="overnight">Overnight</option>
+  				</select>
+  			</div> -->
+	  	<!-- </div> -->
+  	</ion-content>
+</ion-view>

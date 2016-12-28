@@ -1,0 +1,24 @@
+<ion-view title="You Favourite Workout">
+    <ion-header-bar class="bar-light bar-subheader">
+    	<input type="search" placeholder="Search favourites..." ng-model="search"  ng-focus="searchFocused = true" ng-blur="searchFocused = false" ng-change="scrollTop()">
+    	<button ng-if="search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()"></button>
+	</ion-header-bar>
+	<ion-content class="has-header">
+		<div class="list">
+	      	<!-- <a class="item my-item" collection-repeat="item in getRecipe()" collection-item-height="getItemHeight(item)" collection-item-width="getItemWidth(item)" ng-href="#/tab/favourite/favourite_item/{{item.id}}" style="line-height:80px; padding:0px;" ng-class="{'item-divider': item.isLetter}"> -->
+			
+	      	<a class="item my-item" collection-repeat="item in getRecipe()" collection-item-height="getItemHeight(item)" collection-item-width="getItemWidth(item)" ng-href="#/tab/favourite/favourite_item/{{item.id}}" style="line-height:80px; padding:0px;" ng-class="{'item-divider': item.isLetter}"> 
+	      		<div class="row">
+		      		<div class="col" style="padding:0px;">
+		      			<img class="img-responsive img-circle pull-left" style="margin-top:10px; margin-bottom:10px;" ng-if="!item.isLetter" ng-src="http://curiouslabx.com/projects/workoutfactory/workoutFactory/{{item.image}}">
+			        	<div class="col-75 pull-left favourite-item">
+			        		<h2>{{item.letter || item.name}}</h2>
+			        		<h4 style="color:#949fab;">{{item.category}}</h4>
+			        	</div>
+			        	<i class="icon ion-ios7-arrow-right favourite_arrow pull-right" style="margin-right:15px;"></i>
+		        	</div>
+	        	</div>
+	      	</a>
+	    </div>
+  	</ion-content>
+</ion-view>

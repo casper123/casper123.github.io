@@ -1,0 +1,70 @@
+<div class="popup_div">
+  <form ng-submit="doLogin(user)">
+    <!-- <div class="cross"> -->
+    <div class="row">
+      <div class="col col-90">&nbsp;</div>
+      <div class="col col-10"><a href="#/user/home" ><i class="ion-ios7-close-empty"></i></a></div>
+    </div>
+    <!-- </div> -->
+    <div class="iniciar-form">
+      <div class="row">
+        <div class="col col-10 ">&nbsp;</div>
+        <div class="col col-80"> <h2><span>INICIO DE SESIÓN</span></h2></div>
+        <div class="col col-10">&nbsp;</div>
+      </div>
+      <div class="row">
+        <div class="col col-10">&nbsp;</div>
+        <div class="col col-80">  <p>Para ingresar a está página necesitas ser un usuario registrado.</p></div>
+        <div class="col col-10">&nbsp;</div>
+      </div>
+      <div class="row">
+        <div class="col col-20">&nbsp;</div>
+        <div class="col col-60 div_input">
+            <label ng-show="errorMessage" class="alerta">
+                <strong>Error:</strong> {{errorMessage}}
+            </label>
+            <label for="basic">Email *</label>
+            <label>
+                <input type="email" ng-model="user.username" name="username" id="basic" value="" data-mini="true" class="my_input" />
+            </label>
+        </div>
+        <div class="col col-20">&nbsp;</div>
+      </div>  
+      <div class="row">
+        <div class="col col-20">&nbsp;</div>
+        <div class="col col-60">
+              <label for="basic">contraseña *</label>
+              <label >
+                <input type="password" ng-model="user.password" name="password" id="basic" value="" data-mini="true"  class="my_input" style="background: rgba(11, 10, 10, 0.8);border: 1px solid #b4b4b4;color: #b4b4b4;" />
+              </label>
+        </div>
+        <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row">
+        <div class="col col-20">&nbsp;</div>
+        <div class="col col-10">
+           <input type="checkbox" name="checkbox-0" id="checkbox-mini-0" class="custom" ng-model="user.remember_me" data-mini="true" />
+        </div>
+        <div class="col col-50">
+            Recordarme en este dispositívo.
+        </div>
+        <div class="col col-20">&nbsp;</div>
+      </div>   
+      <div class="border-set-bottom"></div>
+      <div class="row" style="text-align:center;">
+        <div class="col col-25">&nbsp;</div>
+        <div class="col col-50">
+         <a href='' ng-click="doLogin(user)"  style="width: inherit !important;">
+         <img src="img/ingresar.png" class="img img-responsive" alt=""> </a>  
+        </div>
+        <div class="col col-25">&nbsp;</div>
+      </div>
+      
+      <div class="bottom-text-set">
+        <p>¿Olvidó su contraseña?</p>
+        <p>Crear una cuenta nueva</p>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </form>
+</div> 

@@ -1,0 +1,40 @@
+<ion-view show-tab hide-back-button="true" view-title="" ion-scroll="false">
+  
+  <ion-content class="custom-scr-bg">
+    <div ng-include src="'templates/check-connection.html'"></div>
+
+    <div class="row">
+      <div class="col col-10">&nbsp;</div>
+      <div class="col col-80 search-bg">
+        <input type="text" placeholder="Search" id="search-input" class="col col-80" style="float:left; background:none; padding:5px; margin-top:5px;" ng-model="searchQuery.text" ng-change="search()">
+        <img src="img/new-design-icons/search.png" class="col col-20" style="padding:0px;" />
+      </div>
+      <div class="col col-10">&nbsp;</div>
+    </div>
+    <div ng-show="searchItem" class="list" style="padding-top:51px;">
+      <div ng-repeat="movie_date in items">
+        <div class="item item-divider">{{movie_date.date}}</div>
+          <a ng-repeat="movie in movie_date.movies" class="item item-thumbnail-left" href="#/tab/dash/movieDetail/{{movie.movie_id}}/{{movie.movie_name}}">
+              <img ng-src="http://curiouslabx.com/projects/snap_flix/{{movie.movie_main_img || 'images/140x140.gif'}}">
+              <h2>{{movie.movie_name}}</h2>
+              <p>{{movie.movie_synopsis}}</p>
+              <p>US Charts Rated {{movie.movie_us_rate}} | {{movie.movie_total_time}}</p>
+          </a>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col col-10">&nbsp;</div>
+      <div class="col col-80" style="float:none;">
+        <img rwdimgmap class="col" src="img/buttons.png" alt="" usemap="#map" />
+        <map name="map">
+            <area href="#/tab/dash/profile" shape="poly" coords="373, 249, 400, 253, 423, 277, 426, 298, 417, 321, 391, 339, 366, 336, 345, 320, 331, 293, 345, 267, 357, 252" />
+            <area href="#/tab/dash/topEarners" shape="poly" coords="260, 326, 281, 326, 315, 343, 319, 375, 317, 396, 300, 413, 266, 418, 234, 391, 229, 362, 248, 338" />
+            <area href="#/tab/dash/inviteFriend" shape="poly" coords="143, 328, 165, 330, 186, 346, 199, 371, 185, 401, 153, 417, 119, 402, 107, 380, 109, 345" />
+            <area href="#/tab/dash/save" shape="poly" coords="39, 249, 67, 249, 92, 271, 101, 294, 89, 321, 65, 336, 43, 337, 13, 319, 11, 287, 10, 267" />
+            <area href="#/tab/dash/browse" shape="poly" coords="210, 6, 283, 22, 336, 58, 373, 111, 400, 183, 390, 235, 319, 247, 297, 296, 256, 311, 194, 312, 149, 304, 122, 271, 76, 229, 38, 198, 36, 154, 62, 95, 103, 51, 170, 14, 204, 7" />
+        </map>
+      </div>
+      <div class="col col-10">&nbsp;</div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,12 @@
+<ion-view title="{{tab_name}}">
+	<ion-content>
+	  	<div masonry class="thumb_row">
+	  		<div class="col-xs-6 col-sm-4 col-md-3 list-block-container masonry-brick" ng-repeat="item in items">
+	  			<a class="list-block thumbnail" href="#/tab/home/home_item/{{item.id}}">
+	  				<img src="img/loading.gif" rn-src="item.title_image" class="img-responsive" />
+		      		<h2 class="text-center">{{item.name}}</h2>
+		      	</a>
+	  		</div>
+	  	</div>
+	</ion-content>
+</ion-view>

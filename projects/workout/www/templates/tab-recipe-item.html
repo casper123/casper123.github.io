@@ -1,0 +1,41 @@
+<ion-view title="{{dietItem.foodName}}">
+<ion-content>
+
+  <div class="row" style="background:#ffffff;">
+    <div class="col">
+    <h2>{{dietItem.foodName}}</h2>
+	</div>
+  </div>
+
+  <div class="row" style="background:#434a54;">
+        <div class="row">
+          <div class="col col-50">
+            <img src="img/loading.gif" ng-src="http://curiouslabx.com/projects/workoutfactory/workoutFactory/{{dietItem.image}}" class="img-responsive" />
+          </div>
+        </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+     
+      <h2>Calories</h2>
+	<p class="post-icon-color" ng-bind-html="dietItem.nutration"></p>
+      
+      <h2>Ingredients</h2>
+      <p class="post-icon-color" ng-bind-html="dietItem.ingredients"></p><br>       
+      
+       <h2 style="margin-top:10px;">Details</h2>
+	   <p class="post-icon-color" ng-bind-html="dietItem.description"></p><br>
+	   
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="col">
+      <h2>Procedure</h2>
+      <p class="post-icon-color" ng-bind-html="procedure"></p>
+    </div>
+  </div>
+ -->
+</ion-content>
+</ion-view>

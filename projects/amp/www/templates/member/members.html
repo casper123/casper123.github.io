@@ -1,0 +1,24 @@
+<ion-view view-title="{{'members' | translate}}">
+  <ion-content>
+  	<ion-refresher on-refresh="memberList()"></ion-refresher>
+  	<div class="row member-head">
+    	<h4 class="main-heading">APPOINTMAN Benutzer</h4>
+    </div>
+    <div class="row">
+    	<div class="col">
+    		<input type="text" placeholder="{{'search' | translate}}" ng-model="query" style="margin-top:5px;" class="col" />
+    	</div>
+    </div>
+    <ion-list>
+	    <a ng-repeat="member in listData | filter:query" class="item item-thumbnail-left item-icon-right" href="#/app/member/memberDetail/{{member.id}}">
+	      	<img ng-if="member.thumbnail" src="{{fileUrl + member.thumbnail}}"/>
+	      	<img ng-if="!member.thumbnail" src="img/thumb_icon.png"/>
+	      	<h2 class="member-name">{{member.firstName}} {{member.surName}}</h2>
+	      	<!-- <p class="para-first">....</p>
+	      	<span class="member-para">Nine Inch Nails</span> -->
+	      	<i class="icon ion-ios-arrow-forward icon-right icon-color"></i>
+	    </a>
+	</ion-list>
+	</div>
+  </ion-content>
+</ion-view>

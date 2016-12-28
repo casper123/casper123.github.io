@@ -1,0 +1,30 @@
+<ion-view view-title="{{regionName}}">
+  <ion-content>
+    <ion-refresher pulling-text="Pull to refresh..."on-refresh="doRefresh()"></ion-refresher>
+    <div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+      
+    <div class="list">
+      <div ng-repeat="video in videos" class="card card-gallery item item-text-wrap" style="width:100%; margin:2px;">
+          <div class="ink dark-bg">
+              <h2>{{video.snippet.title}}</h2>
+              <img ng-click="playVideo('{{video.id}}')" src="{{video.snippet.thumbnails.standard.url}}" />
+          </div>
+          <div class="item tabs tabs-secondary tabs-icon-left">
+              <a class="tab-item stable-bg assertive">
+                  <i class="icon ion-heart"></i>
+                  {{video.statistics.likeCount}} 
+              </a>
+              <a class="tab-item stable-bg positive-900">
+                  <i class="icon ion-chatbubbles"></i>
+                  {{video.statistics.commentCount}}
+              </a>
+          </div>
+      </div>
+    </div>
+    <ion-infinite-scroll
+      ng-if="!noMoreItemsAvailable" on-infinite="loadMore({{'regionId'}},{{'nextPageToken'}})"
+      distance="1%">
+    </ion-infinite-scroll>
+    </div>    
+  </ion-content>
+</ion-view>

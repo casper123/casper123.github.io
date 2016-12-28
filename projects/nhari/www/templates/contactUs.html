@@ -1,0 +1,43 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Contact Us</h1>
+    <div class="buttons">
+      <button class="button button-clear pr10" ng-click="closeContact()"><i class="material-icons assertive">power_settings_new</i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="bg-light-gray">
+    <form name="contactForm" novalidate>
+      <div class="list">
+        
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Your Full Name</span>
+          <input type="text" placeholder="Full Name" ng-model="contactForm.fullName" required name="name">
+          <span class="validError" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+            <span ng-show="contactForm.email.$error.required">Your name is required.</span>
+          </span>
+        </label>
+        
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Ypur Email Address</span>
+          <input type="password" placeholder="Email" ng-model="contactForm.email" required name="password">
+          <span class="validError" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+            <span ng-show="contactForm.password.$error.required">Email is required.</span>
+          </span>
+        </label>
+        
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Type your message/ reviews</span>
+          <input type="password" placeholder="Message / Reviews" ng-model="contactForm.message" required name="Repassword">
+          <span class="validError" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+            <span ng-show="contactForm.password.$error.required">Password is required.</span>
+          </span>
+        </label>
+
+        <label class="item">
+          <button ng-disabled="contactForm.$invalid" class="button button-block button-assertive" ng-click="fillContact()" >Send</button>
+        </label>
+
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

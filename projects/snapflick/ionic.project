@@ -1,0 +1,11 @@
+{
+  "name": "movieApp",
+  "app_id": "43d0eb07",
+  "browsers": [
+    {
+      "platform": "android",
+      "browser": "crosswalk",
+      "version": "12.41.296.5"
+    }
+  ]
+}

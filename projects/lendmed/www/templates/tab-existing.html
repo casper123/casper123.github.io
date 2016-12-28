@@ -1,0 +1,61 @@
+<ion-view view-title="<img src='img/logo.png' alt='Medical Lending' class='top_logo'>" >
+  <ion-content class="has-header light_bg">
+   <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
+  <div class="main-content">
+    <div class="item" ng-if="requests.length == 0">
+      <span>You don't have any existing request</span>
+    </div>
+    <div class="card" ng-repeat="request in requests " ng-init="myIndex = $index" >
+      <div class="row item item-divider min-head padding-zero">
+        <span class="col col-67">
+          <span ng-show="request.status == 0">Pending</span>
+          <span ng-if="request.is_urgent == 1">&nbsp;(Urgent)</span>
+        </span>
+        <span ng-show="request.status == 1" class="col col-67">Approved</span>
+        <span ng-show="request.status == 2" class="col col-67">Processing</span>
+        <span ng-show="request.status == 3" class="col col-67">Ready For Pickup</span>
+        <div ng-show="request.status == 4" class="col col-67">
+          <span class="en-route-btn">En Route</span>
+          <button ng-click="receivedRequest('{{request.id}}')" class="button button-small icon-left ion-star button-stable">Recieved</button>
+        </div>
+        <img ng-show="request.status == 4" src="img/vehicle.png" class="ambulance">
+        <div ng-show="request.status == 5" class="col col-80">
+          <span class="en-route-btn">Received</span>
+          <button ng-click="returnRequest('{{request.id}}')" class="button button-small icon-left ion-reply button-stable">Request Return</button>
+        </div>
+
+        <span ng-show="request.status == 7" class="col col-67">Request Returned</span>
+        <span ng-if="request.request_sub_type == 1" class="col col-10"><i class="ion-locked"></i></span>
+        <span ng-if="request.request_sub_type == 2" class="col col-10"><i class="ion-plane"></i></span>
+        <a class="col col-10" href="" ng-click="addRequest(request.request_id)" class="padding-zero">
+          <img src="img/pencil.png" class="edit-pencil">
+          <i class="ion-reply margin-left" ng-if="request.status == 7"></i>
+        </a>
+      </div>
+      <div class="item item-divider inner-head" >
+        <img ng-if="request.is_urgent==1" src="img/urgent-warn.png" class="urgent">
+        <span class="text-in"> &nbsp;{{request.posted | myDateFormat}} </span>
+        <span class="text-in"><i class="ion-icon ion-clock"></i> {{request.posted | myTimeFormat}} &nbsp;</span>
+        <span class="text-in"><i class="ion-icon ion-eye"></i>&nbsp; {{request.views}} &nbsp;</span>
+      </div>
+      <div class="item item-text-wrap padding-zero">
+        <div class="row">
+          <span class="col">{{request.quantity}} {{request.item_name}} {{request.units}}<br/><br/><br/>{{request.noOfcomments}} Comments
+          </span>
+        </div>
+        <div class="row">
+          <a href="#/tab/existing/requestDetails/{{request.id}}" class="col col-offset-75">
+            <span class="detail-btn">
+              Details &nbsp; <i class="ion-ios-arrow-forward"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  </ion-content>
+</ion-view>

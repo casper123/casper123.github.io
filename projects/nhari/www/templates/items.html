@@ -1,0 +1,50 @@
+<ion-view view-title="{{items[1].category}}">
+  <!-- <ion-header-bar class="bar bar-subheader">
+      <div class="row">
+          <div class="col col-50" align="center">
+              <a ng-click="sortItem()" ><i class="icon ion-funnel"></i>Sort</a>        
+          </div>
+          <div class="col col-50" align="center">
+              <a ng-click="search()"><i class="icon ion-search"></i>Search</a>        
+          </div>
+      </div>
+      
+  </ion-header-bar> -->
+    
+  <ion-content class="no-padding">
+
+        
+        <div ng-if="showNoListing" class="text-center padding pt60 pb120 bg-assertive">
+            <h1 class="light">No listings</h1>
+            <h3 class="light pb120">for this category</h3>
+            <h1 class="pb120"><i class="material-icons font-extra energized">mood_bad</i></h1>
+            <h1 class="mb120"><a ng-href="#/app/add" class="button button-balanced">Add yours</a></h1>
+            
+        </div>
+        
+
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="getItems()">
+              </ion-refresher>
+        
+        <div class="list">
+
+            <div  ng-repeat="list in items | filter: priceFilter | filter: searchTerms | filter: distanceFilter | orderBy:sortParam">
+            <a ng-if="list.type == 'banner'" class="item" href="{{list.link}}">
+              <img src="http://www.nhari.nl/mobileapp/files/{{list.image}}" />
+            </a>
+  
+            <a ng-if="list.type == 'item'" class="item item-thumbnail-left" href="#/app/item/{{list.itemDetails.item_id}}">
+                <img src="http://www.nhari.nl/mobileapp/{{list.images[0].item_image}}">
+                <h2>{{list.itemDetails.item_title}}</h2>
+                <p>{{list.itemDetails.description}}</p>
+                <small class="item-note">{{list.itemDetails.price | currency:USD$:0}} | {{list.itemDetails.location}}</small>
+            </a>
+            </div>  
+            
+        </div>
+        
+  </ion-content>
+    
+</ion-view>

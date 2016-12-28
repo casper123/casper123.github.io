@@ -1,0 +1,63 @@
+<ion-modal-view class="big-modal">
+  <ion-header-bar align-title="left" class="bar-light">
+    <div class="buttons">
+      <button class="button" ng-click="closeModal()">
+        <i class="ion-arrow-left-c"></i>
+      </button>
+    </div>
+    <h2 class="title" style="text-align:center; color:#e47d25;">Edit Post </h2>
+  </ion-header-bar>
+  <ion-content>
+  	<div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Title</span>
+        <input type="text" placeholder="Iphone5" ng-model="item.item_title">
+      </label>
+      <label class="item item-input item-select">
+        <span class="input-label">Category</span>
+        <select ng-model="item.category_id">
+          <option ng-repeat = "list in list" value="{{list.category_id}}" ng-selected="item.category_id">{{list.category_title}}</option>
+        </select>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Price (USD)</span>
+        <input type="text" placeholder="450" ng-model="item.price">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Quantity</span>
+        <input type="text" placeholder="e.g 10" ng-model="item.quantity">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Overview</span>
+        <input type="text" placeholder="Item Overview" ng-model="item.overview">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Shipping Details</span>
+        <input type="text" placeholder="Give a well brief detail" ng-model="item.shipping">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Description</span>
+        <input type="text" placeholder="Give a well brief description" ng-model="item.description">
+      </label>
+      <h4>Available For:</h4>
+        <ion-list>
+          <ion-checkbox ng-model="item.is_buyer">Sell</ion-checkbox>
+          <ion-checkbox ng-model="item.is_trade">Trade</ion-checkbox>
+        </ion-list>
+      <div class="item item-image">
+        <div class="row">
+          <div ng-repeat="photo in image" class="col">
+            <img style="height:80px; width:80px" src="http://curiouslabx.com/projects/allshook/novitrix/{{photo.item_image}}"> <br>
+            <button class="button button-small button-assertive" ng-click="deleteImage(photo.item_image_id, item.item_id)">DELETE</button>
+          </div>
+        </div>
+      </div>
+      <button class="button button-block button-clear" ng-click="">
+        Add Photos
+      </button>
+      <button class="button button-block button-clear" ng-click="update(item)">
+       Update
+      </button>
+    </div>
+  </ion-content>
+</ion-modal-view>

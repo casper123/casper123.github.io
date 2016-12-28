@@ -1,0 +1,72 @@
+<ion-modal-view class="big-modal" ng-controller="CharityCtrl">
+    <ion-header-bar class="bg-color" no-tap-scroll="true">
+      <div class="title">
+        <h2 class="apn-header-title">{{'charity' | translate}}</h2>
+        <div class="header-icon-right" ng-click="closeCharityList()">
+          <i class="ion-ios-close-empty"></i>
+        </div>
+        <div class="header-icon-right left" ng-show="showDetails" ng-click="backToList()">
+          <i class="ion-ios-arrow-left" style="font-size: 25px;"></i>
+        </div>
+      </div>
+    </ion-header-bar>
+    <ion-content>
+
+      <ion-slide-box delegate-handle="charity" on-slide-changed="slideHasChanged($index)" show-pager="false" style="height:100%;">
+        <ion-slide>
+          <div class="row">
+            <div class="col col-80 col-offset-10">
+              <h3 class="in-color screen-head-date">26.10.15</h3>
+              <h2 class="screen-head">{{'charity' | translate}}</h2>
+              <p class="in-color small-center">Hier geht die Spendenaktion ab</p>
+            </div>
+          </div>
+
+          <div class="list">
+            <a ng-click="getCharityDetails(c._id)" ng-repeat="c in charities|filter:{visible:true}">
+              <div class="apn-list-item  item-icon-right" ng-class="{'highlight':rank._id == loggedInUser._id}">
+                <div class="avatar-wrapper bg-color">
+                  <div>
+                    <img ng-src="{{::c.imageUrl}}"/>
+                  </div>
+                </div>
+                <div class="content">
+                  <div class="head" ng-if="::c.name.length>13">{{::c.name|limitTo:13}}...</div>
+                  <div class="head" ng-if="::c.name.length<=13">{{::c.name}}</div>
+                  <div class="main"><span class="in-color">{{::c.location}}</span></div>
+                </div>
+                <h5 class="icon ion-ios-arrow-right dark"></h5>
+              </div>
+            </a>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div ng-if="charityLoading" class="loading-wrapper">
+            <ion-spinner icon="dots"></ion-spinner>
+          </div>
+
+          <div ng-if="!charityLoading">
+            <div class="row">
+              <div class="col col-80 col-offset-10">
+                <h2 class="screen-head">{{cd.location}}</h2>
+                <p class="in-color small-text">{{cd.name}}</p>
+              </div>
+            </div>
+
+            <div class="padded-wrapper">
+              <img ng-src="{{cd.bannerUrl}}" width="100%"/>
+            </div>
+
+            <div class="padded-wrapper no-top">
+              <p class="long-text">{{cd.description}}</p>
+              <div class="ext-link">
+                <a class="in-color" ng-click="openCharityLink(cd.infoUrl)">mehr Info</a>
+              </div>
+            </div>
+          </div>
+
+        </ion-slide>
+      </ion-slide-box>
+
+    </ion-content>
+</ion-modal-view>

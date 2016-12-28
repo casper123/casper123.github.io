@@ -1,0 +1,27 @@
+<ion-view title="定制界面">
+  <ion-content class="has-header">
+    <div class="list customize-form">
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+            显示风格
+        </div>
+        <select ng-model="preference.list">
+          <option value="LIST">列表</option>
+          <option value="GRID">矩阵</option>
+        </select>
+      </label>
+
+      <div class="item item-toggle">
+        隐藏评论
+        <label class="toggle toggle-assertive">
+          <input type="checkbox" ng-model="preference.hideComments"/>
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,37 @@
+<ion-view view-title="Dashboard">
+  <div id="search-bar-home">
+    <div class="item item-input-inset">
+        <label class="item-input-wrapper" id="search-input-home">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Search" ng-model="query" ng-change="search()">
+        </label>
+    </div>
+  </div>
+  <ion-content>
+    <div ng-include src="'templates/check-connection.html'"></div>
+    <div ng-show="searchItem" class="list" style="padding-top:51px;">
+      <div ng-repeat="movie_date in items">
+        <div class="item item-divider">{{movie_date.date}}</div>
+          <a ng-repeat="movie in movie_date.movies" class="item item-thumbnail-left" href="#/tab/dash/movieDetail/{{movie.movie_id}}/{{movie.movie_name}}">
+              <img ng-src="http://curiouslabx.com/projects/snap_flix/{{movie.movie_main_img || 'images/140x140.gif'}}">
+              <h2>{{movie.movie_name}}</h2>
+              <p>{{movie.movie_synopsis}}</p>
+              <p>US Charts Rated {{movie.movie_us_rate}} | {{movie.movie_total_time}}</p>
+          </a>
+        </div>
+    </div>
+
+    <div class="list" style="padding-top:50px;">
+      	<div class="item item-divider">Welcome {{user.firstName}}</div>
+    		<div class="item item-body">
+    			<button class="button button-full button-assertive" ng-click="scanQr()">Click Here to Scan QR Movie</button>
+    		</div>
+
+        <div class="item item-body">
+          <a href="#/tab/dash/browse" class="button button-full button-assertive">
+           Click Here to Browse Movie
+          </a>
+        </div>
+    </div>
+  </ion-content>
+</ion-view>

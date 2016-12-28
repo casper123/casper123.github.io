@@ -1,0 +1,95 @@
+<ion-view view-title="Edit your Add">
+	<ion-content class="add-screen">
+	
+		<form name="myForm" novalidate>
+            
+            <div class="row">
+                <div class="col">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label font-sm balanced">What do you want to sell?</span>
+                        <input type="text" placeholder="Title" ng-model="item.item_title">
+                        <span class="validError" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+                            <span ng-show="myForm.name.$error.required" class="energized font-xs">Product name is required.</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <label class="item-input item-select" ng-controller="CategsCtrl">
+                        <div class="input-label">
+                            Category:
+                        </div>
+                        <select ng-model="item.category_id">
+                            <option ng-repeat="categ in categories" value="{{categ.category_id}}">{{categ.category_title}}</option>
+                        </select>
+                    </label>
+                    
+                </div>
+            </div>
+            
+            
+            
+            <div class="text-center bg-light-gray pt30 pb30">
+                
+                <h5 class="center">Select a picture (max. 5)</h5>
+                <div class="row">
+                    <div class="col bg-assertive pt30 pb30 m10">
+                        <i ng-click="getImageEdit()" class="material-icons light font-mega">photo_library</i>
+                    </div>
+                    <div class="col bg-balanced pt30 pb30 m10">
+                        <i ng-click="getCameraEdit()" class="material-icons light font-mega">camera</i>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row" class="col">
+                <div ng-repeat="img in itemPhotos track by $index">
+                    <img src="{{img}}" style="width:50%; margin-left: 25%;" />  
+                </div>
+                <div ng-repeat="i in images" class="col">
+                    <img src="http://www.nhari.nl/mobileapp/{{i.item_image}}" style="width:50%; margin-left: 25%;" />
+                    <button class="button icon button-assertive ion-trash-a" ng-click="removeImage(i.item_image_id)"></button>       
+                </div>
+            </div>
+            
+            
+            
+            <div class="row">
+                <div class="col">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label font-sm balanced">How much do you want?</span>
+                        <input type="tel" placeholder="Price (USD)" ng-model="item.price" name="price" required>
+                            <span class="validError" ng-show="myForm.price.$dirty && myForm.price.$invalid">
+                                <span ng-show="myForm.price.$error.required" class="energized font-xs">Price is required.</span>
+                            </span>
+                    </label>
+                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label font-sm balanced">Describe your item in a few words</span>
+                        <textarea type="text" placeholder="Description" ng-model="item.description" name="description" required></textarea>
+                        <span class="validError" ng-show="myForm.description.$dirty && myForm.description.$invalid">
+                            <span ng-show="myForm.description.$error.required" class="energized font-xs">Description is required.</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col colSubmit">
+                    <button ng-disabled="myForm.$invalid && !currentUser" class="button button-assertive button-full" ng-click="update(item)">
+                        Update MyAdd
+                    </button>
+                    
+                </div>
+            </div>
+            
+        </form>
+	</ion-content>
+</ion-view>

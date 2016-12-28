@@ -1,0 +1,24 @@
+<ion-view show-tab view-title="Rotate Photo" >
+	<ion-content has-bouncing="false">
+		<div class="row">
+			<div class="col col-80 col-offset-10">
+				<img style="width:100%; transform: {{transform}}; -webkit-transform: {{transform}}" ng-src="{{imagePath}}" class="col image-rotate">
+				</img>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col  col-10 col-offset-33">
+			 	<button ng-click="rotateLeft()" class="button button-positive">Left</button> 
+			<!-- <i class="ion-ios-undo"></i> -->
+			</div>
+			<div class="col col-10 col-offset-10">
+				<button ng-click="rotateRight()" class="button button-positive">Right</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<button class="button button-positive button-block" ng-click="doneRotating()">Done</button>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

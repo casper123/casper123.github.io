@@ -1,0 +1,106 @@
+<ion-view view-title="{{pageTitle | translate}}">
+  <ion-content>
+  	<form name="newMember" novalidate="" ng-submit="doNewMember(newMember)">
+    <div class="list">
+    	<div ng-show="showFailMessage" class="item row">
+	    	<div class="col">{{error.messageKey | translate}}</div>
+	    </div>
+	    
+	    <label class="item item-input">
+			<span class="input-label">{{'surname' | translate}}</span>
+			<input required name="surname" ng-model="member.surname" type="text"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newMember.surname.$error && newMember.$submitted"
+               ng-messages="newMember.surname.$error"
+               ng-messages-include="form-errors.html"></div>
+
+		<label class="item item-input">
+			<span class="input-label">{{'firstname' | translate}}</span>
+			<input required name="firstname" ng-model="member.firstname" type="text"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newMember.firstname.$error && newMember.$submitted"
+               ng-messages="newMember.firstname.$error"
+               ng-messages-include="form-errors.html"></div>
+
+		<label class="item item-input">
+			<span class="input-label">{{'memberNumber' | translate}}</span>
+			<input required name="" ng-model="member.memberNumber" type="text"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newMember.memberNumber.$error && newMember.$submitted"
+               ng-messages="newMember.memberNumber.$error"
+               ng-messages-include="form-errors.html"></div>
+
+		<label class="item item-input">
+			<span class="input-label">{{'phone' | translate}}</span>
+			<input required name="phone" ng-model="member.phone" type="text"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newMember.phone.$error && newMember.$submitted"
+               ng-messages="newMember.phone.$error"
+               ng-messages-include="form-errors.html"></div>
+
+		<label class="item item-input">
+			<span class="input-label">{{'mobile' | translate}}</span>
+			<input required name="mobile" ng-model="member.mobile" type="text"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newMember.mobile.$error && newMember.$submitted"
+               ng-messages="newMember.mobile.$error"
+               ng-messages-include="form-errors.html"></div>
+
+		<label class="item item-input">
+			<span class="input-label">{{'email_address' | translate}}</span>
+			<input required name="emailAddress" ng-model="member.emailAddress" type="email"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newMember.emailAddress.$error && newMember.$submitted"
+               ng-messages="newMember.emailAddress.$error"
+               ng-messages-include="form-errors.html"></div>
+
+        <label class="item item-input">
+			<span class="input-label">{{'dateOfBirth' | translate}}</span>
+			<input required name="dateOfBirth" ng-model="member.dateOfBirth" type="date"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newMember.dateOfBirth.$error && newMember.$submitted"
+               ng-messages="newMember.dateOfBirth.$error"
+               ng-messages-include="form-errors.html"></div>
+
+        <label class="item item-input">
+			<span class="input-label">{{'memberSince' | translate}}</span>
+			<input required name="memberSince" ng-model="member.memberSince" type="date"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newMember.memberSince.$error && newMember.$submitted"
+               ng-messages="newMember.memberSince.$error"
+               ng-messages-include="form-errors.html"></div>
+
+		
+        <label class="item item-input">
+			<span class="input-label">{{'address' | translate}}</span>
+			<textarea style="height:100px;" required name="address" ng-model="member.address"></textarea>
+		</label>
+		<div class="form-errors"
+               ng-show="newMember.address.$error && newMember.$submitted"
+               ng-messages="newMember.address.$error"
+               ng-messages-include="form-errors.html"></div>
+
+        <label class="item item-input">
+			<span class="input-label">{{'note' | translate}}</span>
+			<textarea style="height:100px;" required name="note" ng-model="member.note"></textarea>
+		</label>
+		<div class="form-errors"
+               ng-show="newMember.note.$error && newMember.$submitted"
+               ng-messages="newMember.note.$error"
+               ng-messages-include="form-errors.html"></div>
+
+        <label class="item item-input">
+        	<button type="submit" class="button button-clear button-assertive">{{buttonTitle | translate}}</button>
+        </label>
+	</div>		
+	</form>
+  </ion-content>
+</ion-view>

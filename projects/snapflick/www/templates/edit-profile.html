@@ -1,0 +1,57 @@
+<ion-view show-tab view-title="Edit Profile">
+<ion-content>    
+<form ng-submit="editProfile(user)">
+	<label ng-show="successMessage" class="alert alert-success item">
+		{{successMessage}}
+	</label>
+	<div class="list">
+		<label class="item item-input">
+			<span class="input-label">First Name</span>
+			<input type="text" ng-model="user.f_name" value="{{user.f_name}}"  placeholder="First Name" required />
+		</label>
+
+		<label class="item item-input">
+			<span class="input-label">Last Name</span>
+			<input type="text" ng-model="user.l_name" value="{{user.l_name}}"placeholder="Last Name"  />
+		</label>
+
+		<label class="item item-input">
+			<span class="input-label">City</span>
+			<input type="text" ng-model="user.city" value="{{user.city}}" placeholder="City"  />
+		</label>
+
+		<label class="item item-input">
+			<span class="input-label">State</span>
+			<input type="text" ng-model="user.state" value="{{user.state}}" placeholder="State"  />
+		</label>
+
+		<label class="item item-input">
+			<span class="input-label">Country</span>
+			<input type="text" ng-model="user.country" value="{{user.country}}" placeholder="Country"  />
+		</label>
+
+		<label class="item item-radio">
+			<input type="radio" ng-model="user.gender" value="1"  />
+			<div class="item-content">Male</div>
+			<i class="radio-icon ion-checkmark"></i>
+		</label>
+
+		<label class="item item-radio">
+			<input type="radio" ng-model="user.gender"value="2"  />
+			<div class="item-content">Female</div>
+			<i class="radio-icon ion-checkmark"></i>
+		</label>
+
+		<label class="item">
+		<span class="input-label">Date Of Birth</span>
+		<input type="date" ng-model="user.dob">
+		</label>
+		<input type="hidden" ng-model="user.user_id" value="{{user.user_id}}" />
+
+		<label class="item item-input">
+			<input class="button button-assertive" type="submit" value="Save"/>		
+		</label>
+	</div>						
+</form>
+</ion-content>
+</ion-view>

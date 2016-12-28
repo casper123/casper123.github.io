@@ -1,0 +1,26 @@
+<ion-view view-title="{{startOfWeek | date:'d MMM'}} - {{endOfWeek | date:'d MMM'}}">
+  <ion-content>
+    <div class="list" ng-init="products.total = {}">
+
+
+      <div class="item top-item">
+        <span class="small grey-mild">Total</span>
+        <span ng-if="getExpense.length > 0" class="item-note grey-mild">{{products.total.amount | currency}}</span>
+        <span ng-if="getExpense.length == 0" class="item-note grey-mild">$0.00</span>
+      </div>
+      <div class="item" ng-click="showExpense(expense.id)" ng-repeat="expense in getExpense">
+        <div class="col col-50 pull-left" align="left" style="padding:0px;">
+          <span class="small grey-mild">{{ getProjectName(expense.projectId) }}</span>
+          <p class="grey-dark expsense-p">{{ expense.title }}</p>
+          <span class="small grey-light">{{ getCategoryName(expense.categoryId) }}</span> 
+        </div>
+        <div class="col col-50 pull-right" align="right" style="padding:0px;">
+          <span class="small grey-light">{{ expense.expenseDate  | date:'HH:mm, d MMM' }}</span>
+          <p class="grey-mild expsense-p" ng-init="products.total.amount = products.total.amount ++ expense.amount">{{ expense.amount | currency }}</p>
+          <!-- <span class="small grey-light">Billable</span> -->
+        </div>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

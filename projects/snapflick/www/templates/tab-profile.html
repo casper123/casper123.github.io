@@ -1,0 +1,69 @@
+<ion-view view-title="{{(user_data.f_name).charAt(0).toUpperCase() + (user_data.f_name).slice(1)}} {{(user_data.l_name).charAt(0).toUpperCase() + (user_data.l_name).slice(1)}}">
+<ion-content>
+    <div class="row slider-container">
+        <div class="col">
+          <ion-slide-box show-pager="false">
+            <ion-slide ng-repeat="image in images">
+                  <img class="col" ng-click="openProfileGallery('{{image.url}}')" src="{{image.url}}">
+            </ion-slide>
+          </ion-slide-box>
+        </div>
+    </div>
+    <div class="row text-image padding">
+      <h4 class="text-on-image">{{(user_data.f_name).charAt(0).toUpperCase() + (user_data.f_name).slice(1)}}  {{(user_data.l_name).charAt(0).toUpperCase() + (user_data.l_name).slice(1)}}</h4>
+      <p class="text-on-image" style="padding-top:1%;padding-left:1%;">
+        <span ng-if="user_data.age>0">{{user_data.age}} year old,</span>{{'  '}}
+        <span>{{user_data.gender == 1 ? "Male," : ""}} {{ user_data.gender == 2 ? "Female," : "" }}{{'  '}}
+          </span>
+        <span ng-if="user_data.city !=''"> 
+          {{(user_data.city).charAt(0).toUpperCase() + (user_data.city).slice(1)}},
+        </span>
+        <span ng-if="user_data.state !=''">
+          {{(user_data.state).charAt(0).toUpperCase() + (user_data.state).slice(1)}},
+        </span>
+        <span ng-if="user_data.country !=''">
+          {{(user_data.country).charAt(0).toUpperCase() + (user_data.country).slice(1)}}
+        </span>
+      </p>
+    </div>
+    <div class="row" style="margin-top:10px;" ng-hide="userFlag">
+      <div class="col">
+        <a class="button button-positive button-block"href="#/tab/dash/editProfile/{{user_data.user_id}}">
+          Edit Profile
+        </a>
+      </div>
+      <div class="col">
+        <a class="button button-positive button-block" href="#/tab/dash/profilePhoto/profile">
+          Add Photo
+        </a>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col">
+        <h4>Earned ${{user_data.points_earned}} in Rewards so far</h4>
+        <span>{{(user_data.f_name).charAt(0).toUpperCase() + (user_data.f_name).slice(1)}}'s Referral - {{noOfConnections}} active members</span>
+    </div>
+  </div>
+  <div class="list">
+    <a class="item item-thumbnail-left" href="#/tab/dash/profile/{{connection.user_id}}" ng-repeat="connection in connection_data">
+      <img src="http://curiouslabx.com/projects/snap_flix/{{connection.image_path || 'images/140x140.gif'}}">
+      <h2>{{(connection.f_name).charAt(0).toUpperCase() + (connection.f_name).slice(1)}}
+        {{(connection.l_name).charAt(0).toUpperCase() + (connection.l_name).slice(1)}}</h2>
+      <!-- 
+        <p ng-show="{{connection.city}}">{{connection.city}}, {{connection.country}}</p> -->
+      <p>
+        <span ng-if="connection.city!=''">
+          {{(connection.city).charAt(0).toUpperCase() + (connection.city).slice(1)}}
+        </span> 
+        <span ng-if="connection.state!=''">
+          {{(connection.state).charAt(0).toUpperCase() + (connection.state).slice(1)}},
+        </span> 
+        <span ng-if="connection.country!=''">
+          {{(connection.country).charAt(0).toUpperCase() + (connection.country).slice(1)}}
+        </span>
+      </p>
+      <p> ${{connection.points_earned || 0}} Earned</p>
+    </a>
+  </div>
+</ion-content>
+</ion-view>

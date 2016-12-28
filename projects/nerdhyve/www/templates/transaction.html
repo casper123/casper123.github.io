@@ -1,0 +1,35 @@
+<ion-view view-title="My Transaction">
+  <ion-content>
+    <div class="button-bar">
+      <a class="button button-clear" ng-click="buyList()">Buy</a>
+      <a class="button button-clear" ng-click="sellList()">Sell</a>
+      <a class="button button-clear" ng-click="tradeList()">Trade</a>
+    </div>
+    <div class="list" ng-hide="showBuy">
+      <a class="item" ng-repeat="buy in buy" ng-click="transactionDetail(buy.cart_id)">
+        <p>{{buy.item_title}}</p>
+        <p class="small">{{buy.category_title}} <span class="small price">$ {{buy.price}} ({{buy.quantity}} item)</span></p>
+        <p class="small"><b>{{setStatus(buy.status)}}</b></p>
+      </a>
+    </div>
+
+    <div class="list" ng-show="showSell">
+      <a class="item item-thumbnail-left" ng-repeat="sell in sell" ng-click="transactionDetail(sell.cart_id)">
+        <img src="img/products.jpg">
+        <p>{{sell.item_title}}</p>
+        <p class="small">{{sell.category_title}} <span class="small price">$ {{sell.price}} ({{sell.quantity}} item)</span></p>
+        <p class="small"><b>Delivered</b></p>
+      </a>
+    </div>
+     <div class="list" ng-show="showTrade">
+      <a class="item item-thumbnail-left" ng-repeat="trade in trade" ng-click="transactionDetail(trade.trade_item_id)">
+        <img src="img/products.jpg">
+        <p>{{trade.item_title}}</p>
+        <p class="small">{{trade.category_title}}</p>
+        <p class="small"><b>Delivered</b></p>
+      </a>
+    </div>
+    </ion-content>
+   </ion-view>
+  </ion-content>
+ </ion-view>

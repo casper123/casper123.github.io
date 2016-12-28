@@ -1,0 +1,26 @@
+<ion-view view-title="My Listings">
+    <ion-content class="padding">
+        <div class="list">
+            <div class="text-center item" ng-hide="UserItems.length">You have no items. Add a new one <a class="balanced" href="#/app/add">here.</a></div>
+            
+            <div class="item row itemRowList" ng-repeat="item in UserItems"> 
+                <div class="col col-10">
+                    <a class="material-icons balanced" href="#/app/item/{{item.itemDetails.item_id}}">pageview</a>
+                </div>
+                <div class="col col-10">
+                    <a class="material-icons balanced" href="#/app/editAdd/{{item.itemDetails.item_id}}">edit</a>
+                </div>
+                
+                <div class="col col-60">
+                    {{item.itemDetails.item_title}}
+                </div>
+                
+                <div class="col col-10">
+                    <i class="material-icons assertive" ng-click="removeUserItem({{item.itemDetails.item_id}})">clear</i>
+                </div>
+            </div>
+    </ion-content>
+</ion-view>
+
+
+

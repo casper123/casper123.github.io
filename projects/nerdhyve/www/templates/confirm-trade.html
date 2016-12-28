@@ -1,0 +1,79 @@
+<ion-modal-view class="big-modal">
+  <ion-header-bar align-title="left" class="bar-light">
+    <div class="buttons">
+      <button class="button" ng-click="closeConfirmTradeModal()">
+        <i class="ion-arrow-left-c"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content style="background:rgba(0,0,0,0.1);">
+    <div class="row" style="margin-top:25%;" ng-show="!showUserItem && !showDisclaimer">
+    <div class="col col-80 col-offset-10">
+      <div class="row">
+        <div class="col">
+          Enter the quantity of {{myItem.item_title}} that you are willing to trade
+        </div>
+      </div>
+
+      <div class="list">
+        <div class="item">
+          <div class="row">
+            <div class="col col-50 col-offset-25"><img style="width:100%;" ng-src="http://curiouslabx.com/projects/allshook/novitrix/{{myImage || 'images/Photo-Not-Available.jpg'}}"></div>
+          </div>
+        </div>
+        <div class="item" style="text-align:center;">
+          <h1>{{myItem.item_title}}</h1>
+          <p class="small">{{myItem.category}} <br/><span class="small price" style="float:none;">${{myItem.price | number}} ({{myItem.quantity}} in stock)</span></p>
+        </div>
+        <label class="item item-input">
+          <input min="1" type="number" placeholder="Enter your quanitity here" ng-model="myQty">
+        </label>
+
+        <div class="item" style="padding:0px;"><button ng-click="showUserItem = true" class="button button-block button-clear">Next</button></div>
+        <div ng-if="keyBoardShow" style="height: {{keyBoardHeight}}px;">&nbsp;</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="row" style="margin-top:25%;" ng-show="showUserItem && !showDisclaimer">
+    <div class="col col-80 col-offset-10">
+      <div class="row">
+        <div class="col">
+          Enter the quantity of {{currentUserItem.item_title}} that you are willing to have in trading
+        </div>
+      </div>
+
+      <div class="list">
+        <div class="item">
+          <div class="row">
+            <div class="col col-50 col-offset-25"><img style="width:100%;" ng-src="http://curiouslabx.com/projects/allshook/novitrix/{{userImage || 'images/Photo-Not-Available.jpg'}}"></div>
+          </div>
+        </div>
+        <div class="item" style="text-align:center;">
+          <h1>{{currentUserItem.item_title}}</h1>
+          <p class="small">{{currentUserItem.category}} <br/><span class="small price" style="float:none;">${{currentUserItem.price | number}} ({{currentUserItem.quantity}} in stock)</span></p>
+        </div>
+        <label class="item item-input">
+          <input min="1" type="number" placeholder="Enter your quanitity here" ng-model="userQty">
+        </label>
+
+        <div class="item" style="padding:0px;"><button ng-click="showDisclaimer = true" class="button button-block button-clear">Next</button></div>
+        <div ng-if="keyBoardShow" style="height: {{keyBoardHeight}}px;">&nbsp;</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="row" style="margin-top:25%;" ng-show="showDisclaimer">
+    <div class="col col-80 col-offset-10">
+    <div class="list">
+      <div class="item item-input">
+        <textarea style="margin-left:2px" rows="8" cols="60" wrap="soft" placeholder="Write a message to the user to convience him/her to trade with you ..!!" ng-model="msg"></textarea>
+      </div>
+    </div>
+    <button ng-show="showDisclaimer" class="button button-block button-dark" ng-click="done(currentUserItem.user_id, currentUserItem.item_id, myItem.user_id, myItem.item_id, msg, userQty, myQty)">
+      <i class="icon ion-arrow-swap">Trade My Product</i>
+    </button> 
+    </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

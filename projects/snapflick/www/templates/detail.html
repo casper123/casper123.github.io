@@ -1,0 +1,87 @@
+<ion-view hide-tabs view-title="{{movieName}}">
+<ion-content>
+    <div class="row slider-container" style="position:relative;">
+        <div class="col" style="height:300px; padding:0px; margin:0px;">
+          <ion-slide-box show-pager="false" ng-if="!showDefault">
+            <ion-slide ng-repeat="image in images">
+              <a ng-if="image.image_type == 2"  ng-click="playVideo({{'image.tailor_code'}})">  
+                <button class="button button-assertive small-btn play-button">Play</button>
+                <img style="width:100%; height:100%;" ng-src="http://curiouslabx.com/projects/snap_flix/{{image.img_name || 'images/MovieBackgroundPlaceholder.png'}}" />
+              </a>
+
+              <a ng-if="image.image_type == 1"  ng-click="openGallery('{{image.img_name}}')">  
+                <img style="width:100%; height:100%;" ng-src="http://curiouslabx.com/projects/snap_flix/{{image.img_name || 'images/MovieBackgroundPlaceholder.png'}}" />
+              </a>
+            </ion-slide>
+          </ion-slide-box>
+          <img ng-if="showDefault" src="http://curiouslabx.com/projects/snap_flix/images/MovieBackgroundPlaceholder.png" width="100%" height="100%" />
+        </div>
+        <img class="movie-profile-image col col-33" ng-src="http://curiouslabx.com/projects/snap_flix/{{movieDetail.movie_main_img || 'images/MovieBackgroundPlaceholder.png'}}">
+    </div>
+    
+<div class="row">
+ <div class="col padding">
+   <button ng-hide="favourite" class="button button-positive button-block small-btn" ng-click="addToFavourite()">Save</button>
+   <button ng-show="favourite" class="button  button-positive button-block small-btn" ng-click="removeToFavourite()">Unsave</button>
+</div>
+<div class="col padding">
+   <button class="button button-assertive button-block small-btn" ng-click="showActionsheet()">Share</button>
+</div>
+<div class="col padding">
+    <button class="button button-positive button-block small-btn" ng-click="gotoIMDB()">IMDB</button>
+</div>
+</div>
+
+<div class="card">
+  <div class="item">
+    <strong>{{movieName}} - Movie Details</strong>
+    <p>Release Date : {{release_date||'Comming soon'}}</p>
+  </div>
+  <div class="item item-text-wrap item-icon-left">
+  </div>
+  <ul class="list">
+    <li class="item">
+        <h2 class="desc-heading pull-left">Synopsis : </h2>
+        <p class="desc-para" style="float:left; margin:0px;">
+          {{movieDetail.movie_synopsis}}
+        </p>
+    </li>
+    <li class="item">
+      <h2 class="desc-heading pull-left">Genre : </h2>
+      <span class="desc-para">{{category || 'None'}}</span>
+    </li>
+
+    <li class="item">
+      <h2 class="desc-heading pull-left">Ratting : </h2>
+      <span class="desc-para">
+        {{movieDetail.movie_us_rate}}
+      </span>
+    </li>
+    <li class="item">
+      <h2 class="desc-heading pull-left">Duration : </h2>
+      <span class="desc-para">
+     {{movieDetail.movie_total_time ||'00:00:00'}}
+      </span>
+    </li>
+
+    <li class="item">
+      <h2 class="desc-heading pull-left">{{director}} : </h2>
+      <span class="desc-para">{{movieDetail.movie_director}}</span>
+    </li>
+
+    <li class="item">
+      <h2 class="desc-heading pull-left">{{writter}} : </h2>
+      <span class="desc-para">{{movieDetail.movie_writter}}</span>
+    </li>
+
+    <li class="item">
+       <h2 class="desc-heading pull-left">Cast : </h2>
+       <span class="desc-para">{{movieDetail.movie_cast}}</span>
+    </li>
+
+
+
+  </ul>
+</div>
+</ion-content>
+</ion-view>

@@ -1,0 +1,10 @@
+<ion-view show-tab view-title="Facebook Albums">
+<ion-content>
+	<ion-list>
+      <ion-item class="item-avatar" ng-repeat="album in facebookAlbums" type="item-text-wrap" href="#/tab/dash/{{tabType}}/facebookPhoto/{{album.id}}">
+        <img ng-src="https://graph.facebook.com/{{album.cover_photo}}/picture">
+        <h2>{{album.name}} ({{album.count}})</h2>
+      </ion-item>
+    </ion-list>
+</ion-content>
+</ion-view>

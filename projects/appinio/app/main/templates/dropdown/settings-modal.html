@@ -1,0 +1,74 @@
+<ion-modal-view class="big-modal" ng-controller="SettingCtrl">
+  <ion-header-bar class="bg-color" no-tap-scroll="true">
+    <div class="title">
+      <h2 class="apn-header-title">{{'settings' | translate}}</h2>
+      <div class="header-icon-right" ng-click="closeSettingsModal()">
+        <i class="ion-ios-close-empty"></i>
+      </div>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div style="text-align: center;padding-bottom: 25px;">
+
+      <div class="row">
+        <div class="col col-80 col-offset-10">
+          <h3 class="in-color screen-head-date">26.10.15</h3>
+
+          <h2 class="screen-head">{{'settings' | translate}}</h2>
+        </div>
+      </div>
+
+      <div ng-click="updatePhoto()" class="avatar-wrapper-big bg-color" style="display:inline-block;">
+        <div>
+          <img ng-src="{{loggedInUser.avatar || loggedInUser.imageUrl}}"/>
+        </div>
+      </div>
+
+      <p class="in-color setting-color">Color</p>
+
+      <div class="color-choice">
+        <div class="green-theme fixed-color"
+             ng-class="{selected:$root.colorTheme == 'green'}"
+             ng-click="saveTheme('green')">
+          <div class="bg-color"></div>
+        </div>
+        <div class="blue-theme fixed-color"
+             ng-class="{selected:$root.colorTheme == 'blue'}"
+             ng-click="saveTheme('blue')">
+          <div class="bg-color"></div>
+        </div>
+        <div class="red-theme fixed-color"
+             ng-class="{selected:$root.colorTheme == 'red'}"
+             ng-click="saveTheme('red')">
+          <div class="bg-color"></div>
+        </div>
+        <div class="gold-theme fixed-color"
+             ng-class="{selected:$root.colorTheme == 'gold'}"
+             ng-click="saveTheme('gold')">
+          <div class="bg-color"></div>
+        </div>
+      </div>
+
+      <p class="in-color setting-text">{{'nickname' | translate}}</p>
+
+      <div ng-click="changeNicknamePopup()">{{loggedInUser.nickname || 'Anonymous'}}</div>
+
+      <p class="in-color setting-text">{{'uniqueName' | translate}}</p>
+
+      <div ng-click="changeUniqueNamePopup()">{{loggedInUser.uniqueName || 'Anonymous'}}</div>
+
+      <p class="in-color setting-text">{{'email' | translate}}</p>
+
+      <div ng-click="changeEmailPopup()">{{loggedInUser.email}}</div>
+
+      <p class="in-color setting-text">{{'password' | translate}}</p>
+
+      <div ng-click="changePasswordPopup()">********</div>
+
+      <p class="in-color setting-text">Zip</p>
+
+      <div ng-click="changeZipcodePopup()">{{loggedInUser.zipcode}}</div>
+
+    </div>
+  </ion-content>
+</ion-modal-view>

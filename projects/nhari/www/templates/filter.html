@@ -1,0 +1,53 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title">Filter</h1>
+		<div class="buttons">
+			<button class="button button-clear pr10" ng-click="closeFilter()"><i class="material-icons assertive">power_settings_new</i></button>
+		</div>
+	</ion-header-bar>
+	<ion-content class="bg-light-gray">
+		<form ng-submit="doFilter(searchData)">
+			<div class="list">
+	        
+	        <label class="item item-input">
+	          <span class="input-label">Terms to search</span>
+	          <input style="background:#fff; padding:10px;" type="text" ng-model="searchData.text">
+	        </label>
+
+	        <label class="item item-input">
+	          <span class="input-label">Min Price</span>
+	          <input style="background:#fff; padding:10px;" type="text" ng-model="searchData.priceMin" placeholder="Min">
+	        </label>
+
+	        <label class="item item-input">
+	          <span class="input-label">Max Price</span>
+	          <input style="background:#fff; padding:10px;" type="text" ng-model="searchData.priceMax" placeholder="Max">
+	        </label>
+
+	        <label class="item range range-positive">
+			    0KM
+			    <input ng-model="searchData.distanceRange" type="range" name="volume" min="0" max="100" value="33">
+			    100KM
+			</label>
+
+	        <label class="item item-input item-select">
+	        	<span class="input-label">Sort Order</span>
+	        	<select ng-model="searchData.sortOrder">
+			     	<option value="1">Price Ascending</option>
+			      	<option value="2">Price Descending</option>
+			      	<option value="3">Date Ascending</option>
+			      	<option value="4">Date Descending</option>
+			      	<option value="5">Distance Ascending</option>
+			      	<option value="6">Distance Descending</option>
+			    </select>
+	        </label>
+	      
+	        <label class="item">
+	          <button class="button button-block button-assertive" type="submit">Filter</button>
+	        </label>   
+
+            <a class="button button-clear button-energized button-block" ng-click="clearFilter()">Clear Filters</a>
+		    </div>
+		</form>
+	</ion-content>
+</ion-modal-view>

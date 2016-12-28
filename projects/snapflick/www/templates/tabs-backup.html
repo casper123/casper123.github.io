@@ -1,0 +1,14 @@
+<ion-nav-view name="tab-dash"></ion-nav-view>
+    <div ng-class="$root.showTabs" class="row bar-custom-footer" style="height:22%;" >
+      <a href="#/tab/dash/profile" class="footer-link">
+      <div class="col col-50">
+        <img src="{{userImage || 'http://placehold.it/50x50'}}" class="image-footer"></img>
+      </div>
+      <div class="col col-50">
+        <span class="footer-text">{{userName}}</span>
+        </a>
+      </div>
+      <div class="col col-50 ">
+        <span class="footer-text" >$ {{pointsEarned}}.00</span>
+      </div>
+    </div>

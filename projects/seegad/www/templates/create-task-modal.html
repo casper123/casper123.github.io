@@ -1,0 +1,74 @@
+<ion-modal-view>
+	<ion-header-bar class="bar bar-stable" no-tap-scroll="true">
+		<div class="buttons">
+			<button class="button header-btn" ng-click="closeModal()">
+	        	Cancel
+	      	</button>
+	    </div>
+    	<p class="title header-title">Create Task</p>
+    	<div align="right" class="buttons">
+			<button class="button header-btn" ng-click="saveTask(task)">
+	        	Save
+	      	</button>
+	    </div>
+  	</ion-header-bar>
+
+  	<ion-content>
+  		<div class="list">
+
+		 	<div class="item item-divider">
+		    	Task Details
+		  	</div>
+		  	<div class="item grey-darker" href="#">
+		    	<input type="text" class="grey-darker" style="width:100%;height:auto;" placeholder="Title" ng-model="task.title"/>
+		    </div>
+		    <label class="item item-input item-stacked-label">
+    			<div class="input-label">
+      				Select Project
+    			</div>
+    			<select ng-model="task.projectId" style="height: 50px; display: block; border: 0px; padding: 10px 0px; width: 100%; background: #fff; margin-left: -7px;">
+		      		<option ng-repeat="proj in projects | unique:'id'" value="{{proj.id}}">{{proj.title}}</option>
+		      	</select>
+  			</label>
+  			<label class="item item-input item-stacked-label">
+    			<div class="input-label">
+      				Select Milestone
+    			</div>
+    			<select ng-model="task.milestoneId"  style="height: 50px; display: block; border: 0px; padding: 10px 0px; width: 100%; background: #fff; margin-left: -7px;">
+		      		<option ng-repeat="miles in milestone | filter:task.projectId" value="{{miles.id}}">{{miles.title}}</option>
+		      	</select>
+  			</label>
+		    <div class="item item-divider">
+		    	 End Date/ Due Date
+		  	</div>
+		    <div ng-if="task.important != true" class="item grey-darker" href="#">
+		    	<input type="date" class="grey-darker" style="width:100%;height:auto;" ng-model="task.dateDue"/>
+		    </div>
+			<div class="row hide-on-keyboard-open" style="border-top:solid 1px #e0e1e1;">
+	  			<div class="col col-10">
+		         	<label class="checkbox">
+		            <input type="checkbox" ng-model="task.important"/>
+		          </label>
+		        </div>
+		        <div class="col" style="padding-left:15px;">
+		          <p style="margin-top:11px; color:#cecece">Mark Task Important</p>
+		        </div>
+	  		</div>
+		  	<div class="item item-divider">
+		    	Assign Task
+		  	</div>
+	  		<label class="item item-input" style="padding-top:10px; padding-bottom:10px;">
+			    <i class="icon ion-search placeholder-icon"></i>
+			    <input ng-model="search" type="text" placeholder="Search">
+		  	</label>
+
+		  	<div class="item item-avatar item-button-right" ng-repeat="member in resMembers | filter: search">
+		  		<img src="https://app.seegad.com/static/img/{{member.gender | lowercase}}.png">
+			  	<p class="grey-darker">{{member.firstName}} {{member.lastName}}</p>
+			  	<label class="button checkbox">
+		            <input type="checkbox" ng-model="member.assign" name="{{member.firstName}}_{{$index}}"/>
+		       	</label>
+		    </div>
+		</div>
+  	</ion-content>
+</ion-modal-view>

@@ -1,0 +1,90 @@
+<ion-view title="我要晒">
+  <ion-content class="has-header">
+    <form name="postForm" novalidate>
+      <div class="list post-form">
+
+        <div class="card">
+          <label class="item item-input">
+            <textarea rows=3 placeholder="标题" ng-model="deal.title" required></textarea>
+          </label>
+        </div>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            来源
+          </div>
+          <select ng-model="deal.vendor">
+            <option>淘宝</option>
+            <option>京东</option>
+            <option>天猫</option>
+            <option>其他</option>
+          </select>
+        </label>
+
+        <label class="item item-input">
+          <textarea rows=10 placeholder="具体情况" ng-model="deal.description"></textarea>
+        </label>
+
+        <tags-input ng-model="deal.tags" placeholder="输入标签" min-length="1" auto-complete>
+          <auto-complete source="loadTags($query)" min-length="1"></auto-complete>
+        </tags-input>
+        <!-- <p>{{tags}}</p> -->
+
+        <div class="card">
+
+          <label class="item item-input">
+            <span class="input-label">原价</span>
+            <input class="input-label" type="number" placeholder="" ng-model="deal.regularPrice" ng-pattern="/^[0-9]*\.?[0-9]*$/">
+          </label>
+
+          <label class="item item-input">
+            <span class="input-label">折扣价</span>
+            <input type="number" placeholder="" ng-model="deal.discountedPrice" ng-pattern="/^[0-9]*\.?[0-9]*$/">
+          </label>
+
+          <li class="item item-toggle">
+            折扣代替价格显示
+            <label class="toggle toggle-positive">
+              <input type="checkbox">
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
+          </li>
+
+        </div>
+
+        <label class="item item-input item-icon-right">
+          <span class="input-label">网址</span>
+          <input type="text" placeholder="" ng-click="gotoBrowser(deal.uri)" ng-model="deal.uri">
+          <i class="icon ion-ios7-arrow-right"></i>
+        </label>
+
+        <!-- <a class="item item-icon-left item-icon-right" href="#">
+        <i class="icon ion-ios7-search"></i> 网址
+        <i class="icon ion-ios7-arrow-right"></i>
+      </a> -->
+
+        <div class="padding">
+          <button class="button button-block button-stable" ng-file-select="onDealPictureUpload($files)" accept="image/*" multiple>上传图片</button>
+          <span class="notice">请遵守本软件规定，不要上传不符合法律规定的内容。</span>
+        </div>
+
+        <div class="padding">
+          <img class="img-responsive col col-25" ng-src="{{img}}" ng-repeat="img in pictureUrls" />
+        </div>
+
+        <div class="padding">
+          <img style="margin: 0 auto; display:block;" src="img/loader.gif" ng-show="uploadfile" />
+        </div>
+
+        <div class="padding">
+          <button class="button button-block button-positive" ng-click="postForm.$valid && postDeal()" ng-disabled="! postForm.$valid || !pictureUrls || !pictureUrls.length">
+            发布</button>
+        </div>
+
+      </div>
+    </form>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col">
+    <h2 class="screen-head">{{'buy_voucher' | translate}}</h2>
+    <p class="in-color small-text">{{item.value/100|number:0}}€ {{item.name}}</p>
+
+    <p class="small-text">
+      Tausche {{item.price}} Coins Deines Guthabens gegen diesen Gutschein.
+    </p>
+
+  </div>
+</div>
+
+<div class="cancel-button" ng-click="closeBuyPopup()">
+  <i class="ion-ios-close-empty"></i>
+</div>

@@ -1,0 +1,60 @@
+
+<ion-view view-title="{{'member' | translate}}" show-header>
+  <ion-content>
+    <div class="list">
+	    <div class="item row">
+		   <div class="col col-25">
+		   		<img ng-if="member.thumbnail" src="{{fileUrl + member.thumbnail}}"/>
+	      		<img ng-if="!member.thumbnail" src="img/thumb_icon.png"/>
+		   </div>
+		   <div class="col">
+		   		<h2 class="member-name">{{member.attributes.firstname}} {{member.attributes.lastname}}</h2>
+		   		<br />
+		   		<br />
+		   		<p class="para-first">----</p>
+		   </div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'phone' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{member.attributes.phone}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'mobile' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{member.attributes.mobile}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'email_address' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{member.attributes.email}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'dateOfBirth' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{member.attributes.birthday * 1000 | date:'shortDate'}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'books' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{member.maxDailyBookings}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'maxReservation' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{member.maxFutureBookings}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'memberSince' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{member.attributes.memberSince * 1000 | date:'shortDate'}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'address' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{member.attributes.address}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'note' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{member.attributes.notes}}</h4></div>
+	    </div>
+		<div class="item">
+	    	<div class="col" style="text-align:center;font-weight:bold;">
+	    		<a href="#" class="button button-clear button-assertive">{{'terminate' | translate}}</a>
+	    	</div>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>

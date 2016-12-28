@@ -1,0 +1,19 @@
+<ion-modal-view class="change-modal">
+    <ion-content>
+      <div class="row">
+        <div class="col">
+          <button class="button button-small button-assertive" style="float:right;" ng-click="close()">X</button>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col">
+          <embed-video width="100%" height="400" data-ng-href="{{videoUrl}}" controls=0><a href="{{videoUrl}}">Watch</a></embed-video>
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="col">
+          <iframe class="youtube-player" type="text/html" width="100%" height="385" src="{{videoUrl}}" frameborder="0"></iframe>
+        </div>
+      </div>      
+    </ion-content>
+  </ion-modal-view>

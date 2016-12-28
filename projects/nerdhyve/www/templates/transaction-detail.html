@@ -1,0 +1,39 @@
+<ion-modal-view class="big-modal">
+  <ion-header-bar align-title="left" class="bar-light">
+    <div class="buttons">
+      <button class="button" ng-click="closeModal()">
+        <i class="ion-arrow-left-c"></i>
+      </button>
+    </div>
+    <h2 class="title" style="text-align:center; color:#e47d25;">Transaction Detail</h2>
+  </ion-header-bar>
+  <ion-content>
+    <div class="row">
+        <div class="col">
+            <p>Product Title</p>
+            <p class="small">{{detail.item_details.item_title}}</p>
+            <br/>
+            <p>Amount Charged</p>
+            <p class="small" style="color:#e47d25 !important;">${{detail.cart_product.price}} (USD)</p>
+            <br/>
+            <p>Quantity</p>
+            <p class="small">{{detail.cart_product.quantity}}</p>
+            <br/>
+            <p>Buyer</p>
+            <p class="small">{{detail.cart_details.buyer}}</p>
+            <br/>
+            <p>Seller</p>
+            <p class="small">{{detail.cart_details.seller}}</p>
+            <br/>
+            <p>Transaction Status</p>
+            <p class="small" style="color:#e47d25 !important;">Not Available</p>
+            <br/>
+            <p>Shipping Address</p>
+            <p class="small">{{detail.cart_details.address}}</p>
+            <br/>
+            <p>Contact Number</p>
+            <p class="small">{{detail.cart_details.contact_number}}</p>
+        </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

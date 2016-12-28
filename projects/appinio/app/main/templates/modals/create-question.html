@@ -1,0 +1,301 @@
+<ion-modal-view ng-controller="CreateQuestionCtrl">
+
+  <ion-header-bar class="bg-color-soft" no-tap-scroll="true">
+    <div class="title">
+      <h2 class="apn-header-title">Frage stellen</h2>
+      <div class="header-icon-right" ng-click="closeCreateQuestionModal()">
+        <i class="ion-ios-close-empty"></i>
+      </div>
+      <div class="header-icon-right left" ng-show="slideIndex == 1" ng-click="slideBack()">
+        <i class="ion-ios-arrow-left" style="font-size: 25px;"></i>
+      </div>
+    </div>
+  </ion-header-bar>
+  <ion-content scroll="false">
+
+    <ion-slide-box delegate-handle="creation" on-slide-changed="slideChanged($index)" show-pager="false" ng-init="lockSlide()" style="height:100%;">
+      <ion-slide>
+
+        <div class="apn-locked-screen small bg-color" ng-if="unlockedTypes['starslider'] == false && questionData.qtype == 'starslider'">
+          <div class="avatar-wrapper-big bg-color shadow auto-margin">
+            <div><i class="ion-locked"></i></div>
+          </div>
+          <p>
+            Diesen Fragetyp gibt es erst ab Level {{userFeatures['createstarslider']}}.
+          </p>
+          <div class="question-dummy">
+            <h3>Wie geht es Dir heute?</h3>
+            <div class="starslider-preview" style="padding-top: 100px;">
+              <i class="ion-ios-star"></i>
+              <i class="ion-ios-star"></i>
+              <i class="ion-ios-star"></i>
+              <i class="ion-ios-star"></i>
+              <i class="ion-ios-star"></i>
+            </div>
+          </div>
+        </div>
+        <div class="apn-locked-screen small bg-color" ng-if="unlockedTypes['mc'] == false && questionData.qtype == 'mc'">
+          <div class="avatar-wrapper-big bg-color shadow auto-margin">
+            <div><i class="ion-locked"></i></div>
+          </div>
+          <p>
+            Diesen Fragetyp gibt es erst ab Level {{userFeatures['createmc']}}.
+          </p>
+          <div class="question-dummy">
+            <h3>Wie geht es Dir heute?</h3>
+            <p>So lala</p>
+            <p>Gut</p>
+            <p>Sag ich nicht</p>
+            <p>Hier ist alles unscharf</p>
+            <p>Frag bloß nicht</p>
+          </div>
+        </div>
+        <div class="apn-locked-screen small bg-color" ng-if="unlockedTypes['vstext'] == false && questionData.qtype == 'vstext'">
+          <div class="avatar-wrapper-big bg-color shadow auto-margin">
+            <div><i class="ion-locked"></i></div>
+          </div>
+          <p>
+            Diesen Fragetyp gibt es erst ab Level {{userFeatures['createvstext']}}.
+          </p>
+          <div class="question-dummy">
+            <h3>Wie geht es Dir heute?</h3>
+            <p>So lala</p>
+            <p>Gut</p>
+            <p>Sag ich nicht</p>
+            <p>Hier ist alles unscharf</p>
+            <p>Frag bloß nicht</p>
+          </div>
+        </div>
+        <div class="apn-locked-screen small bg-color" ng-if="unlockedTypes['vsimage'] == false && questionData.qtype == 'vsimage'">
+          <div class="avatar-wrapper-big bg-color shadow auto-margin">
+            <div><i class="ion-locked"></i></div>
+          </div>
+          <p>
+            Diesen Fragetyp gibt es erst ab Level {{userFeatures['createvsimage']}}.
+          </p>
+          <div class="question-dummy">
+            <h3>Wie geht es Dir heute?</h3>
+            <p>So lala</p>
+            <p>Gut</p>
+            <p>Sag ich nicht</p>
+            <p>Hier ist alles unscharf</p>
+            <p>Frag bloß nicht</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="qtype-chooser">
+
+            <div class="qtype-wrapper"
+                 ng-click="selectQuestionType('vsimage')"
+                 ng-class="{active:unlockedTypes.vsimage, 'selected':questionData.qtype == 'vsimage'}">
+
+              <i class="ion-images" ng-if="unlockedTypes.vsimage"></i>
+              <i class="ion-locked" ng-if="!unlockedTypes.vsimage"></i>
+
+              <div class="indicator bg-color"></div>
+
+            </div>
+
+            <div class="qtype-wrapper"
+                 ng-click="selectQuestionType('vstext')"
+                 ng-class="{active:unlockedTypes.vstext, 'selected':questionData.qtype == 'vstext'}">
+
+              <i class="ion-flash" ng-if="unlockedTypes.vstext"></i>
+              <i class="ion-locked" ng-if="!unlockedTypes.vstext"></i>
+
+              <div class="indicator bg-color"></div>
+
+            </div>
+
+            <div class="qtype-wrapper"
+                 ng-click="selectQuestionType('starslider')"
+                 ng-class="{active:unlockedTypes.starslider, 'selected':questionData.qtype == 'starslider'}">
+
+              <i class="ion-ios-star" ng-if="unlockedTypes.starslider"></i>
+              <i class="ion-locked" ng-if="!unlockedTypes.starslider"></i>
+
+              <div class="indicator bg-color"></div>
+
+            </div>
+
+            <div class="qtype-wrapper"
+                 ng-click="selectQuestionType('mc')"
+                 ng-class="{active:unlockedTypes.mc, 'selected':questionData.qtype == 'mc'}">
+
+              <i class="ion-navicon" ng-if="unlockedTypes.mc"></i>
+              <i class="ion-locked" ng-if="!unlockedTypes.mc"></i>
+
+              <div class="indicator bg-color"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="question-text-wrapper">
+          <textarea class="full-size question-text" placeholder="Stelle Deine Frage"
+                ng-change="validateQuestion()"
+                ng-model="questionData.text"></textarea>
+
+          <div class="media-option"
+               ng-click="setImageForMedia()"
+               ng-if="questionData.mediaPreview == null && (questionData.qtype == 'vstext' || questionData.qtype == 'starslider')">
+            <i class="ion-ios-cloud-upload-outline"></i>
+          </div>
+          <div class="media-option"
+               ng-click="deleteImageForMedia()"
+               ng-if="questionData.mediaPreview != null">
+            <i class="ion-ios-trash-outline"></i>
+          </div>
+        </div>
+
+        <div style="background: red">
+          <img src="{{questionData.mediaCropped}}" width="50px" />
+        </div>
+
+        <div class="media-wrapper" ng-if="questionData.mediaPreview">
+          <img crop-image="questionData.mediaCropped" ng-src="{{questionData.mediaPreview}}" />
+        </div>
+
+        <div ng-class="{'with-media':questionData.mediaPreview!=null}" class="question-options" ng-if="questionData.qtype == 'vsimage'">
+          <div class="vsimage-wrapper" ng-click="setImageForAnswer(0)">
+            <i ng-if="!questionData.answers[0].preview" class="ion-ios-cloud-upload-outline"></i>
+            <img ng-if="questionData.answers[0].preview" ng-src="{{questionData.answers[0].preview}}" />
+          </div>
+          <div class="vs-badge">vs</div>
+          <div class="vsimage-wrapper" ng-click="setImageForAnswer(1)">
+            <i ng-if="!questionData.answers[1].preview" class="ion-ios-cloud-upload-outline"></i>
+            <img ng-if="questionData.answers[1].preview" ng-src="{{questionData.answers[1].preview}}" />
+          </div>
+        </div>
+
+        <div ng-class="{'with-media':questionData.mediaPreview!=null}" class="question-options" ng-if="questionData.qtype == 'vstext'">
+          <div class="vsimage-wrapper">
+            <textarea ng-model="questionData.answers[0].text" placeholder="Antwort A"></textarea>
+          </div>
+          <div class="vs-badge">vs</div>
+          <div class="vsimage-wrapper">
+            <textarea ng-model="questionData.answers[1].text" placeholder="Antwort B"></textarea>
+          </div>
+        </div>
+
+        <div ng-class="{'with-media':questionData.mediaPreview!=null}" class="question-options" ng-if="questionData.qtype == 'starslider'">
+          <div class="starslider-preview">
+            <i class="ion-ios-star"></i>
+            <i class="ion-ios-star"></i>
+            <i class="ion-ios-star"></i>
+            <i class="ion-ios-star"></i>
+            <i class="ion-ios-star"></i>
+          </div>
+        </div>
+
+        <div style="padding-top: 1px;" ng-class="{'with-media':questionData.mediaPreview!=null}" class="question-options" ng-if="questionData.qtype == 'mc'">
+          <div ng-repeat="a in questionData.answers" class="answer-input">
+            <input type="text" ng-model="a.text" ng-change="validateQuestion()" placeholder="Antwort {{$index+1}}" />
+          </div>
+        </div>
+
+        <p ng-if="showError" class="small-text error-color">
+          Bitte fülle alle Felder aus.
+        </p>
+
+        <div class="bottom-buttons" ng-if="friendOnly">
+          <div class="button-wrapper" ng-if="!nothingUnlocked" ng-click="forFriendNext()">
+
+            <div class="avatar-wrapper-small bg-color">
+              <div>
+                <img ng-src="{{forUser.avatar || forUser.imageUrl || './img/avatar/avatar03.png'}}"/>
+              </div>
+            </div>
+
+            {{forUser.nickname || '@'+forUser.uniqueName}} fragen
+          </div>
+          <div class="button-wrapper" style="padding-right: 0" ng-if="nothingUnlocked" ng-click="closeCreateQuestionModal()">
+            Schließen
+          </div>
+        </div>
+
+        <div class="bottom-buttons" ng-if="!friendOnly">
+          <div class="button-wrapper half" ng-click="friendQuestionNext()">
+            <i class="ion-person"></i>
+            An Freunde
+          </div>
+          <div class="button-wrapper half" ng-click="communityQuestionNext()">
+            <i class="ion-ios-people"></i>
+            An Community
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide style="min-height:100%;">
+        <div ng-if="forFriends" style="min-height:100%;">
+          <div class="search-subheader" style="top:0;border-bottom: 1px solid #ccc;">
+            <button class="apn-main-btn bg-color small-btn" ng-click="selectAllFriends(friends)">
+              <div>Alle</div>
+            </button>
+            <input class="smaller-search" type="text" placeholder="{{'search' | translate}}"
+                   ng-model="friendFilter">
+          </div>
+
+          <ion-content style="height:100%;">
+            <div class="list" ng-show="(friends|filter:friendFilter).length>0" style="padding-top:50px;padding-bottom:45px;">
+              <div class="apn-list-item  item-icon-right"
+                   ng-repeat="f in friends|filter:friendFilter"
+                   ng-class="{'highlight':f.selected}"
+                   ng-click="f.selected = !f.selected">
+                <div class="avatar-wrapper bg-color">
+                  <div>
+                    <img ng-src="{{f.user.avatar || f.user.imageUrl || './img/avatar/avatar03.png'}}"/>
+                  </div>
+                </div>
+                <div class="content">
+                  <div class="head">{{f.user.nickname || 'Anonym'}}</div>
+                  <div class="main"><span class="in-color">@{{f.user.uniqueName || 'unknown'}}</span></div>
+                </div>
+              </div>
+            </div>
+          </ion-content>
+
+          <div class="bottom-buttons" ng-if="!friendOnly">
+            <div class="button-wrapper" style="padding-right: 0" ng-click="createForFriends(friends)">
+              Senden
+            </div>
+          </div>
+        </div>
+        <div ng-if="!forFriends" style="height:100%;">
+
+          <div class="question-text-wrapper">
+            <div class="big-text">{{'how_many_users' | translate}}</div>
+
+            <div class="bottom-info">
+              Du hast <span class="in-color">{{loggedInUser.coins}}</span> <i class="ion-home color-icon"></i>
+            </div>
+          </div>
+          <div class="question-user-wrapper">
+            <div ng-repeat="p in participantOptions" ng-click="selectParticipants(p.participants)" ng-class="{'bg-color':p.selected}" ng-class-odd="'odd'">
+              <div>
+                <div class="count">{{p.participants}}</div>
+                <div class="text">Leute Fragen</div>
+                <div class="costs" ng-if="p.unlocked">
+                  <span ng-class="{'in-color':!p.selected && loggedInUser.coins>=p.price, 'error-color':loggedInUser.coins<p.price}">{{p.price}}</span> <i ng-class="{'color-icon':!p.selected && loggedInUser.coins>=p.price, 'error-color':loggedInUser.coins<p.price}" class="ion-home"></i>
+                </div>
+                <div class="costs" ng-if="!p.unlocked">
+                  <i class="ion-locked"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-buttons">
+            <div class="button-wrapper" style="padding-right: 0" ng-click="createForParticipants()">
+              Senden
+            </div>
+          </div>
+        </div>
+
+      </ion-slide>
+    </ion-slide-box>
+
+  </ion-content>
+</ion-modal-view>

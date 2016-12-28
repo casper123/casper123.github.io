@@ -1,0 +1,38 @@
+<ion-view title="Promociones">
+	<search-bar ng-model="search"></search-bar>
+	<ion-nav-buttons side="left">
+    	<button style="color:#ffffff;" menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  	</ion-nav-buttons>
+  	<ion-content class="has-header">
+  		<div class="row" style="padding:0px;">
+  			<div style="padding:0px;" class="col col-50">
+        		<select  ng-model="category_id" ng-options='category_id.nombre for category_id in category' ng-change="getPlaces(category_id.id, city.id_Ciudad)" class="button button-calm col btn-kia-selected btn-kia-right-border">
+        			<option value="" selected="selected">Seleccione Categoría</option>
+        		</select>
+			</div>
+        	<div style="padding:0px; " class="col">
+        		<select  ng-model="city" class="button button-calm col btn-kia-selected" ng-options='city.nombre for city in cities' ng-change="getPromo(city.id_Ciudad)">
+        			<option value="" selected="selected">Seleccione Ciudad</option>
+        		</select>
+			</div>
+  		</div>
+		 <ion-list>
+	    	<ion-item ng-repeat="ally in allies" style="padding:0px;" >
+	    		<div class="gastronomia-img1">
+					<div class="over1">
+						<div class="link_internas image-benefift" style="text-align: left !important; height:10%;">
+					            <a href="#/app/benefit/map/{{ally.id}}/{{benefitID}}" ><h2 style="color: #C41230; font-Weight: bolder; font-size:24px;">{{ally.titulo}}</h2></a>
+					           <!--  <h3  style="font-weight: bold;text-transform: uppercase; font-size: 3.9vw;" class="color_{{ally.colortexto}}">{{ally.beneficio}}</h3>
+					            <p   style="font-size: 3vw;" class="color_{{ally.colortexto}}">{{ally.descripcion}}</p>
+						         <h1  style="opacity: 0.6; font-size: 6.5vw;" class="color_{{ally.colortexto}}">{{ally.beneficio}}</h1> -->
+						         <a href="#/app/benefit/map/{{ally.id}}/{{benefitID}}" style="font-size: 3.9vw; color:white;">Ver más</a>
+						 </div>
+			            <a  href="#/app/benefit/map/{{ally.id}}/{{benefitID}}"><img class="imagen-internas" src="{{ally.banner_promocion}}" alt="aliados"/></a>
+			            <!-- <div class="overeffect"></div> -->
+			        </div>
+				</div>
+	    	</ion-item>
+		</ion-list>
+  	</ion-content>
+</ion-view>
+

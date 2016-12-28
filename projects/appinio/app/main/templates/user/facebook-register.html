@@ -1,0 +1,68 @@
+<ion-view hide-nav-bar="true" view-title="{{'log in' | translate}}">
+  <div class="appinio-stripe"></div>
+
+  	<ion-pane class="padding register-screen">
+
+      <div class="row">
+        <div class="col col-80 col-offset-10" style="padding:20px;">
+          <h2 class="screen-head white">{{'signup' | translate}}</h2>
+          <p class="small-text">
+            Warum solltest du dich registrieren??
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col form">
+          <label class="col">
+            <input type="text" class="apn-input valid" value="{{fbUser.values.gender}}" readonly>
+          </label>
+          <label class="col">
+            <input type="text" class="apn-input valid" value="{{fbUser.values.birthday}}" readonly>
+          </label>
+          <label class="col">
+            <input type="text" class="apn-input" ng-class="{invalid: zipValid == false, valid: zipValid}" ng-model="fbUser.zipcode"
+                   placeholder="{{'zipcode' | translate}}" ng-change="checkZip(fbUser.zipcode)" required/>
+          </label>
+<!--          <label class="col">
+            <input type="password" class="apn-input" ng-class="{invalid: loginError}" ng-model="user.refText"
+                   placeholder="{{'reftext' | translate}}" required/>
+          </label>-->
+          <div class="col">
+            <button class="apn-main-btn white full" ng-disabled="!zipValid" ng-click="doFBRegister()">
+              <div>{{'signup' | translate}}</div>
+            </button>
+          </div>
+          {{$root.fberr}}
+
+          <div class="row" ng-if="registerError">
+            <div class="col col-80 col-offset-10 social-text error-color" style="padding:10px;">
+              <p class="small-text error" ng-if="emailError">
+                Die Email Adresse ist bereits vergeben
+              </p>
+              <p class="small-text error" ng-if="uuidError">
+                Mit diesem Gerät ist wurde bereits ein Account angelegt
+              </p>
+              <p class="small-text error" ng-if="otherError">
+                Es ist ein Fehler aufgetreten. Bitte versuche es später noch einmal
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="!registerError">
+
+        <div class="row" style="margin-top:20px;padding:10px;">
+          <div class="col">
+            <button class="apn-main-btn white full grey" ui-sref="user.login">
+              <div>{{'back_to_login' | translate}}</div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="appinio-bottom-logo">
+        appinio
+      </div>
+	</ion-pane>
+</ion-view>

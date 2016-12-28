@@ -1,0 +1,56 @@
+<ion-view title="Edit Profile" style="background:black;">
+<ion-nav-buttons side="left">
+      <button style="color:#ffffff;" menu-toggle="left" class="button button-icon icon ion-navicon icon-white"></button>
+    </ion-nav-buttons>
+<ion-content class="has-header">
+    <!-- <div class="cross">
+      <a href="" ng-click="closeLogin()"><i class="icon ion-close"></i></a>
+    </div> -->
+    <!-- <div class="row">
+      <div class="col col-90">&nbsp;</div>
+      <div class="col col-10"><a href="" ng-click="closeLogin()"><i class="ion-ios7-close-empty"></i></a></div>
+    </div> -->
+    <div class="iniciar-form">
+       <div class="row space-items" style="padding-top: 8%;"> 
+             <div class="col col-20">&nbsp;</div>
+             <div class="col col-60 border-box">
+                  <h3 class="text-center ">
+                    <img src="{{currentUser.foto}}" alt="user-profile" style="width: 30%; height: inherit; border-radius: 50%;" />
+                    <span class="menu-span text-center"><br> {{currentUser.nombre}}  <br> {{currentUser.apellido}}<br> ID: {{currentUser.id_tarjeta}}</span>
+                  </h3>
+              </div>
+              <div class="col col-20">&nbsp;</div>
+        </div>
+        <!--  <div class="row">
+          <div class="col col-10">&nbsp;</div>
+          <div class="col col-80"> <h2><span>3.000 PUNTOS K</span></h2></div>
+          <div class="col col-10">&nbsp;</div>
+        </div> -->
+         <div class="row space-items">
+          <div class="col col-30">&nbsp;</div>
+          <div class="col col-40 text-center border-box"> <span><a href='' ng-click="showActionsheet()" style="color: white;">Cambiar foto</a></span></div>
+          <div class="col col-30">&nbsp;</div>
+        </div>
+         <div class="row">
+          <div class="col col-30">&nbsp;</div>
+          <div class="col col-40 text-center border-box"> <span><a href="#/app/edit_profile" style="color: white;">Editar cuenta</a></span></div>
+          <div class="col col-30">&nbsp;</div>
+        </div>
+    <!--      <div class="row space-items">
+          <div class="col col-30">&nbsp;</div>
+          <div class="col col-40 text-center border-box"> <span>Historial de redenciones</span></div>
+          <div class="col col-30">&nbsp;</div>
+        </div> -->
+      <!--   <div class="row">
+          <div class="col col-10">&nbsp;</div>
+          <div class="col col-80"> <img src="images/puntos.png" alt="" style="width: 100%;"></div>
+          <div class="col col-10">&nbsp;</div>
+        </div> -->
+       <!--  <div class="row space-items">
+          <div class="col col-10">&nbsp;</div>
+          <div class="col col-80"> <h2><span>Cerrar Sesion</span></h2></div>
+          <div class="col col-10">&nbsp;</div>
+        </div> -->
+    </div>
+</ion-content>
+</ion-view>

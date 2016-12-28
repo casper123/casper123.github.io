@@ -1,0 +1,16 @@
+<ion-view view-title="Trade Requests">
+  <ion-content>
+  	<div class="list">
+
+      <div ng-repeat="trade in trades">
+        <div ng-click="detail(trade.trade_id)" ng-if="trade.from == trade.items.my_item.username" class="item item-icon-left">
+          <i ng-if="trade.from == trade.items.my_item.username" class="icon ion-arrow-up-c" style="color:red;"></i>
+          <i ng-if="trade.to == trade.items.my_item.username" class="icon ion-arrow-down-c" style="color:green;"></i>
+          <p>{{trade.items.my_item.item_title}}</p>
+          <p>{{trade.items.user_item.item_title}}</p>
+        </div>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

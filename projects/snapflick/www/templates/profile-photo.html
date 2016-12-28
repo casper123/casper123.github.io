@@ -1,0 +1,35 @@
+
+<ion-view hide-tabs view-title="{{user.firstName}}'s Photos">
+<ion-content>
+<ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+    </ion-refresher>
+  <!-- <div class="row slider-container">
+        <div class="col">
+          <ion-slide-box show-pager="false">
+            <ion-slide ng-repeat="image in images">
+                  <img class="col" src="{{image.url}}">
+            </ion-slide>
+          </ion-slide-box>
+        </div>
+  </div> -->
+<div class="row">
+	<div class="col">
+		<button  class="button button-positive button-block" ng-click="showActionsheet()">
+			Upload Images
+		</button>
+	</div>
+</div>
+
+<div class="row block_row">
+  <div ng-if="noOfImages == 0" class="col col-offset-10">
+    <p>You currently have no photos uploaded. Nobody will know who you are unless you upload a few photos.. :)</p>
+  </div>
+	<div ng-repeat="image in images" ng-class="{'fa-github': $first}" class="col col-33 pull-left card" style="margin:0px;">
+      <div class="item item-body" style="margin:0px; padding:0px;">
+          <img ng-click="zoomImageModal('{{image.imageId}}')" class="full-image" src="{{image.url || 'images/furley_bg.png'}}">
+      </div>
+	</div>
+</div>
+
+</ion-content>
+</ion-view>

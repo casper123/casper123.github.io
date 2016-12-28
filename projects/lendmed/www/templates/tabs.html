@@ -1,0 +1,70 @@
+<!--
+
+Create tabs with an icon and label, using the tabs-dark style.
+
+Each tab's child <ion-nav-view> directive will have its own
+
+navigation history that also transitions its views in and out.
+
+-->
+
+				
+  <a title="New Request" class="big_but" ng-click="addRequest()">
+<i class="ion-android-add-circle button_icon"></i><span class="tab-title">New Request</span>
+  </a>		
+						
+<ion-tabs class="tabs-bottom tabs-icon-top tabs-background-dark tabs-color-stable">
+
+  
+
+  <ion-tab title="Dashboard" class="tab-btn btn-dasboard" icon-off="icon-dashboard icon-off"  icon-on="icon-dashboard" href="#/tab/request">
+
+    <ion-nav-view name="tab-request" ></ion-nav-view>
+
+  </ion-tab>
+
+  
+
+  <!-- Request Tab -->
+
+  <ion-tab title="Our Requests" class="tab-btn btn-our-request" icon-off="icon-our-request icon-off" icon-on="icon-our-request" href="#/tab/existing" badge="ourRequestCount" badge-style="badge-assertive tab-badge">
+
+    <ion-nav-view name="tab-existing" ></ion-nav-view>
+
+  </ion-tab>
+
+
+  <!--<ion-tab title="New Request" class="big_but" icon-off="ion-android-add-circle button_icon"  icon-on="ion-android-add-circle button_icon"  ng-click="requestmodal()">
+
+  <ion-nav-view name="tab-newrequest" ></ion-nav-view>
+
+  </ion-tab>
+ -->
+ 
+
+  <!-- Incoming Tab -->
+
+  <ion-tab title="Incoming" class="tab-btn btn-incoming" icon-off="icon-incoming icon-off" icon-on="icon-incoming" href="#/tab/incoming" badge="incomingCount" badge-style="badge-assertive tab-badge" ng-controller="IncomingCtrl">
+
+    <ion-nav-view name="tab-incoming"></ion-nav-view>
+
+  </ion-tab>
+
+  
+
+   <!-- Incoming Tab -->
+
+  <ion-tab title="Claimed" class="tab-btn" icon-off="icon-claimed-small icon-off" icon-on="icon-claimed-small" href="#/tab/claimed" badge="claimedCount" badge-style="badge-assertive tab-badge" ng-controller="ClaimedCtrl">
+
+    <ion-nav-view name="tab-claimed"></ion-nav-view>
+
+  </ion-tab>
+
+
+
+
+
+</ion-tabs>
+
+
+

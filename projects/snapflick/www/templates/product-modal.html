@@ -1,0 +1,23 @@
+<ion-modal-view>
+      <ion-content>
+        <div class="row">
+          <div class="col col-33">
+              <img class="col" ng-src="http://curiouslabx.com/projects/snap_flix/{{prodctDetails.movie_main_img || 'images/140x140.gif'}}">
+          </div>
+          <div class="col col-67">
+            <h2>{{prodctDetails.movie_name}}</h2>
+            <p>US Charts Rated {{prodctDetails.movie_us_rate}} | {{prodctDetails.movie_total_time}}</p>
+             <p>Synopsis : {{prodctDetails.movie_synopsis}}</p>
+
+            <div class="row">
+                <div class="col col-50">
+                  <button class="button button-full button-positive" ng-click="addToFavourite()">Save Trailer</button>
+                </div>
+                <div class="col col-50">
+                  <button class="button button-full button-assertive" ng-click="closeModal()">Close</button>
+                </div>
+            </div>
+          </div>
+       </div>
+      </ion-content>
+    </ion-modal-view>

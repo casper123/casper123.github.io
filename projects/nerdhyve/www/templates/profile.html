@@ -1,0 +1,52 @@
+<ion-modal-view class="big-modal profile-modal" ng-controller="ProfileCtrl">
+
+  <ion-header-bar style="background: none!important;" no-tap-scroll="true">
+    <div class="buttons">
+      <button class="button" ng-click="closeProfileModal()">
+        <i class="ion-arrow-left-c"></i>
+      </button>
+    </div>
+    <h2 class="title" style="text-align:center; color:#e47d25;">Profile</h2>
+  </ion-header-bar>
+
+  <ion-content>
+
+    <div class="bg-color user-header">
+      <div class="user-name">{{user.first_name}} {{user.last_name}}</div>
+      <div class="avatar-wrapper bg-color">
+        <div>
+          <img src="http://curiouslabx.com/projects/allshook/novitrix/{{user.profile_image || 'images/Photo-Not-Available.jpg'}}" />
+        </div>
+      </div>
+      <div style="position: relative;z-index:2;">
+        <div class="user-figure">
+          <i class="ion-ios-chatboxes"></i>
+          <div>{{product}} Product(s)</div>
+        </div>
+        <div class="user-figure">
+          <i class="ion-ios-help"></i>
+          <div>{{trade}} Trade(s)</div>
+        </div>
+        <div class="user-figure">
+          <i class="ion-ios-basketball"></i>
+          <div>{{buy}} Buy(s)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="list" style="float:left;">
+
+      <a ng-repeat="add in userAdd" ng-click="showProductModal(add.itemDetails.item_id)" href="" class="item home-item card col-45 no-padding pull-left">
+        <div class="item item-body no-padding">
+          <img class="full-image" src="http://curiouslabx.com/projects/allshook/novitrix/{{add.images[0].item_image || 'images/Photo-Not-Available.jpg' }}">
+          <div class="item-details"><p class="no-margin">{{add.itemDetails.item_title | limitTo : 20}}</p>
+          <p class="small">{{add.category}} <span class="price">$ {{add.itemDetails.price}}</span></p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+  </ion-content>
+
+</ion-modal-view>

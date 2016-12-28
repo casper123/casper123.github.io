@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <!-- ionic meta tags -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- custom meta tags -->
+    <meta name="format-detection" content="telephone=no"> <!-- no auto telephone linking -->
+
+    <meta name="apple-mobile-web-app-capable" content="yes"> <!-- can be saved to home screen on ios -->
+    <title>testAppinio</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="main/styles/ionicons/ionicons.css">
+    <link rel="stylesheet" href="main/styles/main.css">
+    <link rel="stylesheet" href="main/styles/scss/ionic.css">
+    <!-- endinject -->
+    
+  </head>
+  <body ng-app="appinioApp" ng-class="{
+    'green-theme':colorTheme == 'green' || !colorTheme,
+    'blue-theme':colorTheme == 'blue',
+    'red-theme':colorTheme == 'red',
+    'gold-theme':colorTheme == 'gold', 'tutorial-mode':tutorialMode}">
+
+    <!-- the nav bar will be updated as we navigate between views -->
+    <!-- <ion-nav-bar> can be removed when using sidemenu (contained in menu.html) -->
+    <ion-nav-bar class="bar-calm">
+      <ion-nav-back-button></ion-nav-back-button>
+    </ion-nav-bar>
+    <!-- the current view will be rendered in the <ion-nav-view> directive -->
+    <ion-nav-view></ion-nav-view>
+
+    <!-- will be a 404 during development -->
+    <script src="cordova.js"></script>
+
+    <!-- build:js dest/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ionic/release/js/ionic.js"></script>
+    <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
+    <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+    <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="bower_components/localforage/dist/localforage.js"></script>
+    <script src="bower_components/ngtouchend/src/ngTouchend.js"></script>
+    <script src="bower_components/angular-http-auth/src/http-auth-interceptor.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-svg-round-progressbar/build/roundProgress.min.js"></script>
+    <script src="bower_components/momentjs/moment.js"></script>
+    <script src="bower_components/humanize-duration/humanize-duration.js"></script>
+    <script src="bower_components/angular-timer/dist/angular-timer.js"></script>
+    <script src="bower_components/angular-truncate/src/truncate.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+
+    <!-- build:js scripts/app.js -->
+    <!-- inject:js -->
+    <script src="app.js"></script>
+    <script src="main/main.js"></script>
+    <script src="main/constants/config-const.js"></script>
+    <script src="main/controllers/badge.controller.js"></script>
+    <script src="main/controllers/creation.controller.js"></script>
+    <script src="main/controllers/debug.controller.js"></script>
+    <script src="main/controllers/friends.controller.js"></script>
+    <script src="main/controllers/more.controller.js"></script>
+    <script src="main/controllers/setting.controller.js"></script>
+    <script src="main/controllers/user.controller.js"></script>
+    <script src="main/directives/directive.js"></script>
+    <script src="main/services/badges.service.js"></script>
+    <script src="main/services/charity.service.js"></script>
+    <script src="main/services/currentUser.service.js"></script>
+    <script src="main/services/feed.service.js"></script>
+    <script src="main/services/global.service.js"></script>
+    <script src="main/services/image.service.js"></script>
+    <script src="main/services/level.service.js"></script>
+    <script src="main/services/main.service.js"></script>
+    <script src="main/services/pushNotification.service.js"></script>
+    <script src="main/services/ranking.service.js"></script>
+    <script src="main/services/rating.service.js"></script>
+    <script src="main/services/share.service.js"></script>
+    <script src="main/services/survey.service.js"></script>
+    <script src="main/services/tracker.service.js"></script>
+    <script src="main/services/tutorial.service.js"></script>
+    <script src="main/services/user.service.js"></script>
+    <script src="main/services/voucher.service.js"></script>
+    <script src="main/controllers/main/answer.controller.js"></script>
+    <script src="main/controllers/main/feed.controller.js"></script>
+    <script src="main/controllers/main/quickies.controller.js"></script>
+    <script src="main/controllers/main/ranking.controller.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+  </body>
+</html>

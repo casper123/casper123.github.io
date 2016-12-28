@@ -1,0 +1,22 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content>
+  <ion-nav-bar class="bar-assertive-900" ng-class="{expanded: isExpanded, 'has-header-fab-left': hasHeaderFabLeft, 'has-header-fab-left': hasHeaderFabRight}" align-title="left">
+		<ion-nav-back-button class="no-text"></ion-nav-back-button>
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-android-more-vertical" menu-toggle="left">
+			</button>
+		</ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" ng-class="{expanded: isExpanded}" ></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-content>
+      <ion-list>
+        <ion-item menu-close ng-repeat="region in regions" href="#/app/search/{{region.id}}/{{region.snippet.name}}">
+          {{region.snippet.name}}
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

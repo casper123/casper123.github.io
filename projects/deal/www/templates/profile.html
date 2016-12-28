@@ -1,0 +1,62 @@
+<ion-view title="{{title}}">
+  <ion-content class="has-header" scroll="true">
+    <div class="profile-bg"></div>
+    <div class="profile-content">
+      <div class="profile-info">
+        <img class="profile-image" ng-src="{{profileView.picture}}">
+        <h3 class="profile-name">{{profileView.username}}</h3>
+        <div class="profile-description">
+          普通会员
+        </div>
+        <br>
+        <button class="button button-small button-positive button-follow" ng-click="doFollow(profileUserId)" ng-hide="follow.followedFlag" ng-disabled="follow.selfFlag">
+          <i class="icon ion-checkmark-circled"></i>&nbsp; {{follow.beingFollowedCount}} 关注
+        </button>
+        <button class="button button-small button-assertive button-follow" ng-click="doUnFollow(profileUserId)" ng-show="follow.followedFlag" ng-disabled="follow.selfFlag">
+          <i class="icon ion-close-circled"></i>&nbsp; {{follow.beingFollowedCount}} 关注
+        </button>
+      </div>
+      <div class="item item-divider" ng-show="profileView.activity">
+        近期活动
+      </div>
+      <div class="list" ng-show="profileView.activity">
+        <div ng-repeat="act in profileView.activity">
+          <a class="item item-avatar item-post" ng-show="act.actionType=='vote' && act.comment=='0'" ng-click="gotoDetail(act.actPostId)">
+            <img ng-src="{{act.postPictureFirstScaled}}">
+            <h2>取消了{{act.postTitle}}的评价</h2>
+          </a>
+          <a class="item item-avatar item-post" ng-show="act.actionType=='vote' && act.comment=='1'" ng-click="gotoDetail(act.actPostId)">
+            <img ng-src="{{act.postPictureFirstScaled}}">
+            <h2>表示喜欢{{act.postTitle}}</h2>
+          </a>
+          <a class="item item-avatar item-post" ng-show="act.actionType=='vote' && act.comment=='-1'" ng-click="gotoDetail(act.actPostId)">
+            <img ng-src="{{act.postPictureFirstScaled}}">
+            <h2>表示讨厌{{act.postTitle}}</h2>
+          </a>
+
+          <a class="item item-avatar item-post" ng-show="act.actionType=='comment'" ng-click="gotoDetail(act.actPostId)">
+            <img ng-src="{{act.postPictureFirstScaled}}">
+            <h2>评论了{{act.postTitle}}</h2>
+            <p>{{act.comment}}</p>
+          </a>
+
+          <a class="item item-avatar item-post" ng-show="act.actionType=='deal'" ng-click="gotoDetail(act.actPostId)">
+            <img ng-src="{{act.postPictureFirstScaled}}">
+            <h2>发表了{{act.postTitle}}</h2>
+          </a>
+
+          <a class="item item-avatar" ng-show="act.actionType=='follow'" ng-click="gotoProfileOthers(act.actUserId)">
+            <img ng-src="{{act.actUserProfilePictureScaled}}">
+            <h2>关注了{{act.actUserName}}</h2>
+          </a>
+
+          <a class="item item-avatar" ng-show="act.actionType=='unfollow'" ng-click="gotoProfileOthers(act.actUserId)">
+            <img ng-src="{{act.actUserProfilePictureScaled}}">
+            <h2>取消关注了{{act.actUserName}}</h2>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

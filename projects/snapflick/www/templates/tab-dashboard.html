@@ -1,0 +1,26 @@
+<ion-view show-tab hide-back-button="true" ion-scroll="true" view-title="" ion-scroll="false">
+
+<ion-content class="custom-scr-bg" style="background-image: url('{{bgImagePath}}');">
+<div ng-include src="'templates/check-connection.html'"></div>
+<div class="row">
+  <a class="ionic-link col-offset-90" href="#/tab/dash/misc">
+    <h3 class="ion-android-more-vertical top-icon"></h3>
+  </a>
+</div>
+
+<div class="row">
+  <div class="col col-10">&nbsp;</div>
+  <div class="col col-80">
+    <a href="#/tab/dash/browse" class="ionic-link" ng-mouseover="onScreen($event)"
+    ng-mouseout="offScreen($event)">
+    <img class="col browse-icon" ng-src="{{browseIconImage || 'img/browse-movie.png'}}">
+    <div class="browse-icon-text">SEARCH MOVIES</div>
+    </a>
+</div>
+<div class="col col-10">&nbsp;</div>
+</div>
+<!-- <div class="row">
+  <div class="col"><button class="button" ng-click="scanQr()">Scan QR</button></div>
+</div> -->
+</ion-content>
+</ion-view>

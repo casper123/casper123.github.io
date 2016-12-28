@@ -1,0 +1,96 @@
+<ion-side-menus>
+
+  <ion-pane ion-side-menu-content>
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7  bar-kia">
+      <!-- <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button> -->
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu side="left">
+    <header class="bar bar-header bar-kia">
+      <h1 class="title" style="color:#f8f8f8;">Menú.</h1>
+    </header>
+    <ion-content class="has-header" style="background: black;">
+      <ion-list>
+        <ion-item class="kia-item">
+          <h3 class="text-center">
+            <img src="{{currentUser.foto}}" alt="user-profile" style="border-radius: 50% 50%;" />
+            <span class="menu-span text-center">{{currentUser.nombre}}
+            <!-- <br/>3.000 Puntos -->
+            </span>
+          </h3>
+        </ion-item>
+        
+        <ion-item class="kia-item" nav-clear menu-close href="#/app/benefit">
+          <!-- <span class="ion-ios7-box-outline" > </span> -->
+          <div class="row">
+            <div class="col col-20 content-img-menu" ><img src="images/menu-icon1.png"  alt=""></div>
+            <div class="col col-80">Beneficios</div>
+          </div>
+        </ion-item>
+        <ion-item class="kia-item" nav-clear menu-close href="#/app/redkia">
+        <!-- <span class="ion-ios7-alarm-outline" > </span> -->
+        <div class="row">
+            <div class="col col-20 content-img-menu" ><img src="images/location-icon2.png"  alt=""></div>
+            <div class="col col-80">Red Kia</div>
+          </div>
+          
+        </ion-item>
+        <ion-item class="kia-item" nav-clear menu-close ng-click="chat()">
+        <!-- <span class="ion-ios7-chatbubble-outline" > </span> -->
+         <div class="row">
+            <div class="col col-20 content-img-menu" ><img src="images/chat-icon4.png"  alt=""></div>
+            <div class="col col-80">Chat en Vivo</div>
+          </div>
+          
+        </ion-item>
+        <ion-item class="kia-item" nav-clear menu-close href="#/app/reminder">
+        <!-- <span class="ion-ios7-alarm-outline" > </span> -->
+        <div class="row">
+            <div class="col col-20 content-img-menu" ><img src="images/watch-icon5.png"  alt=""></div>
+            <div class="col col-80">Recordatorios</div>
+          </div>
+          
+        </ion-item>
+        <ion-item class="kia-item" nav-clear menu-close href="#/app/suggestion">
+        <!-- <span class="ion-ios7-email-outline" > </span> -->
+         <div class="row">
+            <div class="col col-20 content-img-menu" ><img src="images/message-icon6.png"  alt=""></div>
+            <div class="col col-80">Buzón de Sugerencias</div>
+          </div>
+          
+        </ion-item>
+        <ion-item class="kia-item" nav-clear menu-close href="#/app/clubk">
+         <div class="row">
+            <div class="col col-20 content-img-menu" ><img src="images/k-icon7.png"  alt=""></div>
+            <div class="col col-80">Club K</div>
+          </div>
+          
+        </ion-item>
+        <ion-item class="kia-item" nav-clear menu-close href="#/app/profile">
+        <!-- <span class="ion-ios7-person-outline" > </span> -->
+         <div class="row">
+            <div class="col col-20 content-img-menu" ><img src="images/icon9.png"  alt=""></div>
+            <div class="col col-80">Mi Perfil</div>
+          </div>
+          
+        </ion-item>
+        <ion-item class="kia-item" nav-clear menu-close ng-click="logout()">
+        <!-- <span class="ion-power" > </span> -->
+         <div class="row">
+            <div class="col col-20 content-img-menu" ><img src="images/icon10.png"  alt=""></div>
+            <div class="col col-80">Cerrar Session</div>
+          </div>
+          
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+<style>
+  .item-content:hover{
+    color: #E50000 !important;
+    text-decoration: none !important;
+  }
+</style>

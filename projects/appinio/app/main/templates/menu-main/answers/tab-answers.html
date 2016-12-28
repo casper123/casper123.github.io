@@ -1,0 +1,93 @@
+<ion-view>
+    <ion-content scroll="false" has-bouncing="false" class="result-screen apn-app-questions animated" style="padding-top:0;">
+
+      <div ng-if="surveysLoaded == false" style="z-index:9;padding-top:35%;position: absolute;top:0;left:0;bottom:0;right:0;background-color: white">
+        <ion-spinner icon="dots"></ion-spinner>
+      </div>
+
+      <div class="list-divider" ng-if="ownSurveys.length>15">{{currentIndex||1}} / 15</div>
+      <div class="list-divider" ng-if="ownSurveys.length<=15 && ownSurveys.length > 0">{{currentIndex||1}} / {{ownSurveys.length}}</div>
+      <div class="list-divider" style="background-color: white;" ng-if="ownSurveys.length==0">Deine gestellten Fragen</div>
+
+      <div class="apn-locked-screen small-gap bg-color" ng-if="ownSurveys.length==0">
+        <div class="avatar-wrapper-big bg-color shadow auto-margin">
+          <div><i class="ion-ios-pulse"></i></div>
+        </div>
+        <p>
+          {{'no_questions_from_user_header' | translate}}
+        </p>
+        <div class="question-dummy">
+          <h3>Wie geht es Dir heute?</h3>
+          <p>So lala</p>
+          <p>Gut</p>
+          <p>Sag ich nicht</p>
+          <p>Hier ist alles unscharf</p>
+          <p>Frag bloß nicht</p>
+        </div>
+        <div class="bottom-item">
+          {{'no_questions_from_user_description' | translate}}
+          <div>
+            <i class="ion-ios-arrow-thin-down"></i>
+          </div>
+        </div>
+      </div>
+
+      <ion-slide-box delegate-handle="resultlist" show-pager="false" style="width:100%;height:100%;" on-slide-changed="slideHasChanged($index)">
+
+        <ion-slide style="width:100%;height:100%;" ng-repeat="survey in ownSurveys|orderBy:'-date'|limitTo:15">
+
+          <div id="content-header" class="content-header" ng-init="question = survey.questions[0]">
+            <app-question-text></app-question-text>
+          </div>
+
+          <ion-content sticky scroll overflow-scroll="true" id="main-content" class="has-header has-subheader">
+
+            <div class="wrap">
+              <div class="content-header" style="padding-top:0;">
+                <app-question-text></app-question-text>
+              </div>
+
+              <div class="survey-head-wrapper" ng-class="::{inactive:survey.active == false}">
+
+                <div class="error-overlay">
+                  <div>
+                    Deine Frage wurde gemeldet und daher deaktiviert. Wenn Du damit nicht einverstanden bist, melde Dich bitte bei
+                    <br/>hello@appinio.de
+                  </div>
+                </div>
+                <div>
+                  <i class="ion-ios-calendar color-icon"></i>
+                  <div>{{::survey.date|date:'dd.MM.yy'}}</div>
+                  <span class="in-color">{{::survey.date|date:'HH:mm'}} Uhr</span>
+                </div>
+                <div>
+                  <i class="ion-ios-people color-icon"></i>
+                  <div>{{survey.userCounter}} / {{::survey.maxParticipants}}</div>
+                  <span class="in-color" ng-if="::survey.userCounter<survey.maxParticipants">{{::survey.maxParticipants-survey.userCounter}} ausstehend</span>
+                  <span class="in-color" ng-if="::survey.userCounter>=survey.maxParticipants">abgeschlossen</span>
+                </div>
+                <div>
+                  <i class="ion-ios-clock color-icon"></i>
+                  <div><timer countdown="survey.enddateTime" max-time-unit="'hour'" interval="1000">{{hhours}}:{{mminutes}}:{{sseconds}}</timer></div>
+                  <span class="in-color">verbleibend</span>
+                </div>
+              </div>
+
+              <div id="content-wrapper" ng-click="::openResultModal(survey)">
+                <app-mc ng-if="survey.questions[0].qtype == 'mc'" question="survey.questions[0]" is-viewmode="true"></app-mc>
+                <app-vstext ng-if="survey.questions[0].qtype == 'vstext'" question="survey.questions[0]" is-viewmode="true"></app-vstext>
+                <app-vsimage ng-if="survey.questions[0].qtype == 'vsimage'" question="survey.questions[0]" is-viewmode="true"></app-vsimage>
+                <app-starslider ng-if="survey.questions[0].qtype == 'starslider'" question="survey.questions[0]" is-viewmode="true"></app-starslider>
+                <app-numericslider ng-if="survey.questions[0].qtype == 'numericslider'" question="survey.questions[0]"></app-numericslider>
+                <app-thumbslider ng-if="survey.questions[0].qtype == 'thumbslider'" question="survey.questions[0]" is-viewmode="true"></app-thumbslider>
+              </div>
+            </div>
+
+          </ion-content>
+
+        </ion-slide>
+      </ion-slide-box>
+
+
+    </ion-content>
+</ion-view>

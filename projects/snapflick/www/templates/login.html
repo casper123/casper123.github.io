@@ -1,0 +1,39 @@
+<ion-view  hide-nav-bar="true">
+<ion-content class="background-screen">    
+  <div class="row">
+    <!-- <div class="col col-75 col-offset-10" style="text-align:center; padding:30px 0px;">Snap Flix</div> -->
+    <button class="button button-clear col-10" ng-click="$ionicGoBack()"><i class="ion-chevron-left" class="custom-back-btn"></i></button>
+    <h4 class="col col-75 su-heading" >Login with Email<br>
+      <hr class="under-line-title">
+    </h4>
+  </div>
+  <form ng-submit="doLogin(user)">
+    <div class="row">
+      <div class="col col-75 col-offset-10">
+          <label ng-show="errorMessage" class="alert alert-danger item">
+            {{errorMessage}}
+          </label>
+          <label ng-show="noNetwork" class="alert alert-danger item">
+            It looks like you have poor or no network connection.
+          </label>
+      </div>
+    </div>
+    <div class="row">
+      <input class="su-input-text signup-input col col-75 col-offset-10" id="lg-email" type="Email" ng-model="user.email" placeholder="Email Address" required />
+    </div>
+    <div class="row">
+      <input class="su-input-text signup-input col col-75 col-offset-10" id="lg-password" type="password" ng-model="user.password" placeholder="Password" required/>
+    </div>
+    <div class="row">
+      <input class="col col-75 col-offset-10 button button-block lg-submit-btn" type="submit" value="Login"/>
+    </div>
+    <div class="row">
+    <div class="col col-75 col-offset-10" style="margin-top:20px;">
+        <a class="lg-signup-link" href="#" style="float:left; text-decoration:none;">Forgot password?</a>
+        <a class="lg-signup-link" href="#/user/login/registerLogin" style="float:right;">New here? Sign Up</a>
+      </div>
+    </div>
+  </form>
+  
+</ion-content>
+</ion-view>

@@ -1,0 +1,20 @@
+<ion-view view-title="Setting">
+  <ion-content class="has-header">
+		<ul class="list">
+			<a href="#/tab/dash" class=""><li class="item">Home</li>
+      </a>
+      
+      <a href="#/tab/dash/misc/editprofile/{{user.userId}}" class=""><li class="item">Edit Profile</li>
+      </a>
+			<a href="#/tab/dash/misc/profilePhoto/misc/0" class=""><li class="item">Profile Photos</li>
+			</a>
+      <a href='' ng-click="changeEmailModal()"><li class="item">Change Email</li></a>
+			<a href='' ng-click="changePasswordModal()" class=""><li class="item">Change Password</li></a>
+      <a href='' ng-click="contactUsModal()" class=""><li class="item">Contact Us</li></a>
+      <a href="#/tab/dash/misc/termsOfUse" class=""><li class="item">Terms of Use</li></a>
+      <a href="#/tab/dash/misc/privacyPolicy" class=""><li class="item">Privacy Policy</li></a>
+      <a href="#/tab/dash/misc/about" class=""><li class="item">About Snapflix</li></a>
+      <a href="" ng-click="logout()" class=""><li class="item">Logout</li></a>
+    </ul>
+  </ion-content>
+</ion-view>

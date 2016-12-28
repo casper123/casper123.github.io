@@ -1,0 +1,41 @@
+<ion-modal-view class="big-modal" ng-controller="MoreCtrl">
+  <ion-header-bar class="bg-color" no-tap-scroll="true">
+    <div class="title">
+      <h2 class="apn-header-title">Mehr</h2>
+      <div class="header-icon-right" ng-click="closeLinksList()">
+        <i class="ion-ios-close-empty"></i>
+      </div>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+      <button class="link-item" ng-click="openLinkPrivacy()">
+        Datenschutz & Impressum
+      </button>
+      <button class="link-item" ng-click="openLinkAGB()">
+        AGB
+      </button>
+      <button class="link-item" ng-click="giveFeedback()">
+        Feedback
+      </button>
+      <button class="link-item" ng-click="openLinkFAQ()">
+        Hilfe & FAQ
+      </button>
+      <button class="link-item" ng-click="rateTheApp()">
+        Bewerten
+      </button>
+      <button class="link-item" ng-click="inviteToApp()">
+        Freunde einladen
+      </button>
+      <button class="link-item" ng-click="logoutUser()">
+        Logout
+      </button>
+      <button class="link-item facebook" ng-if="noFacebook == true" ng-click="migrateToFacebook()">
+        <i class="ion-social-facebook"></i> Mit Facebook verbinden
+      </button>
+      <button class="link-item" ng-click="deleteAccountPopup()" style="background-color: rgba(255, 0, 0, 0.47);">
+        Konto löschen
+      </button>
+    </div>
+  </ion-content>
+</ion-modal-view>

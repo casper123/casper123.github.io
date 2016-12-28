@@ -1,0 +1,269 @@
+<ion-view view-title="{{'newCourseTitle' | translate}}">
+  <ion-content>
+  	<form name="newCourse" novalidate="" ng-submit="doNewCourse(newCourse)">
+    <div class="list">
+    	<div ng-show="showFailMessage" class="item row">
+	    	<div class="col">{{error.messageKey | translate}}</div>
+	    </div>
+	    <label class="item item-input">
+			 <span class="input-label">{{'courseName' | translate}}</span>
+			 <input required name="name" ng-model="course.name" type="text"/>
+		  </label>
+		  <div class="form-errors" ng-show="newCourse.name.$error && newCourse.$submitted" ng-messages="newCourse.name.$error" ng-messages-include="form-errors.html"></div>
+
+      <label class="item item-input">
+			 <span class="input-label">{{'time' | translate}}</span>
+			 <input required name="time" ng-model="course.time"type="number"/>
+		  </label>
+		  <div class="form-errors"
+               ng-show="newCourse.time.$error && newCourse.$submitted"
+               ng-messages="newCourse.time.$error"
+               ng-messages-include="form-errors.html">
+      </div>
+
+    <label class="item item-input item-select">
+			<span class="input-label">{{'repeat' | translate}}</span>
+      <select ng-options="r.description for r in repeatType" required name="repeatType"  ng-model="course.repeatType"></select>
+		</label>
+		<div class="form-errors"
+               ng-show="newCourse.repeatType.$error && newCourse.$submitted"
+               ng-messages="newCourse.repeatType.$error"
+               ng-messages-include="form-errors.html">
+        </div>
+
+    <label class="item item-input">
+			<span class="input-label">{{'day' | translate}}</span>
+		</label>
+    
+    <label class="item item-input">
+      <span class="input-label">{{'monday' | translate}}</span>
+      <label class="toggle">
+         <input name="weekday[0]" value="{{daysofWeek[0]}}" ng-model="course.days[0]" type="checkbox">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+      </label>
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">{{'tuesday' | translate}}</span>
+      <label class="toggle">
+         <input name="weekday[1]" value="{{daysofWeek[1]}}" ng-model="course.days[1]" type="checkbox">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+      </label>
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">{{'wednesday' | translate}}</span>
+      <label class="toggle">
+         <input name="weekday[2]" value="{{daysofWeek[2]}}" ng-model="course.days[2]" type="checkbox">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+      </label>
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">{{'thursday' | translate}}</span>
+      <label class="toggle">
+         <input name="weekday[3]" value="{{daysofWeek[3]}}" ng-model="course.days[3]" type="checkbox">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+      </label>
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">{{'friday' | translate}}</span>
+      <label class="toggle">
+         <input name="weekday[4]" value="{{daysofWeek[4]}}" ng-model="course.days[4]" type="checkbox">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+      </label>
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">{{'saturday' | translate}}</span>
+      <label class="toggle">
+         <input name="weekday[5]" value="{{daysofWeek[5]}}" ng-model="course.days[5]" type="checkbox">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+      </label>
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">{{'sunday' | translate}}</span>
+      <label class="toggle">
+         <input name="weekday[6]" value="{{daysofWeek[6]}}" ng-model="course.days[6]" type="checkbox">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+      </label>
+    </label>
+
+    <label class="item item-input">
+			<span class="input-label">{{'duration' | translate}}</span>
+			<input required name="duration" ng-model="course.duration" type="number"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newCourse.duration.$error && newCourse.$submitted"
+               ng-messages="newCourse.duration.$error"
+               ng-messages-include="form-errors.html">
+        </div>
+
+        <label class="item item-input">
+			<span class="input-label">{{'coach' | translate}}</span>
+			<input required name="coach" ng-model="course.coach" type="text"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newCourse.coach.$error && newCourse.$submitted"
+               ng-messages="newCourse.coach.$error"
+               ng-messages-include="form-errors.html">
+        </div>
+
+        <label class="item item-input">
+			<span class="input-label">{{'location' | translate}}</span>
+			<input required name="location" ng-model="course.location" type="text"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newCourse.location.$error && newCourse.$submitted"
+               ng-messages="newCourse.location.$error"
+               ng-messages-include="form-errors.html">
+        </div>
+
+        <label class="item item-input">
+			<span class="input-label">{{'max_participants' | translate}}</span>
+			<input required name="" ng-model="course.maxParticipants" type="number"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newCourse.maxParticipants.$error && newCourse.$submitted"
+               ng-messages="newCourse.maxParticipants.$error"
+               ng-messages-include="form-errors.html">
+        </div>
+
+    <label class="item item-input">
+			<span class="input-label">{{'min_participants' | translate}}</span>
+			<input required name="" ng-model="course.minParticipants" type="number"/>
+		</label>
+		<div class="form-errors"
+               ng-show="newCourse.minParticipants.$error && newCourse.$submitted"
+               ng-messages="newCourse.minParticipants.$error"
+               ng-messages-include="form-errors.html">
+    </div>
+
+
+    <label class="item item-input">
+      <span class="input-label">{{'booking_start' | translate}}</span>
+      <input required name="advancedBooking" ng-model="course.advancedBooking" type="number"/>
+      <span>{{'days_before' | translate}}</span>
+    </label>
+    <div class="form-errors"
+               ng-show="newCourse.advancedBooking.$error && newCourse.$submitted"
+               ng-messages="newCourse.advancedBooking.$error"
+               ng-messages-include="form-errors.html">
+    </div>
+
+    <label class="item item-input">
+      <span class="input-label">{{'booking_stop' | translate}}</span>
+      <input required name="bookingStop" ng-model="course.bookingStop" type="number"/>
+      <span>{{'minutes_before' | translate}}</span>
+    </label>
+    <div class="form-errors"
+               ng-show="newCourse.bookingStop.$error && newCourse.$submitted"
+               ng-messages="newCourse.bookingStop.$error"
+               ng-messages-include="form-errors.html">
+    </div>
+
+    <label class="item item-input">
+      <span class="input-label">{{'cancellation' | translate}}</span>
+      <input required name="cancelStop" ng-model="course.cancelStop" type="number"/>
+      <span>{{'minutes_before' | translate}}</span>
+    </label>
+    <div class="form-errors"
+               ng-show="newCourse.cancelStop.$error && newCourse.$submitted"
+               ng-messages="newCourse.cancelStop.$error"
+               ng-messages-include="form-errors.html">
+    </div>
+
+    <label class="item item-input">
+      <span class="input-label">{{'membersOnly' | translate}}</span>
+      <label class="toggle">
+         <input name="membersOnly" ng-model="course.membersOnly" type="checkbox">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+      </label>
+    </label>
+    <div class="form-errors"
+         ng-show="newCourse.membersOnly.$error && newCourse.$submitted"
+         ng-messages="newCourse.membersOnly.$error"
+         ng-messages-include="form-errors.html">
+    </div>
+
+    <label class="item item-input">
+      <span class="input-label">{{'bookable' | translate}}</span>
+      <label class="toggle">
+         <input name="bookable" ng-model="course.bookable" type="checkbox">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+      </label>
+    </label>
+    <div class="form-errors"
+         ng-show="newCourse.bookable.$error && newCourse.$submitted"
+         ng-messages="newCourse.bookable.$error"
+         ng-messages-include="form-errors.html">
+    </div>
+
+    <label class="item item-input">
+      <span class="input-label">{{'notify' | translate}}</span>
+      <label class="toggle">
+         <input name="ownerNotification" ng-model="course.ownerNotification" type="checkbox">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+      </label>
+    </label>
+    <div class="form-errors"
+         ng-show="newCourse.ownerNotification.$error && newCourse.$submitted"
+         ng-messages="newCourse.ownerNotification.$error"
+         ng-messages-include="form-errors.html">
+    </div>
+
+    <label class="item item-input">
+      <span class="input-label">{{'alwaysBookable' | translate}}</span>
+      <label class="toggle">
+         <input name="limitedByContingent" ng-model="course.limitedByContingent" type="checkbox">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+      </label>
+    </label>
+    <div class="form-errors"
+         ng-show="newCourse.limitedByContingent.$error && newCourse.$submitted"
+         ng-messages="newCourse.limitedByContingent.$error"
+         ng-messages-include="form-errors.html">
+    </div>
+
+   <label class="item item-input">
+      <span class="input-label">{{'description' | translate}}</span>
+      <textarea style="height:100px;" required name="address" ng-model="course.description"></textarea>
+    </label>
+    <div class="form-errors"
+               ng-show="newCourse.$submitted.description.$error && newCourse.$submitted"
+               ng-messages="newCourse.description.$error"
+               ng-messages-include="form-errors.html"></div>
+	
+    <label class="item item-input">
+      <button type="submit" class="button button-clear button-assertive">{{'edit' | translate}}</button>
+    </label>
+  </div>		
+	</form>
+  </ion-content>
+</ion-view>
+
+

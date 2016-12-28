@@ -1,0 +1,56 @@
+<ion-popover-view style="border-radius:10px; border:solid 1px #dedddd;">
+  <div class="row">
+    <div class="col col-33">&nbsp;</div>
+    <div class="">
+      <img class="team-img" src="https://app.seegad.com/static/img/{{detail.gender | lowercase}}.png">
+    </div>
+    <div class="col col-33">&nbsp;</div>
+  </div>
+      
+  <div class="row">
+    <div class="col">
+      <p class="grey-dark center-text">{{detail.firstName}} {{detail.lastName}}</p>
+      <p class="grey-mild small center-text" style="margin-top:10px !important;">{{detail.totalHours}} hrs Logged This Week</p>
+    </div>
+  </div>
+        
+  <div class="row">
+    <div class="col">
+      <a href="tel:{{detail.mobilePhone}}"><img src="img/seegad-contact.png" class="col contacts-btn"></a>
+    </div>
+    <div class="col">
+      <img src="img/seegad-assign.png" class="col assign-btn">
+    </div>
+  </div>
+      
+  <div class="row">
+    <div class="list col" style="padding:0px; max-height:250px; overflow:scroll;">
+      <div class="item team-list-divider">
+        {{detail.firstName}}'s Task
+      </div>
+       <div ng-if="userTasks == ''" class="card">
+        <div class="item item-text-wrap">
+          <span class= "assertive">{{detail.firstName}} has no tasks.</span>
+        </div>
+      </div> 
+      <div ng-repeat="task in userTasks" ng-class-odd="'task-light'" 
+        ng-class-even="'task-dark'" class="item item-team">
+        <div class="col col-80 pull-left">
+          <span class="small grey-mild">{{getProjectName(task.projectId)}}</span>
+          <p class="gey-dark"> {{task.title}}</p>
+          <span class="small grey-light">1hr logged</span> 
+        </div>
+        <div class="col col-20 pull-right">
+          <span >
+            <span class="small">&nbsp;</span>
+            <p class="grey-light small">{{task.dateEnd | date:'d/M'}}</p>
+            <span class="small"></span>
+          </span>
+        </div>
+      </div>
+      <div class="item team-list-divider">
+        &nbsp;
+      </div>
+    </div>
+  </div>
+</ion-popover-view>

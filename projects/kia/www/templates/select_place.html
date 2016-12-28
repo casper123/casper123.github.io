@@ -1,0 +1,44 @@
+<div class="popup_div3">
+  <form ng-submit="doSelectPlace(user)">
+ <!--    <div class="cross">
+      <a href="" ng-click="closeSelectPlace()"><i class="icon ion-close close_popup"></a>
+    </div> -->
+    <div class="row">
+      <div class="col col-90">&nbsp;</div>
+      <div class="col col-10"><a href="" ng-click="closeSelectPlace()"><i class="ion-ios7-close-empty"></i></a></div>
+    </div>
+    <div class="iniciar-form">
+      
+
+      <h2><span>SELECCIONE SU PLACA</span></h2>
+        <label ng-show="errorMessage" class="alerta">
+                <strong>Error:</strong> {{errorMessage}}
+        </label>
+      <div class="row">
+        <div class="col col-10">&nbsp;</div>
+        <div class="col col-80">  <p>Seleccione la placa con la que desea obtener este beneficio</p></div>
+        <div class="col col-10">&nbsp;</div>
+      </div>
+      
+      <div class="row">
+        <div class="col col-20">&nbsp;</div>
+        <div class="col col-60" style="text-align:center">
+            <select ng-model="user.place" class="select-form" style="border-radius:100px;">
+              <option value="" selected="selected">Seleccione</option>
+              <option ng-repeat="place in places" value="{{place}}">{{place}}</option>
+            </select>
+        </div>
+        <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="border-set-bottom"></div>
+      <div class="row">
+        <div class="col col-20">&nbsp;</div>
+        <div class="col col-60" style="text-align:center">
+           <input type="submit" class="button-set2 ui-btn ui-corner-all popupaceptar button " value="ACEPTAR"   style="width: inherit !important;"/>
+        </div>
+        <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </form>
+</div>

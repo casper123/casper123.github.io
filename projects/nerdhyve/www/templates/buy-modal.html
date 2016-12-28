@@ -1,0 +1,81 @@
+<ion-modal-view class="big-modal">
+  <ion-header-bar align-title="left" class="bar-light">
+    <div class="buttons">
+      <button class="button" ng-click="closeBuyModal()">
+        <i class="ion-arrow-left-c"></i>
+      </button>
+    </div>
+    <h2 class="title" style="text-align:center; color:#e47d25;">Check Out</h2>
+  </ion-header-bar>
+  <ion-content>
+
+    <div class="list">
+      <div class="item item-thumbnail-left">
+        <img src="http://curiouslabx.com/projects/allshook/novitrix/{{image[0].item_image || 'images/Photo-Not-Available.jpg'}}" style="border-radius:10px;">
+        <p class="wrap-text">{{item.item_title}}</p>
+        <p class="small">$ {{item.price | number}}</p>
+      </a>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <p>{{item.overview}}</p>
+      </div>
+    </div>
+
+    
+
+    <div class="list">
+      <label class="item item-divider">
+        Personal Details
+      </label>
+    </div>
+    <div class="row checkout-form">
+      <div class="col col-33">First Name</div>
+      <div class="col"><input class="checkout-form-text" type="text" ng-model="user.first_name" placeholder="First Name"></div>
+    </div>
+    <div class="row checkout-form">
+      <div class="col col-33">Last Name</div>
+      <div class="col"><input class="checkout-form-text" type="text" ng-model="user.last_name" placeholder="Last Name"></div>
+    </div>
+     <div class="row checkout-form">
+      <div class="col col-33">Email</div>
+      <div class="col"><input type="text" ng-model="user.email" placeholder="Email Address"></div>
+    </div>
+    <div class="row checkout-form">
+      <div class="col col-33">Contact Number</div>
+      <div class="col"><input type="text" ng-model="user.number" placeholder="Contact Number"></div>
+    </div>
+    <div class="list">
+      <label class="item item-divider">
+        Shipping Details
+      </label>
+    </div>
+    <div class="row checkout-form">
+      <div class="col"><input type="text" ng-model="user.address" placeholder="Shipping Address" style="width:100%;"></div>
+    </div>
+    <div class="row checkout-form">
+      <div class="col col-33"><input class="checkout-form-text" type="text" ng-model="user.city" placeholder="City"></div>
+      <div class="col col-33"><input class="checkout-form-text" type="text" ng-model="user.state" placeholder="State"></div>
+      <div class="col col-33"><input class="checkout-form-text" type="text" ng-model="user.zip_code" placeholder="Zip"></div>
+    </div>
+    <div class="row checkout-form">
+      <div class="col"><input type="text" ng-model="user.country" placeholder="Country"></div>
+    </div>
+
+    <div class="list">
+    <label class="item item-divider">
+        Product Details
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Quantity</span>
+        <input type="number" min="1" ng-model="user.quantity">
+        <span class="input-label" style="width:100%;">${{user.quantity * item.price | number}}</span>
+      </label>
+      <button class="button button-block button-assertive" ng-click="harvest(user)">
+        <i class="icon ion-android-cart"> Harvest the Hyve</i>
+      </button>
+    </div>
+    <div ng-if="keyBoardShow" style="height: {{keyBoardHeight}}px;">&nbsp;</div>
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,54 @@
+<ion-view title="{{today | date:'EEEE, d MMMM'}}">
+  <ion-content>
+      <ion-scroll style="padding:0px; background:#f9fafa;" direction="x" class="row wide-as-needed">
+
+          <div ng-repeat="day in days" ng-click="sortTasks(day.day)" class="swiper-day col-10">
+              <div class="day-container">
+                <div class="day {{day.class}}">{{day.day}}</div>
+                <div class="time time-active" style="margin-top:6px;">{{day.totalHours}}</div>
+              </div>
+          </div>
+          
+      </ion-scroll>
+
+    <div class="row stats">
+      <div align="center" class="col">
+        <p class="smaller" style="color:#98a0a5;"><strong>UTILIZATION RATE</strong></p>
+        <p class="stats-data util">{{rate | number:1}}%</p>
+      </div>
+      <hr>
+      <div align="center" class="col">
+        <p class="smaller" style="color:#98a0a5"><strong>BILLABLE EXPENSE</strong></p>
+        <p class="stats-data bill">{{bill | currency}}</p>
+      </div>
+    </div>
+
+    <ion-list>
+      <ion-item class="row task-list-item" ng-repeat="task in taskList | orderBy:['-sortOrder', '-dateDue']">
+        <div class="col col-10">
+          <p style="margin-bottom:-2px;">&nbsp;</p>
+          <p class="checkbox" style="padding:0px 7px;">
+            <input type="checkbox" ng-model="confirm" ng-change="complete(confirm, task.id)"/>
+          </p>
+          <p>&nbsp;</p>
+        </div>
+        <div class="col col-67" style="padding-left:15px;" ng-click="showEdit(task.id, task.userId, task.projectId)">
+          <p class="small grey-mild">{{ task.projectName }}</p>
+          <p class="grey-darker">{{ task.title }}</p>
+          <p class="small grey-light">{{ task.hours }}hr Logged</p>
+        </div>
+        <div class="col col-25">
+          <p style="margin-bottom:-6px;">&nbsp;</p>
+          <p class="blue-default">  
+            <div class="col col-50 pull-left blue-default" style="text-align:right; margin-right:10px;"><span ng-show="task.timeSpent > 0">+</span>{{task.timeSpent}} </div>
+            
+            <div ng-show="checkTimer(task.id)" ng-click="stop(task.id)" class="col col-50"><i class="fa fa-stop-circle-o blue-default fa-2x" style="-webkit-text-stroke:3px #F9F9FA; margin-top:-4px;"></i></div>
+
+            <div ng-show="!checkTimer(task.id)" ng-click="start(task.id)" class="col col-50"><i class="fa fa-play-circle-o blue-default fa-2x" style="-webkit-text-stroke:3px #F9F9FA; margin-top:-4px;"></i></div>
+          </p>
+          <p>&nbsp;</p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

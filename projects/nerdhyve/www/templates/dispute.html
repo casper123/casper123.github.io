@@ -1,0 +1,16 @@
+<ion-modal-view class="big-modal">
+  <ion-header-bar align-title="left" class="bar-light">
+    <div class="buttons">
+      <button class="button" ng-click="closeModal()">
+        <i class="ion-arrow-left-c"></i>
+      </button>
+    </div>
+    <h2 class="title" style="text-align:center; color:#e47d25;">Dispute</h2>
+  </ion-header-bar>
+  <ion-content>
+  	<h2>Write a Brief Description here:</h2>
+  	<br>
+  	<textarea style="margin-left:2px" rows="10" cols="65" wrap="soft" placeholder="Type message here..." ng-model="message"></textarea>
+  	<button class="button button-block button-assertive">Create</button>
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,252 @@
+<ion-modal-view class="big-modal" ng-controller="SurveyDetailsCtrl">
+  <ion-header-bar class="bg-color">
+    <div class="title">
+      <h2 class="apn-header-title" ng-if="chooseSurvey">Umfragen</h2>
+
+      <h2 class="apn-header-title" ng-if="!chooseSurvey">{{currentSurvey.title || 'Lädt..'}}</h2>
+
+      <div class="header-icon-right" ng-click="closeStartSurvey()">
+        <i class="ion-ios-close-empty"></i>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-content scroll="false" class="apn-app-questions" style="text-align: center">
+
+    <div ng-if="chooseSurvey" style="height:100%;">
+
+      <div ng-if="companySurveys == null">
+        <ion-spinner icon="dots"></ion-spinner>
+      </div>
+
+      <div class="empty-container" ng-if="companySurveysError == true">
+        <div class="row">
+          <div class="avatar-wrapper-big bg-color auto-margin">
+            <div><i class="ion-paper-airplane"></i></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-80 col-offset-10">
+            <h2 class="screen-head">{{'verify' | translate}}</h2>
+            <p class="small-text">{{'verify_description' | translate}}</p>
+          </div>
+        </div>
+        <div>
+          <button class="apn-main-btn bg-color" ng-click="resendMail()">
+            <div>{{'resend_mail' | translate}}</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="empty-container" ng-if="companySurveys.length == 0 && !companySurveysError">
+        <div class="row">
+          <div class="avatar-wrapper-big bg-color auto-margin">
+            <div><i class="ion-chatboxes"></i></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-80 col-offset-10">
+            <h2 class="screen-head">{{'do_not_miss_anything' | translate}}</h2>
+            <p class="small-text">{{'we_notify_you' | translate}}</p>
+          </div>
+        </div>
+      </div>
+
+      <ion-slide-box show-pager="true" style="width:100%;height:100%;">
+
+        <ion-slide style="width:100%;height:100%;" ng-repeat="survey in companySurveys|orderBy:'-date'|limitTo:20">
+
+          <div class="survey-selection">
+            <div class="avatar-wrapper-tiny bg-color">
+              <div>
+                <i class="ion-social-apple"></i>
+              </div>
+            </div>
+
+            <h2 class="screen-head">{{survey.title}}</h2>
+            <p class="in-color small-text">{{survey.questions}} Fragen</p>
+
+            <div class="padded">
+              <p class="small-text" ng-if="survey.description != null">{{survey.description}}</p>
+              <p class="small-text" ng-if="survey.description == null">
+                Du benötigst mehr Coins? Dann bessere Dein Taschengeld auf, indem Du diese Umfrage beantwortest.
+              </p>
+            </div>
+
+          </div>
+          <div style="text-align: center">
+
+            <div class="reward-wrapper">
+              <div>Du erhälst:</div>
+              <span>100</span> <i class="ion-home color-icon"></i>
+
+            </div>
+
+            <button ng-click="startSurvey(survey._id)" class="apn-main-btn bg-color">
+              <div>{{'start_survey' | translate}}</div>
+            </button>
+          </div>
+
+        </ion-slide>
+
+      </ion-slide-box>
+
+    </div>
+
+    <div ng-if="!chooseSurvey"  style="height:100%;">
+      <div class="slide-progress">
+        <div ng-repeat="s in currentSurvey.steps"
+             ng-style="{width:(100/currentSurvey.questionLength)+'%'}"
+             ng-class="{active:!($index >= (currentSurvey.questionLength-currentSurvey.questions.length))}"></div>
+
+      </div>
+
+      <div class="loading-wrapper" ng-if="currentSurvey == null">
+        <ion-spinner icon="dots"></ion-spinner>
+      </div>
+
+      <app-video-play survey="currentSurvey" ng-if="currentSurvey.video != null"></app-video-play>
+
+      <div ng-if="currentSurvey.questions.length == 0">
+        <div class="row" style="padding-top: 10%;text-align: center;">
+          <div class="col col-80 col-offset-10">
+            <h2 class="screen-head">Vielen Dank</h2>
+            <span class="coin-badge">€0.20</span>
+
+            <p class="small-text">
+              Du hast jetzt die möglichkeit zu spenden... Du hast jetzt die möglichkeit zu spenden... Du hast jetzt die
+              möglichkeit zu spenden...
+            </p>
+
+            <p class="small-text in-color" ng-if="currentSurvey.charities.length>0">
+              Spende 5€ an eines der Projekte
+            </p>
+          </div>
+        </div>
+        <div class="row" ng-if="currentSurvey.charities.length>0">
+          <div style="padding-top:1em;width:100%;">
+            <div class="charity-wrapper"
+                 ng-class="{active: currentSurvey.hasVoted}"
+                 ng-repeat="c in currentSurvey.charities" ng-click="voteForCharity(c)">
+              <div class="avatar-wrapper-big bg-color">
+                <div>
+                  <img ng-src="{{::c.imageUrl}}"/>
+
+                  <div class="progress bg-color" ng-style="{height:(c.votes*100/currentSurvey.allVotes) + '%'}"></div>
+                </div>
+              </div>
+              <div class="name">{{::c.name|limitTo:15}}</div>
+              <div class="location in-color">{{::c.location}}</div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;padding-top:2em;">
+          <button ng-click="closeStartSurvey()" class="apn-main-btn bg-color">
+            <div>zum Menü</div>
+          </button>
+        </div>
+      </div>
+
+      <div ng-repeat="question in currentSurvey.questions|limitTo:1" class="survey-animation">
+
+        <div id="content-header" class="content-header survey-header">
+          <app-question-text></app-question-text>
+        </div>
+
+        <ion-content app-sticky scroll overflow-scroll="true" id="main-content" class="has-content-header">
+
+          <div class="wrap">
+            <div class="content-header survey-header">
+              <app-question-text></app-question-text>
+            </div>
+
+            <div class="loading-overlay"
+                 ng-class="{'hide': question.imagesReady >= AllImages || AllImages == 0 }">
+              <div class="indicator">
+                <ion-spinner icon="spiral"></ion-spinner>
+              </div>
+            </div>
+
+            <div id="content-wrapper">
+              <!-- Question 1 = Mehrfachauswahl -->
+              <app-mc ng-if="question.qtype == 'mc'" question="question"
+                      is-quickie="false"></app-mc>
+
+              <!-- Question 3 = Bildauswahl -->
+              <app-images ng-if="question.qtype == 'image'" question="question"
+                          is-quickie="false"></app-images>
+
+              <!-- Question 4 = Bildgalerie -->
+              <app-image-cloud ng-if="question.qtype == 'imagecloud'" question="question"
+                               is-quickie="false"></app-image-cloud>
+
+              <!-- Question 5 = Text Entweder-Oder -->
+              <app-vstext ng-if="question.qtype == 'vstext'" question="question"
+                          is-quickie="false"></app-vstext>
+
+              <!-- Question 6 = Bild Entweder-Oder -->
+              <app-vsimage ng-if="question.qtype == 'vsimage'" question="question"
+                           is-quickie="false"></app-vsimage>
+
+              <!-- Question 2 = Ranking -->
+              <app-ranking ng-if="question.qtype == 'ranking'" question="question"></app-ranking>
+
+              <!-- Question 7 = Sterne -->
+              <app-starslider ng-if="question.qtype == 'starslider'" question="question"
+                              is-quickie="false"></app-starslider>
+
+              <!-- Question 8 = Numerisch -->
+              <app-numericslider ng-if="question.qtype == 'numericslider' && question.descrNumeric != 'text'"
+                             question="question" is-quickie="false"></app-numericslider>
+
+              <!-- Question 9 = Likert-Skala -->
+              <app-likert ng-if="question.qtype == 'numericslider' && question.descrNumeric == 'text'"
+                          question="question" is-quickie="false"></app-likert>
+
+              <!-- Question 10 = Daumen -->
+              <app-thumbslider ng-if="question.qtype == 'thumbslider'" question="question"
+                               is-quickie="false"></app-thumbslider>
+
+              <!-- Question 11 = Freitext -->
+              <app-freetext ng-if="question.qtype == 'freetext'" question="question"></app-freetext>
+
+              <!-- Question 12 = Barcode -->
+              <!-- <barcode ng-if="question.qtype == 'barcode'" question="question"></barcode> -->
+
+              <!-- Question 13 = Präferenz -->
+              <app-propertyslider ng-if="question.qtype == 'propertyslider'" question="question"
+                                  is-quickie="false"></app-propertyslider>
+
+<!--
+              &lt;!&ndash; Question 14 = Number &ndash;&gt;
+              <app-number ng-if="question.qtype == 'number'" question="question"></app-number>
+
+              &lt;!&ndash; Question 15 = Photo &ndash;&gt;
+              <app-photo ng-if="question.qtype == 'photo'" question="question"></app-photo>
+
+              &lt;!&ndash; Question 16 = Video &ndash;&gt;
+              <app-videocapture ng-if="question.qtype == 'video'" question="question"></app-videocapture>
+
+              &lt;!&ndash; Question  Heatmap &ndash;&gt;
+              <app-heatmap ng-if="question.qtype == 'heatmap'" question="question"></app-heatmap>
+-->
+
+              {{question.response}}
+
+            </div>
+
+            <div class="push"></div>
+          </div>
+
+          <div id="content-footer">
+            <button ng-click="nextQuestion()" class="apn-main-btn bg-color" ng-disabled="!question.valid"
+                    ng-class="{invalid: !question.valid}">
+              <div>{{'next' | translate}}</div>
+            </button>
+          </div>
+        </ion-content>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-modal-view>

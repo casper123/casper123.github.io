@@ -1,0 +1,87 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'ionic-filter-bar' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.7
+4 verbose install initial load of D:\youtubeVideo\youtubeApp\package.json
+5 warn package.json youtubeapp@1.0.0 No repository field.
+6 warn package.json youtubeapp@1.0.0 No README data
+7 warn package.json youtubeapp@1.0.0 No license field.
+8 verbose readDependencies loading dependencies from D:\youtubeVideo\youtubeApp\package.json
+9 silly cache add args [ 'ionic-filter-bar', null ]
+10 verbose cache add spec ionic-filter-bar
+11 silly cache add parsed spec { raw: 'ionic-filter-bar',
+11 silly cache add   scope: null,
+11 silly cache add   name: 'ionic-filter-bar',
+11 silly cache add   rawSpec: '',
+11 silly cache add   spec: '*',
+11 silly cache add   type: 'range' }
+12 silly addNamed ionic-filter-bar@*
+13 verbose addNamed "*" is a valid semver range for ionic-filter-bar
+14 silly addNameRange { name: 'ionic-filter-bar', range: '*', hasData: false }
+15 silly mapToRegistry name ionic-filter-bar
+16 silly mapToRegistry using default registry
+17 silly mapToRegistry registry https://registry.npmjs.org/
+18 silly mapToRegistry uri https://registry.npmjs.org/ionic-filter-bar
+19 verbose addNameRange registry:https://registry.npmjs.org/ionic-filter-bar not in flight; fetching
+20 verbose request uri https://registry.npmjs.org/ionic-filter-bar
+21 verbose request no auth needed
+22 info attempt registry request try #1 at 5:40:13 PM
+23 verbose request id 492559cd8fc10691
+24 http request GET https://registry.npmjs.org/ionic-filter-bar
+25 http 404 https://registry.npmjs.org/ionic-filter-bar
+26 verbose headers { 'content-type': 'application/json',
+26 verbose headers   'cache-control': 'max-age=0',
+26 verbose headers   'content-length': '2',
+26 verbose headers   'accept-ranges': 'bytes',
+26 verbose headers   date: 'Thu, 10 Sep 2015 12:40:18 GMT',
+26 verbose headers   via: '1.1 varnish',
+26 verbose headers   age: '0',
+26 verbose headers   connection: 'keep-alive',
+26 verbose headers   'x-served-by': 'cache-fra1246-FRA',
+26 verbose headers   'x-cache': 'MISS',
+26 verbose headers   'x-cache-hits': '0',
+26 verbose headers   'x-timer': 'S1441888818.854215,VS0,VE108' }
+27 silly get cb [ 404,
+27 silly get   { 'content-type': 'application/json',
+27 silly get     'cache-control': 'max-age=0',
+27 silly get     'content-length': '2',
+27 silly get     'accept-ranges': 'bytes',
+27 silly get     date: 'Thu, 10 Sep 2015 12:40:18 GMT',
+27 silly get     via: '1.1 varnish',
+27 silly get     age: '0',
+27 silly get     connection: 'keep-alive',
+27 silly get     'x-served-by': 'cache-fra1246-FRA',
+27 silly get     'x-cache': 'MISS',
+27 silly get     'x-cache-hits': '0',
+27 silly get     'x-timer': 'S1441888818.854215,VS0,VE108' } ]
+28 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/ionic-filter-bar
+28 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:239:14)
+28 verbose stack     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:170:14)
+28 verbose stack     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:354:22)
+28 verbose stack     at Request.emit (events.js:110:17)
+28 verbose stack     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1207:14)
+28 verbose stack     at Request.emit (events.js:129:20)
+28 verbose stack     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1153:12)
+28 verbose stack     at IncomingMessage.emit (events.js:129:20)
+28 verbose stack     at _stream_readable.js:908:16
+28 verbose stack     at process._tickCallback (node.js:355:11)
+29 verbose statusCode 404
+30 verbose pkgid ionic-filter-bar
+31 verbose cwd D:\youtubeVideo\youtubeApp
+32 error Windows_NT 6.2.9200
+33 error argv "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "ionic-filter-bar"
+34 error node v0.12.7
+35 error npm  v2.11.3
+36 error code E404
+37 error 404 Registry returned 404 for GET on https://registry.npmjs.org/ionic-filter-bar
+37 error 404
+37 error 404 'ionic-filter-bar' is not in the npm registry.
+37 error 404 You should bug the author to publish it (or use the name yourself!)
+37 error 404 It was specified as a dependency of 'youtubeapp'
+37 error 404
+37 error 404 Note that you can also install from a
+37 error 404 tarball, folder, http url, or git url.
+38 verbose exit [ 1, true ]

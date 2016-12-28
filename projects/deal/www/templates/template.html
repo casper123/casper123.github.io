@@ -1,0 +1,52 @@
+<ion-side-menus>
+
+  <ion-pane ion-side-menu-content>
+    <ion-nav-bar class="bar-pattern nav-title-slide-ios7">
+      <ion-nav-back-button class="button button-icon icon ion-ios7-arrow-back">
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu side="left">
+    <ion-content>
+
+    </ion-content>
+
+    <ion-content class="has-header" ng-hide="LOGIN_STATUS">
+      <ion-list>
+        <ion-item nav-clear menu-close ng-click="showLogin()">
+          登陆
+        </ion-item>
+      </ion-list>
+    </ion-content>
+    <ion-content class="has-header" ng-show="LOGIN_STATUS">
+      <ion-list>
+        <ion-item class="item item-avatar">
+          <img ng-src="{{profile.picture}}">
+          <h2>{{profile.username}}</h2>
+          <p>普通会员</p>
+          </a>
+        </ion-item>
+        <ion-item menu-close ng-click="gotoProfile()">
+          个人资料
+        </ion-item>
+        <ion-item menu-close ng-click="gotoPreference()">
+          界面定制
+        </ion-item>
+        <!-- <ion-item menu-close ng-click="gotoFilterTags()">
+          热门标签
+        </ion-item> -->
+        <!-- <ion-item nav-clear menu-close href="#/app/search">
+          我的许愿
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/browse">
+          奖励计划
+        </ion-item> -->
+        <ion-item nav-clear menu-close ng-click="logout()">
+          退出
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

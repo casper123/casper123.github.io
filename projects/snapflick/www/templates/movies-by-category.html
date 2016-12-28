@@ -1,0 +1,16 @@
+<ion-view hide-tabs view-title="{{categoryName}}">
+  <ion-content>
+	<div class="list">
+		<div ng-repeat="movie_date in items">
+			<div class="item item-divider">{{movie_date.date | date: 'MMM dd, yyyy'}}</div>
+	   		<a ng-repeat="movie in movie_date.movies" class="item item-thumbnail-left" href="#/tab/dash/movieDetail/{{movie.movie_id}}/{{movie.movie_name}}">
+		      	<img ng-src="http://curiouslabx.com/projects/snap_flix/{{movie.movie_main_img || 'images/MovieBackgroundPlaceholder.png'}}">
+		      	<h2>{{movie.movie_name}}</h2> 
+		      	<span style="font-size:10px;" ng-if="movie.current_status == 0">(Coming Soon)</span> <span style="font-size:10px;" ng-if="movie.current_status == 1">(In Theaters)</span> 
+		      	<p>{{movie.movie_synopsis}}</p>
+		      	<p>US Charts Rated {{movie.movie_us_rate}} | {{movie.movie_total_time}}</p>
+	    	</a>
+	    </div>
+	</div>
+  </ion-content>
+</ion-view>

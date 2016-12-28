@@ -1,0 +1,11 @@
+<ion-view title="{{startOfWeek | date:'d MMM'}} - {{endOfWeek | date:'d MMM'}}">
+	<ion-content>
+    	<div class="list">
+		    <a class="item item-avatar" collection-repeat="member in resMembers" ng-click="showDetail(member.username)">
+		      <img src="https://app.seegad.com/static/img/{{member.gender | lowercase}}.png">
+		      <p class="grey-darker">{{member.firstName}} {{member.lastName}}</p>
+		      <p class="grey-light small">{{member.totalHours}} hrs Logged this week.</p>
+		    </a>
+		</div>
+	</ion-content>
+</ion-view>

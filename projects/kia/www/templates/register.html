@@ -1,0 +1,423 @@
+
+<div class="popup_div" style="color:#b4b4b4; overflow: scroll;">
+  <form ng-submit="doRegister(user)" id="activate" name="activate" method="post" enctype="multipart/form-data">
+   <!--  <div class="cross">
+      <a href="" ng-click="closeRegister()"><i class="icon ion-close"></i></a>
+    </div> -->
+     <div class="row">
+      <div class="col col-90">&nbsp;</div>
+      <div class="col col-10"><a href="#/user/home"><i class="ion-ios7-close-empty"></i></a></div>
+    </div>
+    <div class="iniciar-form">
+      
+      <div class="row">
+        <div class="col col-10">&nbsp;</div>
+        <div class="col col-80"> <h2><span style="border-bottom: initial;">REGISTRO DE USUARIO</span></h2></div>
+        <div class="col col-10">&nbsp;</div>
+      </div>
+     <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Nombres *</label>
+                <label >
+                  <input type="text" ng-model="user.nombre" name="nombre" id="basic" value="" data-mini="true" class="my_input" />
+                </label>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>  
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Apellidos *</label>
+                <label >
+                  <input type="text" ng-model="user.apellido" name="apellido" id="basic" value="" data-mini="true" class="my_input" />
+                </label>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div> 
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Documento de identidad*</label>
+                <label >
+                  <input type="text" ng-model="user.documento" name="documento" id="basic" value="" data-mini="true" class="my_input" />
+                </label>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>  
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Tipo de documento *</label>
+                 <select class="select-form" ng-model="user.tipo_documento" name="tipo_documento">
+                  <option value="" selected="selected">Seleccione</option>
+                  <option value="TI">Tarjeta de Identidad</option>
+                  <option value="CC">Cédula de Ciudadania</option>
+                  <option value="CE">Cédula de extranjeria</option>
+                  <option value="PP">Pasaporte</option>
+                  <option value="NT">NIT</option>
+                </select>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Fecha de nacimiento *</label>
+                <label >
+                  <input type="date" ng-model="user.fecha_nacimiento" name="fecha_nacimiento" id="basic" value="" data-mini="true" class="my_input" style="background: rgba(11, 10, 10, 0.8);border: 1px solid #b4b4b4;color: #b4b4b4;border-radius: 10px;width: 100%;height: 34px; padding: 5px;" />
+                </label>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div> 
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Correo Electrónico*</label>
+                <label >
+                  <input type="email" ng-model="user.correo" name="correo" id="basic" value="" data-mini="true" class="my_input" />
+                </label>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div> 
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Estado Civil *</label>
+                 <select class="select-form" ng-model="user.estado_civil" name="estado_civil">
+                    <option value="" selected="selected">Seleccione</option>
+                    <option value="Soltero">Soltero(a)</option>
+                    <option value="Union_Libre">Unión Libre</option>
+                    <option value="Casado">Casado(a)</option>
+                    <option value="Divorciado">Divorciado(a)</option>
+                  </select>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Género *</label>
+                 <select class="select-form" ng-model="user.genero" name="genero">
+                  <option value="" selected="selected">Seleccione</option>
+                  <option value="Femenino">Femenino</option>
+                  <option value="Masculino">Masculino</option>
+                </select>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+       <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Ocupación *</label>
+                <select class="select-form" ng-model="user.ocupacion" name="ocupacion">
+                  <option value="" selected="selected">Seleccione</option>
+                  <option value="Estudiante">Estudiante</option>
+                  <option value="Empleado">Empleado(a)</option>
+                  <option value="Desmpleado">Desmpleado(a)</option>
+                  <option value="Independiente">Independiente</option>
+                  <option value="Pensionado">Pensionado(a)</option>
+                  <option value="Hogar">Hogar</option>
+                </select>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Departamento *</label>
+                <select class="select-form" ng-model="user.departamento" name="departamento">
+                  <option value="" selected="selected">Seleccione</option>
+                  <option value="5">ANTIOQUIA</option>
+                  <option value="8">ATLANTICO</option>
+                  <option value="11">BOGOTA</option>
+                </select>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Ciudad *</label>
+                <select class="select-form" ng-model="user.ciudad" name="ciudad">
+                  <option value="" selected="selected">Seleccione</option>
+                  <option value="1">MEDELLIN</option>
+                  <option value="2">ABEJORRAL</option>
+                </select>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Teléfono casa</label>
+                <label >
+                  <input type="text" ng-model="user.telfono_casa" name="telfono_casa" id="basic" value="" data-mini="true" class="my_input" />
+                </label>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div> 
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Barrio * </label>
+                <label >
+                  <input type="text" ng-model="user.barrio" name="barrio" id="basic" value="" data-mini="true" class="my_input" />
+                </label>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Dirección * </label>
+                <label >
+                  <input type="text" ng-model="user.direccion" name="direccion" id="basic" value="" data-mini="true" class="my_input" />
+                </label>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Estrato * </label>
+                <select class="select-form"  ng-model="user.estrato" name="estrato" >
+                  <option value="" selected="selected">Seleccione</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Celular * </label>
+                <label >
+                  <input type="text" ng-model="user.celular" name="celular" id="basic" value="" data-mini="true" class="my_input" />
+                </label>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div> 
+       <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                 <label for="basic">Actividades preferidas (Hobbies)  * </label>
+                <!-- <input  value="1" type="checkbox"  ng-model="user.category_id" name="category_id">Viajar -->
+                <input type="checkbox" name="category_id" ng-model="user.category_id.1" value="1" ng-checked="master">Viajar<br>
+                <input type="checkbox" name="category_id" ng-model="user.category_id.2" value="2">Moda <br>
+                <input type="checkbox" name="category_id" ng-model="user.category_id.3" value="3">Tecnología<br>
+                <input type="checkbox" name="category_id" ng-model="user.category_id.4" value="4">Entretenimiento<br>
+                <input type="checkbox" name="category_id" ng-model="user.category_id.5" value="5"> Salud y bienestar<br>
+                <input type="checkbox" name="category_id" ng-model="user.category_id.6" value="6"> Autos<br>
+                <input type="checkbox" name="category_id" ng-model="user.category_id.7" value="7"> Gastronomía<br>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Seleccione sus temas favoritos   * </label>
+                <div>
+                      <input  value="Periodicos" type="checkbox"  ng-model="user.temas_favorito.Periodicos" name="temas_favorito[]"> 
+                      Revistas y periódicos
+                      <br>
+                      <input value="Deportes" type="checkbox" ng-model="user.temas_favorito.Deportes" name="temas_favorito[]">
+                      Deportes
+                      <br>
+                      <input  value="Tecnologia" type="checkbox" ng-model="user.temas_favorito.Tecnologia" name="temas_favorito[]">
+                      Tecnología
+                      <br>
+                      <input  value="Ropas" type="checkbox" ng-model="user.temas_favorito.Ropas" name="temas_favorito[]"> 
+                      Ropas Y Accesorios
+                      <br>
+                      <input   value="Salud" type="checkbox" ng-model="user.temas_favorito.Salud" name="temas_favorito[]"> 
+                      Salud
+                      <br>
+                      <input  value="Turismo" type="checkbox" ng-model="user.temas_favorito.Turismo" name="temas_favorito[]"> 
+                      Turismo
+                      <br>
+                      <input  value="Gastronomía" type="checkbox" ng-model="user.temas_favorito.Gastronomia" name="temas_favorito[]"> 
+                      Gastronomía
+                      <br>
+                      <input  value="Vehículos" type="checkbox" ng-model="user.temas_favorito.Vehiculos"  name="temas_favorito[]"> 
+                      Vehículos
+              </div>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">¿Quién realiza las compras en el hogar?   * </label>
+                <div>
+                      <input  value="Yo" type="checkbox" ng-model="user.compras_hogar.Yo" name="compras_hogar"> 
+                      Yo
+                      <br>
+                      <input value="Esposa" type="checkbox" ng-model="user.compras_hogar.Esposa" name="compras_hogar">
+                      Esposo(a)
+                      <br>
+                      <input  value="Padres" type="checkbox" ng-model="user.compras_hogar.Padres" name="compras_hogar">
+                      Padres
+                      <br>
+                      <input  value="Hermanos" type="checkbox" ng-model="user.compras_hogar.Hermanos" name="compras_hogar">
+                      Hermanos
+                  
+              </div>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+       <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Seleccione los medios que le gustaría recibir información  * </label>
+                <div>
+                      <input  value="email" type="checkbox" ng-model="user.medio_info.email" name="medio_info"> 
+                      E-mail
+                      <br>
+                      <input value="Teléfono" type="checkbox" ng-model="user.medio_info.Telefono" name="medio_info">
+                      Teléfono
+                      <br>
+                      <input  value="Celular" type="checkbox" ng-model="user.medio_info.Celular" name="medio_info">
+                      Celular
+                      <br>
+                      <input  value="Correo" type="checkbox" ng-model="user.medio_info.Correo" name="medio_info">
+                      Correo
+                      <br>
+                      <input  value="Directo" type="checkbox" ng-model="user.medio_info.Directo" name="medio_info">
+                      Correo directo
+              </div>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">¿Gracias a cual medio conoció el club k? *</label>
+                <div>
+                      <input  value="vkia" type="checkbox" ng-model="user.medio_conocido_k.vkia" name="medio_conocido_k"> 
+                      Vitrinas KIA
+                      <br>
+                      <input value="coel" type="checkbox" ng-model="user.medio_conocido_k.coel" name="medio_conocido_k">
+                      Correo electrónico
+                      <br>
+                      <input  value="ryp" type="checkbox" ng-model="user.medio_conocido_k.ryp" name="medio_conocido_k">
+                      Revistas y periódicos
+                      <br>
+                      <input  value="rs" type="checkbox" ng-model="user.medio_conocido_k.rs" name="medio_conocido_k">
+                      Redes Sociales
+                      <br>
+                      <input  value="fya" type="checkbox" ng-model="user.medio_conocido_k.fya" name="medio_conocido_k">
+                      Familiares y amigos
+                      <br>
+                      <input  value="cdt" type="checkbox" ng-model="user.medio_conocido_k.cdt" name="medio_conocido_k">
+                      Comerciales de Televisión
+              </div>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">Cuéntenos, ¿En que estado compró su Kia? *</label>
+               <div class="estado">
+                  <input  value="0" type="radio" ng-model="user.estado_vehiculo" name="estado_vehiculo"> 
+                  Nuevo ( 0 Kilómetros )
+                  <br>
+                  <input  value="1" type="radio" ng-model="user.estado_vehiculo" name="estado_vehiculo">
+                  Usado
+                </div>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row" >
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic">modelo del vehículo *</label>
+                  <select class="select-form"  ng-model="user.modelo" name="modelo" >
+                      <option  value="">Seleccione</option>
+                      <option ng-repeat="empleado in empleados" value="{{empleado.anio}}">{{empleado.anio}}</option>
+                      
+                     <!-- <option ng-repeat="place in places" value="{{place}}">{{place}}</option> -->
+                   </select> 
+
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                
+               <input  value="1" type="radio" ng-model="user.recibir_info" name="recibir_info">
+               Estoy de acuerdo a que me contacten para recibir información de KIA Club K
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                
+               <input  value="1" type="radio" ng-model="user.terminos" name="terminos">
+               He leido y estoy de acuerdo con los términos y Condiciones del Club K® *
+          </div>
+          <div class="col col-20">&nbsp;</div>
+      </div>
+      <div class="row">
+        <div class="col col-10">&nbsp;</div>
+        <div class="col col-80">
+         <label ng-show="errorMessage2" class="alert alert-danger item">
+           <div>{{errorMessage2}}</div>
+           
+         </label>
+          <!-- {{errorMessage2}} -->
+        </div>
+        <div class="col col-10">&nbsp;</div>
+      </div>
+      <div class="row" style="text-align:center; margin-bottom: 7%;">
+        <div class="col col-25">&nbsp;</div>
+        <div class="col col-50">
+         <a href='' ng-click="terms.show()" style="color: #E50000;" >Ver términos y Condiciones </a>  
+        </div>
+        <div class="col col-25">&nbsp;</div>
+      </div>
+      <div class="row" style="text-align:center; margin-bottom: 7%;">
+        <div class="col col-25">&nbsp;</div>
+        <div class="col col-50">
+         <a href='' ng-click="doRegister(user)"  style="width: inherit !important;"><img src="img/enviarBtn.png" class="img img-responsive" alt=""></a>  
+        </div>
+        <div class="col col-25">&nbsp;</div>
+      </div>
+    </div>
+  </form>
+</div> 
+<style>
+/*  .select-form{
+  background: rgba(11, 10, 10, 0.8);
+border: 1px solid #b4b4b4;
+color: #b4b4b4;
+border-radius: 50px;
+width: 100%;
+height: 34px;
+text-align: center;
+}
+  .my_input{
+    border-radius:50px; 
+    background: rgba(180,180,180,0.8);
+    text-align: center;
+  }
+  .div_input input[type='text']
+{
+  background: rgba(11, 10, 10, 0.8);
+  border: 1px solid #b4b4b4; 
+  color: #b4b4b4;
+
+}*/
+</style>

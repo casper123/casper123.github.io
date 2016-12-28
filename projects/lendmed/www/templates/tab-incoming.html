@@ -1,0 +1,97 @@
+<ion-view view-title="<img src='img/logo.png' alt='Medical Lending' class='top_logo'>" >
+  <ion-content class="has-header light_bg">
+   <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
+  <div class="main-content">
+    <span ng-repeat="inrequest in requests" ng-init="myIndex = $index" >
+      <div class="card" ng-if="inrequest.status == 0 && inrequest.request_type == 0 && currentUser.company_type == 0">
+        <div class="item item-divider min-head">
+          <span class="urgent-head">PENDING</span>
+          <span ng-if="inrequest.is_urgent == 1">(URGENT)</span>
+          <!-- <span ng-show="!inrequest.is_urgent" class="urgent-head">PENDING</span> -->
+          <span ng-if="inrequest.request_sub_type == 1" class="margin-left"><i class="ion-locked"></i></span>
+          <span ng-if="inrequest.request_sub_type == 2" class="margin-left"><i class="ion-plane"></i></span>  
+        </div>
+        <div class="item item-divider inner-head">
+          <img ng-if="inrequest.is_urgent == 1" src="img/urgent-warn.png" class="urgent">
+           <span class="text-in" style="margin-left: 6%;"> &nbsp;{{inrequest.posted | myTimeFormat}} </span>
+          <span class="text-in"><i class="ion-icon ion-clock"></i> {{inrequest.posted | myDateFormat}} &nbsp;</span>
+          <span class="text-in"><i class="ion-icon ion-eye"></i>&nbsp; {{inrequest.views}} &nbsp;</span>
+        </div>
+        <div class="row item item-text-wrap padding-zero">
+          <div class="col col-80">
+            <div class ="row">
+              <span class="col">
+                {{inrequest.name}}
+                <br />
+                {{inrequest.quantity}} {{inrequest.units}} {{inrequest.item_name}}
+                <br /><br /><br />
+              </span>
+            </div>
+            <div class="row">
+              <p class="col">{{inrequest.comments}} Comments 
+                <i class="ion-icon ion-arrow-right-b"></i>
+              </p>
+              <a href="#/tab/incoming/requestDetails/{{inrequest.id}}" class="col col-offset-67">
+                <span class="detail-btn padding-zero">
+                  Details &nbsp;<i class="ion-ios-arrow-forward"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="col col-20">
+           <button ng-click="acceptRequest(inrequest.id)" class="padding-zero claim-btn" > CLAIM</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" ng-if="inrequest.request_type == 1 && currentUser.company_type == 1">
+        <div class="item item-divider min-head">
+          <span class="urgent-head">PENDING</span>
+          <span ng-if="inrequest.is_urgent == 1">(URGENT)</span>
+          <!-- <span ng-show="!inrequest.is_urgent" class="urgent-head">PENDING</span> -->
+          <span ng-if="inrequest.request_sub_type == 1" class="margin-left"><i class="ion-locked"></i></span>
+          <span ng-if="inrequest.request_sub_type == 2" class="margin-left"><i class="ion-plane"></i></span>  
+        </div>
+        <div class="item item-divider inner-head">
+          <img ng-if="inrequest.is_urgent == 1" src="img/urgent-warn.png" class="urgent">
+           <span class="text-in" style="margin-left: 6%;"> &nbsp;{{inrequest.posted | myTimeFormat}} </span>
+          <span class="text-in"><i class="ion-icon ion-clock"></i> {{inrequest.posted | myDateFormat}} &nbsp;</span>
+          <span class="text-in"><i class="ion-icon ion-eye"></i>&nbsp; {{inrequest.views}} &nbsp;</span>
+        </div>
+        <div class="row item item-text-wrap padding-zero">
+          <div class="col col-80">
+            <div class ="row">
+              <span class="col">
+                {{inrequest.name}}
+                <br />
+                {{inrequest.quantity}} {{inrequest.units}} {{inrequest.item_name}}
+                <br /><br /><br />
+              </span>
+            </div>
+            <div class="row">
+              <p class="col">{{inrequest.comments}} Comments 
+                <i class="ion-icon ion-arrow-right-b"></i>
+              </p>
+              <a href="#/tab/incoming/requestDetails/{{inrequest.id}}" class="col col-offset-67">
+                <span class="detail-btn padding-zero">
+                  Details &nbsp;<i class="ion-ios-arrow-forward"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="col col-20">
+           <button ng-click="acceptRequest(inrequest.id)" class="padding-zero claim-btn" > CLAIM</button>
+          </div>
+        </div>
+      </div>
+    </span>
+    <div class="item" ng-if="requests.length == 0">
+      <span>You don't have any incomming request</span>
+    </div>
+  </div>
+  </ion-content>
+</ion-view>

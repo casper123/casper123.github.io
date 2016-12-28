@@ -1,0 +1,171 @@
+<ion-modal-view view-title="Create Requests" >
+   <ion-header-bar class="login_but">
+    <h1 class="title">Update Request</h1>
+    <div class="buttons">
+      <button class="button button-assertive" ng-click="closeupdateRequest()">Cancel</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="has-header" >
+  <div class="row">
+	  <div class="col-50 col-offset-25">
+    <form ng-submit="doRequest(requestdata)">
+	    <label ng-show="errorMessage" class="assertive">
+			<strong>Error:</strong> {{errorMessage}}
+		</label>
+
+    
+		<div class="list list-inset">
+				
+			    <label class="item item-input">
+			    <i class="icon ion-android-person"></i>
+			      <input type="text" placeholder="Employee Name" ng-model="requestdata.employee">
+			    </label>
+
+				<!-- <label class="item item-input" ng-hide="pharm">
+					<i class="icon ion-ios-star"></i>
+					<input type="text" placeholder="Provide NDC#" ng-model="requestdata.ndc_num">	
+				</label> -->
+
+			<label class="item item-input" ng-hide="Pharm">
+			 <i class="icon ion-search placeholder-icon"></i>
+				<ion-autocomplete ng-model="requestdata.addeditem" value="" items-method="callbackMethod(query)" item-view-value-key="name" item-value-key="id" placeholder="Select An Item"/>
+			</label>
+
+			<!-- <label class="item item-input" ng-hide="pharm">
+				<i class="ion-ios-calendar"></i>
+				<input type="date" placeholder="Expiry Date(mm/dd/yyyy)" ng-model="requestdata.expiry_date">	
+			</label>
+				
+			<label class="item item-input" ng-hide="pharm">
+				<i class="icon ion-ios-medkit"></i>
+				<input type="text" placeholder="Lot No" ng-model="requestdata.lot_no">	
+			</label>
+ -->
+    
+  		
+			<label class="item item-input">
+			    <i class="icon ion-pound"></i>
+			      <input type="tel" placeholder="Quantity" ng-model="requestdata.quantity">
+			</label>
+			
+			    
+			<label class="item item-input">
+			    <i class="icon ion-beaker"></i>
+			    <input type="text" placeholder="Dosage (mg/.5mL)" ng-model="requestdata.units">
+			 </label>
+			   
+			    <label class="item item-input">
+			    <i class="icon ion-android-chat"></i>
+			      <input type="text" placeholder="Comments" ng-model="requestdata.comments">
+			    </label>
+
+			    <div class="row item">
+					<div class="col">
+						<span class="is-d-radio">is drive required?</span>
+					</div>
+					<div class="col">
+						<input type="radio" ng-model="requestdata.is_driver" value="1">
+						<span class="is-d-radio">Yes</span>
+					</div>
+					<div class="col">
+						<input type="radio"  ng-model="requestdata.is_driver" value="0">
+						<span class="is-d-radio">No</span>
+					</div>
+				</div>
+				<div class="row item">
+							<div class="col">
+								<span class="is-d-radio">Request type?</span>
+							</div>
+							<div class="col" style="margin-left: 11%;">
+								<input type="radio" ng-model="requestdata.is_public" value="0">
+								<span class="is-d-radio">Public</span>
+							</div>
+							<div class="col">
+								<input type="radio"  ng-change="privateRequestChecked()" ng-model="requestdata.request_sub_type" value="1">
+								<span class="is-d-radio">Private</span>
+							</div>
+							<div class="col">
+								<input type="radio" ng-model="requestdata.request_sub_type" value="2" ng-click="directRequestChecked()">
+								<span class="is-d-radio">Direct</span>
+							</div>
+							
+						</div>	
+						<div class ="row item" ng-show="showCheckboxes">
+							<div class="col">
+								<span class="is-d-radio">Select Companies</span>
+								<div class="row" ng-repeat="pvtNetwork in pvtNetworks">
+									<input type="checkbox" ng-model="requestdata.pvtNetworkIds[$index]" value="{{pvtNetwork.id}}" checked="true">
+									<span class="is-d-radio">{{pvtNetwork.name}}</span>
+								</div>
+							</div>
+						</div>
+
+						<div class ="row item" ng-show="showDropdownList">
+							<div class="col">
+								<span class="is-d-radio">Select Company : </span>
+								<select ng-model="requestdata.pvtNetworkId"  >
+									<option ng-repeat="pvtNetwork in pvtNetworks" value="{{pvtNetwork.id}}">
+										{{pvtNetwork.name}}
+									</option>
+								</select>
+							</div>
+						</div>	
+				<br />
+				<div class="row item">
+							<div class="col">
+								<span class="is-d-radio">is Urgent?</span>
+							</div>
+							<div class="col">
+								<input type="radio" ng-model="requestdata.is_urgent" value="0">
+								<span class="is-d-radio">Yes</span>
+							</div>
+							<div class="col">
+								<input type="radio"  ng-model="requestdata.is_urgent" value="1" checked > 
+								<span class="is-d-radio">No</span>
+							</div>
+						</div>	
+
+			    <div class="row">
+			        <div class="col">
+			           <a ng-click="showActionsheet()" class="item item-icon-left">
+			              <i class="icon ion-upload"></i>
+			              Upload Picture     
+			            </a>
+			        </div>
+			    </div>
+			     
+			     <label class="item item-input item-select ">
+			     <i class="icon ion-beaker"></i>
+			    <div class="input-label">
+			      Status
+			    </div>
+			   <select ng-model="requestdata.status" >
+			      <option value="0">Pending</option>
+				  <option value="1">Accepted</option>
+				  <option value="2">Prepared/Awaiting Pickup</option>
+				  <option value="3">PickedUp / En Route</option>
+				  <option value="4">Delivered</option>
+				  <option value="5">Closed/Returned</option>
+			    </select>
+			  </label>
+
+			   </div>
+			
+		
+		 
+		  <label class="item">
+          <button class="button button-block button-positive" type="submit">Request Now!</button>
+        </label>
+
+		  
+		</div>
+
+
+
+          </form>
+  </div>
+  </ion-content>
+</ion-modal-view>
+
+
+

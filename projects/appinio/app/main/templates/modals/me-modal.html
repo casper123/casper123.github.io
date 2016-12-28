@@ -1,0 +1,77 @@
+<ion-modal-view class="big-modal" ng-controller="BadgeCtrl">
+
+  <ion-header-bar class="bg-color" no-tap-scroll="true">
+    <div class="title">
+      <h2 class="apn-header-title">Ich</h2>
+
+      <div class="header-icon-right" ng-click="closeMeModal()">
+        <i class="ion-ios-close-empty"></i>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-content has-bouncing="true" scroll="true" class="apn-app-questions">
+
+    <div class="list-divider">Spiel</div>
+    <div class="apn-badge-list" style="padding-top:20px;">
+      <div class="item-wrapper"
+           ng-click="showGameBadgeDetails(b)"
+           ng-repeat="b in gameBadges">
+
+        <div class="badge-progress-wrap">
+          <div round-progress
+               max="100"
+               current="b.reverseProgress"
+               color="#000"
+               bgcolor="transparent"
+               radius="100"
+               stroke="20"
+               semi="false"
+               rounded="false"
+               clockwise="false"
+               responsive="true"
+               duration="0"
+               animation="easeInOutQuart"
+               animation-delay="0">
+          </div>
+          <div class="avatar-wrapper"
+               ng-class="{'with-addon':b.type == 'marbleStoneAndIron' && loggedInUser.oldLevel,'bg-color': b.done || (b.level == 1 && b.progress > 0), 'bronze': b.level == 2,
+             'silver': b.level == 3 && !b.rewarded, 'gold': b.level == 3 && b.rewarded}">
+            <span class="avatar-badge big in-avatar bg-color" ng-if="b.count>0">{{b.count}}</span>
+            <div>
+              <div class="badge-addon bg-color">{{loggedInUser.oldLevel}}</div>
+              <i class="{{b.icon}}" ng-class="{'color-icon':b.done && b.level == 1 && b.rewarded}"></i>
+            </div>
+          </div>
+        </div>
+        <div class="avatar-footer">{{b.name|characters:14}}</div>
+      </div>
+    </div>
+
+    <div class="list-divider">Sozial</div>
+    <div class="apn-badge-list" style="padding-top:20px;">
+      <div class="item-wrapper" ng-repeat="b in socialBadges.transactions" ng-click="showSocialBadgeDetails(b)">
+        <div class="avatar-wrapper bg-color">
+          <span class="avatar-badge big in-avatar bg-color">{{(b.sumAmount+b.appinioAmount)/100|number:2}}€</span>
+
+          <div><img ng-src="{{b.details.imageUrl}}"/></div>
+        </div>
+        <div class="avatar-footer">
+          {{b.details.name |characters:14}}
+        </div>
+      </div>
+      <div class="item-wrapper" ng-class="{muted: b.counter==0}"
+           ng-repeat="b in socialBadges.charities|filter:{visible:true}|orderBy:'-counter'"
+           ng-click="showSocialBadgeDetails(b)">
+        <div class="avatar-wrapper bg-color">
+          <span class="avatar-badge in-avatar bg-color" ng-if="b.counter>0">{{b.counter}}</span>
+
+          <div><img ng-src="{{b.imageUrl}}"/></div>
+        </div>
+        <div class="avatar-footer">{{b.name |characters:14}}</div>
+      </div>
+    </div>
+
+  </ion-content>
+
+</ion-modal-view>

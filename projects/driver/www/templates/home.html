@@ -1,0 +1,93 @@
+<style type="text/css">
+.sidebar {width:100% !important;}
+
+</style>
+  
+<section class="wrapper">
+ <div id="sidebar" class="nav-collapse">
+  <!-- sidebar menu start-->
+  <div class="leftside-navigation" style="outline: none;" tabindex="5000">
+    <ul class="sidebar-menu" id="nav-accordion">
+      <li class=""> 
+        <h4>IN PROGRESS</h4>
+
+       <a ng-repeat="item in in_progress" href="#app/detail/{{item.id}}"> <table class="table general-table activities-table" >
+
+    <tbody>
+      <tr>
+        <td width="20%" class="distance"><span class="mini-stat-icon tar">{{item.distance}}<p>Miles</p></span></td>
+        <td>
+         <table width=" 70%" class="activity-info">
+           <tbody>
+             <tr>
+               <td><span ng-class="item.due_time <= 1 ? 'label label-danger label-medium' : 'label label-success'">DUE: {{item.due_time}} days</span></td>
+
+             </tr>
+             <tr><td>{{item.recp_addres}}</td></tr> 
+           </tbody>
+         </table>
+       </td>
+       <td width="10%"> <i class="fa fa-angle-right"></i></td>
+     </tr>
+
+   </tbody>
+ </table></a>
+      </li>
+
+
+
+<li class=""> 
+  <h4>Assigned</h4>
+  <a ng-repeat="item in assigned" href="#app/detail/{{item.id}}"> <table class="table general-table activities-table" >
+
+    <tbody>
+      <tr>
+        <td width="20%" class="distance"><span class="mini-stat-icon tar">{{item.distance}}<p>Miles</p></span></td>
+        <td>
+         <table width=" 70%" class="activity-info">
+           <tbody>
+             <tr>
+               <td><span ng-class="item.due_time <= 1 ? 'label label-danger label-medium' : 'label label-success'">DUE: {{item.due_time}} days</span></td>
+
+             </tr>
+             <tr><td>{{item.recp_addres}}</td></tr> 
+           </tbody>
+         </table>
+       </td>
+       <td width="10%"> <i class="fa fa-angle-right"></i></td>
+     </tr>
+
+   </tbody>
+ </table></a>
+</li>
+
+<li class=""> 
+ <h4>Unassigned</h4>
+ <a ng-repeat="item in unassigned" href="#app/detail/{{item.id}}"> <table class="table general-table activities-table" >
+
+  <tbody>
+    <tr>
+      <td width="20%" class="distance"><span class="mini-stat-icon tar">{{item.distance}}<p>Miles</p></span></td>
+      <td>
+       <table width=" 70%" class="activity-info">
+         <tbody>
+           <tr>
+             <td><span ng-class="item.due_time <= 1 ? 'label label-danger label-medium' : 'label label-success'">DUE: {{item.due_time}} days</span></td>
+
+           </tr>
+           <tr><td>{{item.recp_addres}}</td></tr> 
+         </tbody>
+       </table>
+     </td>
+     <td width="10%"> <i class="fa fa-angle-right"></i></td>
+   </tr>
+
+ </tbody>
+</table> </a>
+</li>
+
+</ul>
+
+</div>
+</div>
+</section>

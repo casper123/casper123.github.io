@@ -1,0 +1,17 @@
+<ion-view hide-tabs view-title="Browse Movies">
+  <ion-content class="">
+  	<ul class="list">
+  		<li class="item" ng-repeat="category in categories ">
+			<a ng-if="category.total_sub_categories == 0" href="#/tab/dash/moviesByCat/{{category.movie_category_name}}/{{category.movie_cat_id}}">
+				{{category.movie_category_name}}
+					<span class="badge badge-positive">{{category.total_movies}}</span>
+			</a>
+		   <a  ng-if="category.total_sub_categories > 0" href="#/tab/dash/subCategories/{{category.movie_category_name}}/{{category.movie_cat_id}}">
+				{{category.movie_category_name}}
+				<span class="badge badge-positive">{{category.total_movies}}</span>
+			</a>
+		</li>
+		
+	</ul>
+  </ion-content>
+</ion-view>

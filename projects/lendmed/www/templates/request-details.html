@@ -1,0 +1,92 @@
+<ion-view view-title="Request Details">
+  <ion-content class="padding light_bg no-header">
+    <div class="Card">
+      <div class="item item-divider">
+        <h1 class="title">{{requestDetails.title}}</h1>
+      </div>
+      <div class="item item-text-wrap">
+        <p>Posted : {{requestDetails.posted}}</p>
+        <p>Posted By : <span>{{requestDetails.username}}</span>
+        <p>Company Name : <span>{{requestDetails.name}}</span>
+        <p>Employee Name : <span>{{requestDetails.employee}}</span>
+        <p>Item request : <span>{{requestDetails.addeditem}}</span></p>
+        <p>Comments : <span>{{requestDetails.comments}}</span></p>
+
+        <p>Request Type : 
+          <span ng-if="requestDetails.request_type == 0">Pharmacuitical</span>
+          <span ng-if="requestDetails.request_type == 1">Non Pharmacuitical</span>
+        </p>
+        <p>NDC Number : <span>{{requestDetails.ndc_num}}</span></p>
+        <p>Lot No. : <span>{{requestDetails.lot_no}}</span></p>
+        <p>Expiry Date. : <span>{{requestDetails.expiry_date}}</span></p>
+        
+        <p>Request Status : 
+          <span ng-if="requestDetails.status == 0">Pending</span>
+          <span ng-if="requestDetails.status == 1">Viewed</span>
+          <span ng-if="requestDetails.status == 2">Processing</span>
+          <span ng-if="requestDetails.status == 3">Ready For Pickup</span>
+          <span ng-if="requestDetails.status == 4">En Route</span>
+          <span ng-if="requestDetails.status == 5">Received</span>
+          <span ng-if="requestDetails.status == 7">Sendback</span>
+        </p>
+        <p>Days Before Needed :
+          <span>{{requestDetails.days_needed}}</span>
+        </p>
+
+        <p>Is Public : 
+          <span ng-if="requestDetails.request_sub_type == 0">Public</span>
+          <span ng-if="requestDetails.request_sub_type == 1">Private</span>
+          <span ng-if="requestDetails.request_sub_type == 2">Direct</span>
+        </p>
+
+        <p>Driver Required: 
+          <span ng-if="requestDetails.is_driver == 0">No</span>
+          <span ng-if="requestDetails.is_driver == 1">Yes</span>
+        </p>
+        <p>Users visit : {{requestDetails.userViews}}</p>
+        <p>Companies visit : {{requestDetails.companyViews}}</p>
+        <p>Views : {{requestDetails.views}}</p>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="list" style="height:300px; overflow:scroll; overflow-x:hidden;">
+            <div class="item item-divider">
+              <h1 class="title">Comments</h1>
+            </div>
+            <div class="item item-text-wrap" ng-repeat="comment in comments">
+              <h3>
+                <span>{{comment.username}} ({{comment.company_name}})</span> 
+                <span class="time-ago-text">{{comment.timeAgo}}</span></h3>
+              <p>{{comment.text}}</p>
+            </div>
+            <form method="post" ng-submit="postComment(comment)">
+              <div class="item item-input-inset">
+                  <label class="item-input-wrapper">
+                    <input type="text" ng-model="comment.text" placeholder="Put your comment here !" required >
+                  </label>
+                  <button class="button button-small button-positive">
+                    Send
+                  </button>
+              </div>
+            </form>        
+            
+          </div>
+        </div>
+        <div class="col">
+          <div class="list" style="height:300px; overflow:scroll; overflow-x:hidden;">
+            <div class="item item-divider">
+              <h1 class="title">Activity Logs</h1>
+            </div>
+            <div class="item item-text-wrap" ng-repeat="log in logs">
+              <h3>
+                <span ng-bind-html="log.activity"></span>
+                <span class="time-ago-text">{{log.create_date}}</span>
+                <img width="100px" src="http://45.55.183.61/{{requestDetails.photo}}" ng-if="requestDetails.photo" />
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

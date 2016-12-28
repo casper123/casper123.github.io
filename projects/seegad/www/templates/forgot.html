@@ -1,0 +1,48 @@
+
+<ion-view>
+  <ion-nav-title>
+    <div class="bar bar-header" style="background-color:#f9f9fa;"></div>
+  </ion-nav-title>
+
+  <ion-content style="background:#fff;">
+  	<div class="padding">
+  		<div class="row">
+  			<div class="col col-20">&nbsp;</div>
+  			<div class="col"><img class="col" src="img/logo.png" /></div>
+  			<div class="col col-20">&nbsp;</div>
+  		</div>
+      <div class="row">
+        <div class="col error-color" align="center" ng-show="internet">
+          It seems like you have poor or no internet connection.
+        </div>
+      </div>
+  		<div class="row">
+          <div class="col form" style="margin-top:20px;">
+            <label class="col">
+              <input type="email" class="login-text" ng-model="user.email" placeholder="email" required>
+            </label>
+            <div class="row">
+              <div class="col succes-color" align="center" ng-show="req">
+                The request has been sent via email. Please check your inbox.
+              </div>
+            </div>
+            <div class="row">
+              <div class="col error-color" align="center" ng-show="req1">
+                {{msg}}
+              </div>
+            </div>
+            <div class="col">
+              <a style="margin-top:10px !important;" ng-click="forgot(user)" class="button login-btn button-block">
+                Forgot Password
+              </a>
+            </div>
+          </div>
+        </div>
+  	</div>
+  </ion-content>
+  <footer class="col" style="position:absolute; bottom:0px;">
+      <div align="center">
+      <span style="color:#c6c5c5;">Don't have an account? <a class="blue-default" href="#/user/signup">Signup for free</a></span>
+    </div>
+  </footer>
+</ion-view>

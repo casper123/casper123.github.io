@@ -1,0 +1,122 @@
+<ion-view class="register-screen" hide-nav-bar="true">
+    <ion-content class="padding" style="background:rgba(0,0,0,0.6);">
+        <div class="row">
+          <div class="col col-80 col-offset-10" style="padding:20px;">
+            <h2 class="screen-head white">Sign Up</h2>
+          </div>
+        </div>
+        <div class="row">
+          <form ng-submit="signup(user)" style="width:100%;">
+          <div class="col list form">
+            <label class="item item-input white-bg">
+              <i class="icon ion-person placeholder-icon form-icon"></i>
+              <input required type="text" class="apn-input form-text" ng-class="" placeholder="First Name" ng-model="user.first_name">
+            </label>
+            <label class="item item-input white-bg">
+              <i class="icon ion-person placeholder-icon form-icon"></i>
+              <input required type="text" class="apn-input form-text" ng-class="" placeholder="Last Name" ng-model="user.last_name">
+            </label>
+            <label class="item item-input white-bg">
+              <i class="icon ion-android-person-add placeholder-icon form-icon"></i>
+              <input required type="text" class="apn-input form-text" ng-class="" placeholder="Nerd Name" ng-model="user.username">
+            </label>
+            <label class="item item-input white-bg">
+              <i class="icon ion-email placeholder-icon form-icon"></i>
+              <input required type="text" class="apn-input form-text" ng-class="" placeholder="Email Address" ng-model="user.email">
+            </label>
+            <label class="item item-input white-bg">
+              <i class="icon ion-locked placeholder-icon form-icon"></i>
+              <input required type="password" class="apn-input form-text" ng-class="" placeholder="Password" ng-model="user.password">
+            </label>
+            <label class="item item-input white-bg">
+              <i class="icon ion-locked placeholder-icon form-icon"></i>
+              <input required type="password" class="apn-input form-text" ng-class="" placeholder="Re-type Password" ng-model="user.retype">
+            </label>
+            <label class="col">
+              <ion-list class='purpose_list'>
+                <ion-checkbox ng-model="user.buy">Buy</ion-checkbox>
+                <ion-checkbox ng-model="user.sell">Sell</ion-checkbox>
+                <ion-checkbox ng-model="user.trade">Trade</ion-checkbox>
+              </ion-list>
+            </label>
+            <div class="col">
+              <button class="apn-main-btn white full" type="submit">
+                <div>Sign Up</div>
+              </button>
+            </div>
+            </form>
+            <p ng-if="loginError" class="small-text error" style="margin-top:30px;">
+              Invalid username or password
+            </p>
+          </div>
+        </div>
+          <div class="row" style="margin-top:20px;padding:10px;">
+            <div class="col">
+              <button class="apn-main-btn white full grey" ui-sref="user.login">
+                <div>Sign in</div>
+              </button>
+            </div>
+          </div>
+          <div class="appinio-bottom-logo">
+            <img src="img/g12.png" style="width:50%;">
+          </div>
+  </ion-content>
+</ion-view>
+
+<!-- 
+
+<style type="text/css">
+  a.forget{
+    float: right;
+  }
+  div.social{
+    text-align: center;
+    width: 100%;
+    height: 25px;
+    border: 1px rgb(89,89,89) solid;
+    -moz-box-shadow:  -2px -2px 5px 1px rgb(128,128,128);
+    -webkit-box-shadow:  -2px -2px 5px 1px rgb(128,128,128);
+    box-shadow:  -2px -2px 5px 1px rgb(128,128,128);
+  }
+</style>
+<ion-view view-title="Signup">
+  <ion-content class="padding">
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">First Name</span>
+        <input type="text" class="apn-input" ng-class="" placeholder="first name" ng-model="user.first_name">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Last Name</span>
+        <input type="text" class="apn-input" ng-class="" placeholder="last name" ng-model="user.last_name">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">User Name</span>
+        <input type="text" class="apn-input" ng-class="" placeholder="user name" ng-model="user.username">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Email</span>
+        <input type="text" class="apn-input" ng-class="" placeholder="email address" ng-model="user.email">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Password</span>
+        <input type="password" class="apn-input" ng-class="" placeholder="password" ng-model="user.password">
+        <span style="color:red; font-size:10px">**must be atleast 6 charactors</span>
+      </label>
+    </div>
+    <h4>Main Purpose:</h4>
+      <ion-list>
+        <ion-checkbox ng-model="user.buy">Buy</ion-checkbox>
+        <ion-checkbox ng-model="user.sell">Sell</ion-checkbox>
+        <ion-checkbox ng-model="user.trade">Trade</ion-checkbox>
+      </ion-list>
+    <button class="button button-block button-dark" ng-click="signup(user)">
+      Signup
+    </button>
+    <h2>Signin with:</h2>
+    <div class="row">
+      <div class="col social"><i class="icon ion-social-googleplus"></i></div>
+      <div class="col social"><i class="icon ion-social-facebook"></i></div>
+    </div>
+  </ion-content>
+</ion-view> -->

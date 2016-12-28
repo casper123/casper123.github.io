@@ -1,0 +1,24 @@
+<ion-view view-title="Top Earners">
+<ion-content>    
+<!--   <div class="row">
+    <div class="col">
+      <p>For every active Friend you refer, you'll earn $1 in rewards for being an early member that help us grow Snap Flix.</p>
+      <p>Rewards may be redeemable for FREE movie tickets or concessions as we partner with cinemas in the future.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="button button-positive button-block" ng-click="showActionsheet()">Invite Friends</button>
+    </div>
+  </div> -->
+  <div class="list">
+    <a class="item item-thumbnail-left item-icon-right" href="#/tab/dash/profile/{{topEarner.user_id}}" ng-repeat="topEarner in topEarners">
+      <img src="http://curiouslabx.com/projects/snap_flix/{{topEarner.image_path || 'images/140x140.gif'}}">
+      <h2>{{(topEarner.f_name).charAt(0).toUpperCase() + (topEarner.f_name).slice(1) + ' ' + (topEarner.l_name).charAt(0).toUpperCase() + (topEarner.l_name).slice(1)}}</h2>
+      <!-- <p ng-show="{{topEarner.city}}">{{topEarner.city}}, {{topEarner.country}}</p> -->
+     <p><span ng-if="topEarner.city">{{(topEarner.city).charAt(0).toUpperCase() + (topEarner.city).slice(1)}}{{topEarner.city}},</span> <span ng-if="topEarner.state">{{(topEarner.state).charAt(0).toUpperCase() + (topEarner.state).slice(1)}},</span> <span ng-if="topEarner.country">{{(topEarner.country).charAt(0).toUpperCase() + (topEarner.country).slice(1)}}</span></p>
+      <p>${{topEarner.points_earned || '0'}} Earned</p>
+    </a>
+  </div>
+</ion-content>
+</ion-view>

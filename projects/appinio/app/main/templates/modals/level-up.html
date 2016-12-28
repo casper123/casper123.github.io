@@ -1,0 +1,74 @@
+<ion-modal-view class="level-up-modal" style="background: none !important;">
+
+  <div class="bg-color modal-bg-wrapper"></div>
+
+  <ion-pane class="level-up" ng-if="!showBadge">
+
+    <div class="arrow-container">
+      <img src="./img/arrow-level-up.png" />
+      <img src="./img/arrow-level-up.png" />
+      <img src="./img/arrow-level-up.png" />
+    </div>
+
+    <div class="row">
+      <div class="col col-80 col-offset-10" style="padding:10px;">
+        <h2 class="screen-head white">Level up</h2>
+      </div>
+    </div>
+
+    <div class="avatar-wrapper-big shadow bg-color">
+      <div><i style="height: 27px;font-size:45px;">{{newLevel.level}}</i></div>
+    </div>
+
+    <p class="small-text">
+      {{newLevel.text}}
+    </p>
+
+    <button class="apn-main-btn white full grey" ng-click="closeLevelUpModal()">
+      <div>Ok</div>
+    </button>
+
+    <div class="share-button" ng-click="shareLevelUp()">
+      <i class="ion-ios-upload-outline"></i>
+    </div>
+
+  </ion-pane>
+
+  <ion-pane class="level-up" style="padding-top:25%;" ng-if="showBadge">
+
+    <div class="row">
+      <div class="col col-80 col-offset-10" style="padding:10px;">
+        <h2 class="screen-head white">Glückwunsch</h2>
+      </div>
+    </div>
+
+    <div class="avatar-wrapper-big shadow" ng-class="{'bg-color': newBadge.done && newBadge.level == 1, 'bronze': !newBadge.done && newBadge.level == 1,
+             'silver': newBadge.level == 2, 'gold': newBadge.level == 3}">
+      <div>
+        <i class="{{newBadge.icon}}" ng-class="{'color-icon':newBadge.level == 1}"></i>
+      </div>
+    </div>
+
+    <p style="padding: 15px;text-transform: uppercase;">
+      {{newBadge.name}}
+    </p>
+
+    <p class="small-text" style="padding:0;">
+      {{newBadge.task}}
+    </p>
+
+    <p class="small-text">
+      {{newBadge.description}}
+    </p>
+
+    <button class="apn-main-btn white full grey" ng-click="closeLevelUpModal()">
+      <div>Ok</div>
+    </button>
+
+    <div class="share-button" ng-click="shareBadge()">
+      <i class="ion-ios-upload-outline"></i>
+    </div>
+
+  </ion-pane>
+
+</ion-modal-view>

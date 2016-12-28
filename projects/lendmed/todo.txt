@@ -1,0 +1,11 @@
+Require photo on update or add
+
+Individual page for requests
+	Show # of company who have opened with name and # of views
+	Comment at bottom of indi page- shows activity log
+	Go to this page after Accpet Request
+
+Put everything in activity log
+	add,update,accept,cancel,visit -> userid, company, activity_type, datetime, request_id
+
+Allow products to be manually typed if not in inventory

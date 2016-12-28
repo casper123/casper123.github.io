@@ -1,0 +1,40 @@
+<ion-nav-view name="tab-dash"></ion-nav-view>
+    <div ng-class="$root.showTabs" class="row bar-custom-footer" style="height:120px;" >
+      
+      <div class="col col-20" style="text-align:center;">
+        <a href="#/tab/dash/save" class="footer-link" ng-mouseover="onTouchSavedIcon($event)" ng-mouseout="offTouchSavedIcon($event)">
+          <img class="icon-footer" ng-src="{{SavedIconImage || 'img/saved.png'}}" ></img>
+          <br/><span class="footer-icon-text">SAVED</span>
+        </a>
+      </div>
+      
+      <div class="col col-20" style="text-align:center;">
+        <a href="#/tab/dash/profile" class="footer-link" ng-mouseover="onTouchProfileIcon($event)" ng-mouseout="offTouchProfileIcon($event)">
+          <img ng-src="{{ProfileIconImage || 'img/profile.png'}}" class="icon-footer"></img>
+          <br/><span class="footer-icon-text">PROFILE</span>
+        </a>
+      </div>
+      
+      <div class="col col-20 middle-icon-footer" style="text-align:center;">
+        <a href="#/tab/dash/inviteFriend" class="footer-link">
+          <img src="img/invite.png" class="icon-footer-mid"></img>
+          <br/><span class="footer-mid-icon-text">INVITE & EARN</span>
+        </a>
+      </div>
+      
+      <div class="col col-20" style="text-align:center;">
+        <a href="#/tab/dash/topEarners" class="footer-link" ng-mouseover="onTouchTopMemberIcon($event)"
+  ng-mouseout="offTouchTopMemberIcon($event)">
+          <img ng-src="{{TopMemberIconImage || 'img/top members.png'}}" class="icon-footer"></img>
+          <br/><span class="footer-icon-text">TOP MEMBERS</span>
+        </a>
+      </div>
+      
+      <div class="col col-20" style="text-align:center;">
+        <a href="#/tab/dash/misc" class="footer-link" ng-mouseover="onTouchSettingIcon($event)"
+  ng-mouseout="offTouchSettingIcon($event)">
+          <img ng-src="{{SettingIconImage || 'img/settings.png'}}" class="icon-footer"></img>
+          <br/><span class="footer-icon-text">SETTINGS</span>
+        </a>
+      </div>
+    </div>

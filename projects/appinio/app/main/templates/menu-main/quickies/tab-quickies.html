@@ -1,0 +1,171 @@
+<ion-view>
+  <ion-content scroll="false" has-bouncing="false" class="apn-app-questions" question-gesture>
+
+    <div class="loading-overlay" ng-class="{'hide': !(apnList[0].detailLoading || apnList.length == 0) }">
+      <div class="indicator">
+        <ion-spinner icon="spiral"></ion-spinner>
+      </div>
+    </div>
+
+    <div class="apn-locked-screen bg-color" ng-if="quickieDayLimit">
+
+      <div class="profil-progress-wrap header-avatar">
+        <div round-progress
+             max="100"
+             current="30"
+             color="#fff"
+             bgcolor="transparent"
+             radius="100"
+             stroke="20"
+             semi="false"
+             rounded="false"
+             clockwise="false"
+             responsive="true"
+             duration="0"
+             animation="easeInOutQuart"
+             animation-delay="0">
+        </div>
+        <div class="avatar-wrapper-big bg-color shadow auto-margin">
+          <div class="inner-clock">
+            <div>3</div>
+            <span>min</span>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        Gut gemacht! Du hast für heute alle Quickies beantwortet.
+      </p>
+
+      <p>
+        Bis morgen kannst Du nur noch Quickies von Freunden beantworten.
+      </p>
+
+      <div class="question-dummy">
+        <h3>Wie geht es Dir heute?</h3>
+
+        <p>So lala</p>
+
+        <p>Gut</p>
+
+        <p>Sag ich nicht</p>
+
+        <p>Hier ist alles unscharf</p>
+
+        <p>Frag bloß nicht</p>
+      </div>
+    </div>
+
+
+    <div ng-repeat="question in previewList|limitTo:1" class="preview-question-wrapper">
+      <ion-content app-sticky scroll="false" overflow-scroll="true" class="has-content-header">
+        <div class="wrap">
+          <div class="content-header" style="padding-top: 40px">
+            <div class="avatar-wrapper-tiny bg-color">
+              <div>
+                <img ng-src="{{question.user.avatar || question.user.imageUrl}}"
+                     ng-if="question.forFriends && question.user.avatar != null"
+                     image-onload="question.imagesReady"/>
+                <i class="ion-ios-people" ng-if="question.forCommunity"></i>
+                <i class="ion-help" ng-if="question.quiz"></i>
+                <i class="ion-social-apple"
+                   ng-if="!question.quiz && !question.forCommunity && !question.forFriends"></i>
+              </div>
+            </div>
+            <app-question-text></app-question-text>
+          </div>
+
+          <div class="loading-overlay"
+               ng-class="{'hide': (question.surveyId != apnList[0].surveyId) && (question.imagesReady >= AllImages || AllImages == 0)}">
+            <div class="indicator">
+              <ion-spinner icon="spiral"></ion-spinner>
+            </div>
+          </div>
+
+          <div id="content-wrapper">
+            <app-mc ng-if="question.qtype == 'mc'" question="question" is-quickie="true"
+                    is-quizmode="question.quiz"></app-mc>
+            <app-vstext ng-if="question.qtype == 'vstext'" question="question" is-quickie="true"
+                        is-quizmode="question.quiz"></app-vstext>
+            <app-vsimage ng-if="question.qtype == 'vsimage'" question="question" is-quickie="true"
+                         is-quizmode="question.quiz"></app-vsimage>
+            <app-starslider ng-if="question.qtype == 'starslider'" question="question"
+                            is-quickie="true"></app-starslider>
+            <app-numericslider ng-if="question.qtype == 'numericslider'" is-quickie="true"
+                               question="question"></app-numericslider>
+            <app-thumbslider ng-if="question.qtype == 'thumbslider'" is-quickie="true"
+                             question="question"></app-thumbslider>
+            <app-propertyslider ng-if="question.qtype == 'propertyslider'" is-quickie="true"
+                                question="question"></app-propertyslider>
+          </div>
+        </div>
+
+      </ion-content>
+    </div>
+
+    <div ng-repeat="question in apnList[0].data.questions|limitTo:1" class="current-question-wrapper leave-animation">
+
+      <ion-content app-sticky scroll="false" overflow-scroll="true" id="main-content" class="has-content-header">
+        <div class="wrap">
+          <div class="content-header" style="padding-top: 40px">
+            <div class="avatar-wrapper-tiny bg-color" ng-click="questionTypeHelp()">
+              <div>
+                <img ng-src="{{question.user.avatar || question.user.imageUrl || './img/avatar/avatar03.png'}}"
+                     ng-if="question.forFriends"
+                     image-onload="question.imagesReady"/>
+                <i class="ion-ios-people" ng-if="question.forCommunity"></i>
+                <i class="ion-help" ng-if="question.quiz"></i>
+                <i class="ion-social-apple"
+                   ng-if="!question.quiz && !question.forCommunity && !question.forFriends"></i>
+              </div>
+            </div>
+
+            <p ng-if="question.quizGender">Quiz: {{question.quizGender}}</p>
+
+            <app-question-text></app-question-text>
+          </div>
+          <div class="loading-overlay"
+               ng-class="{'hide': question.imagesReady >= AllImages || AllImages == 0}">
+            <div class="indicator">
+              <ion-spinner icon="spiral"></ion-spinner>
+            </div>
+          </div>
+
+          <div id="content-wrapper">
+            <app-mc ng-if="question.qtype == 'mc'" question="question" is-quickie="true"
+                    is-quizmode="question.quiz"></app-mc>
+            <app-vstext ng-if="question.qtype == 'vstext'" question="question" is-quickie="true"
+                        is-quizmode="question.quiz"></app-vstext>
+            <app-vsimage ng-if="question.qtype == 'vsimage'" question="question" is-quickie="true"
+                         is-quizmode="question.quiz"></app-vsimage>
+            <app-starslider ng-if="question.qtype == 'starslider'" question="question"
+                            is-quickie="true"></app-starslider>
+            <app-numericslider ng-if="question.qtype == 'numericslider'" is-quickie="true"
+                               question="question"></app-numericslider>
+            <app-thumbslider ng-if="question.qtype == 'thumbslider'" is-quickie="true"
+                             question="question"></app-thumbslider>
+            <app-propertyslider ng-if="question.qtype == 'propertyslider'" is-quickie="true"
+                                question="question"></app-propertyslider>
+          </div>
+          <div class="push"></div>
+        </div>
+
+        <div id="content-footer" style="text-align: center">
+          <button class="apn-round-btn-outline bg-color" ng-disabled="question.hasVoted" ng-click="upvoteQuickie()"
+                  style="margin-right:5px;">
+            <div ng-class="{'bg-color':question.hasVoted}"><i class="ion-thumbsup"></i></div>
+          </button>
+
+          <button class="apn-round-btn-outline bg-color" ng-click="openOptions()">
+            <div><i class="ion-ios-more"></i></div>
+          </button>
+
+<!--          <button class="apn-round-btn-outline bg-color" ng-click="nextQs()" style="margin-left:5px;">
+            <div><i class="ion-ios-arrow-right"></i></div>
+          </button>-->
+        </div>
+      </ion-content>
+    </div>
+
+  </ion-content>
+</ion-view>

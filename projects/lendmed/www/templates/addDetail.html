@@ -1,0 +1,50 @@
+<ion-modal-view view-title="Add Details" >
+   <ion-header-bar class="login_but">
+    <h1 class="title">Add Details</h1>
+    <div class="buttons">
+      <button class="button button-assertive" ng-click="hideAddDetailsModal()">Cancel</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="has-header" >
+  <div class="row">
+	  <div class="col-50 col-offset-25">
+    <form ng-submit="addDetails(details)">
+	    <label ng-show="errorMessage" class="assertive">
+			<strong>Error:</strong> {{errorMessage}}
+		</label>
+
+    
+		<div class="list list-inset">
+				
+			<label class="item item-input">
+			  <i class="icon ion-beaker"></i>
+			  <input type="text" placeholder="Lot#" ng-model="details.lot_no">
+			</label>	  	
+			   
+			<label class="item item-input">
+				<i class="ion-ios-calendar"></i>			
+			    <input type="date" placeholder="Expiry Date(mm/dd/yyyy)" ng-model="details.exDate">
+			</label>
+
+			<label class="item item-input">
+				<i class="ion-locked"></i>			
+			    <input type="text" placeholder="Lock Code" ng-model="details.lock_code">
+			</label> 
+		</div>
+			
+		<label class="item">
+          <button class="button button-block button-positive" type="submit">Add Now!</button>
+        </label>
+
+		  
+		</div>
+
+
+
+          </form>
+  </div>
+  </ion-content>
+</ion-modal-view>
+
+
+

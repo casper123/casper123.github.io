@@ -1,0 +1,26 @@
+<ion-view view-title="{{searchTerms}}">
+    <ion-content class="n0-padding">
+
+        <div ng-show="!ItemsResutlts.length" class="text-center padding pt120 pb120 bg-assertive">
+            <h1 class="light">No results</h1>
+            <h3 class="light pb120">for your search</h3>
+            <h1 class="pb120 mb120"><i class="material-icons font-extra energized">mood_bad</i></h1>
+            
+        </div>
+        
+        <div class="list">
+            <a class="item item-thumbnail-left" href="#/app/item/{{item.itemDetails.item_id}}" ng-repeat="item in ItemsResutlts | filter: searchTerms">
+                <img src="http://www.nhari.nl/mobileapp/{{item.images[0].item_image}}" />
+                <h2>{{item.itemDetails.item_title}}</h2>
+                <p>{{item.itemDetails.description}}</p>
+                <small class="item-note">{{item.itemDetails.create_date | date:'medium'}}</small>
+            </a>
+        </div>
+
+  
+    <a ng-show="pagenext < ResultsLength" ng-click="nextPage()" class="button button-clear button-block">
+        <i class="icon ion-ios-refresh-outline"></i>
+    </a>
+  </ion-content>
+    
+</ion-view>

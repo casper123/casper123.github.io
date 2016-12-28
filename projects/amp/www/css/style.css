@@ -1,0 +1,152 @@
+/* Empty. Add your own CSS if you like */
+
+.main-wrapper
+{
+	background:url(../img/login_small.png) no-repeat;
+	background-size: 100%;
+}
+.logo-image
+{
+	width:100%;
+	margin-top:10px;
+}
+.form-margin
+{
+	padding-top:20%;
+	padding-bottom:20%;
+}
+
+.login-btn
+{
+	margin: 0px;
+}
+
+.login-btn-row
+{
+	padding:0px;
+  	margin-top: 2%;
+}
+
+.login-btn-text
+{
+	font-size:20px;
+	font-weight:bold;
+}
+
+.account-heading
+{
+	margin-left:1.5%;
+}
+
+.setting-bg
+{
+	background-color: #BEBEBE;
+	opacity: 0.6;
+    filter: alpha(opacity=60); 
+}
+
+.item.has-error {
+ border-color: red;
+}
+.form-error {
+ padding: 2px 0 2px 16px;
+ color: red;
+ background:#ffffff;
+}
+
+/* 	member list css	*/
+.member-head
+{
+	background-color:#f6f6f6;
+	/*opacity: 0.2;
+    filter: alpha(opacity=20);*/
+}
+
+.main-heading
+{
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.arrow-right
+{
+	padding: 5%;
+  	font-size: 30px;
+  	border-left: none;
+  	color: #D3D3D3;
+}
+
+.thumb-row
+{
+	width:95%;
+}
+.pad-zero
+{
+	padding: 0px;
+}
+
+.member-name
+{
+	color : #97b560;
+	font-size : 12px !important;
+}
+
+.member-para
+{
+	color:#0000CD;
+	font-size: 12px;
+}
+.para-first
+{
+	font-size: 12px !important;
+}
+.img-thumb
+{
+	margin-top: 10px;
+	height: 60px !important;
+}
+.padding-top
+{
+	padding-top: 21px !important;
+}
+.icon-color
+{
+	color: #cccccc;
+}
+
+/*memberDetial page css */
+
+.detail-photo
+{
+	height: 100%;
+}
+.input-btn
+{
+	text-align: center !important;
+}
+.center-text
+{
+	text-align: center;
+}
+
+
+/*edit member css */
+.edit-input
+{
+	border: 1px solid #D3D3D3 !important;
+	border-radius: 5px ;
+	width:60%;
+}
+.margin-input
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+textarea
+{
+	resize: none;
+}
+.padding-all
+{
+	padding:15px !important;
+}

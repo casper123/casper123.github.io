@@ -1,0 +1,43 @@
+
+<ion-view>
+    
+<ion-content  class="padding has-header" scroll="false" >
+  
+  
+  <div class="row row-center">
+	  <div class="col col-center col-50 col-offset-25">
+		   <form class="form-signin" ng-submit="doLogin(user)">
+	  
+	<div class="list list-inset login login_top">
+		<label class="item">
+		
+		<h2>Register This Kiosk</h2>
+		</label>
+
+		<label ng-show="errorMessage" class="">
+			<strong>Error:</strong> {{errorMessage}}
+		</label>
+		<label class="item item-input item-login">
+		<i class="icon ion-home placeholder-icon"></i>
+			<input required type="text" class="login_input" ng-model="user.location_id" placeholder="Location ID">
+		</label>
+		
+		
+		<label class="item item_button none_border">
+			<button class="button button-block button-login " type="submit">Activate</button>
+		</label>
+		
+     		
+	</div>
+
+
+  </form>
+	  </div>
+  </div>
+  
+ 
+  </ion-content>
+
+
+
+  </ion-view>

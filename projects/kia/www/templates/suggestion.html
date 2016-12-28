@@ -1,0 +1,76 @@
+<ion-view title="Buzón de Sugerencias" style="background:black;">
+  <search-bar ng-model="search"></search-bar>
+  <ion-nav-buttons side="left">
+      <button style="color:#ffffff;" menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+     <form ng-submit="">
+      <div class="iniciar-form">
+        <div class="row">
+        <div class="col col-80">
+        <label ng-show="successMessage" class="alert alert-success item">
+              {{successMessage}}
+        </label>
+        </div>
+        </div>
+         <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60"> 
+            <p style="text-align: left;">
+             Si tienes dudas, inquietudes o sugerencias, déjanos tus datos a continuación y nos poindremos en contacto contigo.
+              </p>
+              <br>
+              <p style="text-align: left;"> <span style="font-style: italic;">    La información marcada con *</span> es obligatoria.</p>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+        </div>
+        <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic" style="text-align: left;">Nombre *</label>
+                <label >
+                  <input type="text" ng-model="data.name" required name="username" id="basic" value="" data-mini="true" class="my_input" />
+                </label>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+        </div>
+         <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic" style="text-align: left;">Email *</label>
+                <label >
+                  <input type="text" ng-model="data.email" required name="username" id="basic" value="" data-mini="true" class="my_input" />
+                </label>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+        </div> 
+         <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic" style="text-align: left;">Asunto *</label>
+                <label >
+                  <input type="text" ng-model="data.subject" required name="username" id="basic" value="" data-mini="true" class="my_input" />
+                </label>
+          </div>
+          <div class="col col-20">&nbsp;</div>
+        </div> 
+           <div class="row">
+          <div class="col col-20">&nbsp;</div>
+          <div class="col col-60 div_input">
+                <label for="basic" style="text-align: left;">Mensaje *</label>
+                <textarea rows="6" ng-model="data.message" required cols="50" style="background: rgba(11, 10, 10, 0.8);border: 1px solid #b4b4b4;color: #b4b4b4;"></textarea>
+               
+          </div>
+          <div class="col col-20">&nbsp;</div>
+        </div> 
+        <div class="row" style="text-align:center;">
+        <div class="col col-25">&nbsp;</div>
+        <div class="col col-50">
+         <a href='' ng-click="doSuggest(data)" style="width: inherit !important;"><img src="images/enviarBtn.png" class="img img-responsive" alt=""></a>
+        </div>
+        <div class="col col-25">&nbsp;</div>
+      </div>
+      </div>
+      </form>
+    </ion-content>
+</ion-view>

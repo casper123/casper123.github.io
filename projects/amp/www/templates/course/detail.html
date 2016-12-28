@@ -1,0 +1,107 @@
+<ion-view hide-nav-bar="true" view-title="{{'courseDetails' | translate}}">
+	<div class="bar bar-header bar-light">
+		<ion-nav-back-button></ion-nav-back-button>
+	  	<h1 class="title">{{'courseDetails' | translate}}</h1>
+	  	<a class="button" href="#/app/course/newCourse/{{course.id}}" style="color:#97b560;">{{'edit' | translate}}</a>
+	</div>
+  <ion-content class="has-header">
+    <div class="list">
+    	<div class="item row">
+	    	<div class="col"><h4 class="input-label">{{course.name}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col">
+	    		<h4 class="input-label">
+	    			<span ng-repeat="day in course.weekdays">
+		      			{{daysofWeek[day] | translate}}&nbsp;
+		      		</span> 
+	    		</h4>
+	    	</div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'time' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.time * 1000 | date:'HH:mm' | translate}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'duration' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.duration | duration}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'repeat' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.repeatType}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'start' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.startDate * 1000 | date:'shortDate'}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'end' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.endDate}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col">&nbsp;</div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'coach' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.coach}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'location' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.location}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'min_participants' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.minParticipants}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'max_participants' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.maxParticipants}}</h4></div>
+	    </div>
+
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'booking_start' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.advancedBooking * 1000 | date:'HH:mm' | translate}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'booking_stop' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.bookingStop | duration}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'cancellation' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.cancelTime | duration}}</h4></div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'membersOnly' | translate}}</h4></div>
+	    	<div class="col">
+	    		<h4 ng-if="course.membersOnly" class="input-label">{{'true' | translate}}</h4>
+	    		<h4 ng-if="!course.membersOnly" class="input-label">{{'false' | translate}}</h4>
+	    	</div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'bookable' | translate}}</h4></div>
+	    	<div class="col">
+	    		<h4 ng-if="course.bookable" class="input-label">{{'true' | translate}}</h4>
+	    		<h4 ng-if="!course.bookable" class="input-label">{{'false' | translate}}</h4>
+	    	</div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'notify' | translate}}</h4></div>
+	    	<div class="col">
+	    		<h4 ng-if="course.ownerNotification" class="input-label">{{'true' | translate}}</h4>
+	    		<h4 ng-if="!course.ownerNotification" class="input-label">{{'false' | translate}}</h4>
+	    	</div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'alwaysBookable' | translate}}</h4></div>
+	    	<div class="col">
+	    		<h4 ng-if="course.limitedByContingent" class="input-label">{{'true' | translate}}</h4>
+	    		<h4 ng-if="!course.limitedByContingent" class="input-label">{{'false' | translate}}</h4>
+	    	</div>
+	    </div>
+	    <div class="item row">
+	    	<div class="col"><h4 class="input-label">{{'description' | translate}}</h4></div>
+	    	<div class="col"><h4 class="input-label">{{course.description}}</h4></div>
+	    </div>
+	</div>
+  </ion-content>
+</ion-view>

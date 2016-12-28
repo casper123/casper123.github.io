@@ -1,0 +1,133 @@
+<ion-modal-view class="big-modal" ng-controller="FriendsCtrl">
+  <ion-header-bar class="bg-color" no-tap-scroll="true">
+    <div class="title">
+      <h2 class="apn-header-title">{{'friends' | translate}}</h2>
+      <div class="header-icon-right" ng-click="closeFriendList()">
+        <i class="ion-ios-close-empty"></i>
+      </div>
+    </div>
+  </ion-header-bar>
+  <div class="search-subheader">
+    <input type="text" ng-blur="blurSearch()" ng-change="searchForUsers(externalFriendFilter)"
+           ng-model-options="{ debounce: { 'default': 250, 'blur': 0 } }"
+           placeholder="{{'search' | translate}}" ng-model="externalFriendFilter">
+  </div>
+
+  <ion-content scroll="true" style="padding-top:50px;box-sizing: border-box;height:100%;">
+
+    <div ng-if="((!searchedUsers || searchedUsers.length==0) && noFacebook && pendingRequests.length==0) && !userLoading">
+      <div class="row">
+        <div class="col col-80 col-offset-10" style="text-align: center">
+          <button class="apn-main-btn bg-color facebook" ng-click="migrateToFacebook()">
+            <div>Facebook verbinden</div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-top:15%;" class="loading-wrapper" ng-if="userLoading && (searchedUsers.length == 0)">
+      <ion-spinner icon="dots"></ion-spinner>
+    </div>
+
+    <div class="list no-margin" ng-show="(pendingRequests|filter:externalFriendFilter).length>0">
+
+      <div class="list-divider">Freundschaftsanfragen</div>
+
+      <div class="apn-list-item" ng-repeat="f in pendingRequests|filter:externalFriendFilter">
+        <div class="avatar-wrapper bg-color" ng-click="openProfileModal(f.user._id)">
+          <div>
+            <img ng-src="{{f.user.avatar || f.user.imageUrl || './img/avatar/avatar03.png'}}"/>
+          </div>
+        </div>
+        <div class="content" ng-click="openProfileModal(f.user._id)">
+          <div class="head">{{f.user.nickname || 'Anonym' | characters:20}}</div>
+          <div class="main"><span class="in-color">@{{f.user.uniqueName || 'unknown'}}</span></div>
+        </div>
+        <button class="apn-round-btn-outline bg-color left-drag left-drag2" ng-click="rejectRequest(f._id)">
+          <div><i class="ion-ios-close-empty"></i></div>
+        </button>
+        <button class="apn-round-btn-outline bg-color left-drag" ng-click="acceptRequest(f._id)">
+          <div><i class="ion-ios-checkmark-empty"></i></div>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="list" ng-show="searchedUsers.length>0" style="margin-bottom:-2px;">
+
+      <div class="list-divider">Suche</div>
+
+      <div class="apn-list-item" ng-repeat="f in searchedUsers">
+        <div class="avatar-wrapper bg-color" ng-click="openProfileModal(f._id)">
+          <div>
+            <img ng-src="{{f.avatar || f.imageUrl || './img/avatar/avatar03.png'}}"/>
+          </div>
+        </div>
+        <div class="content" ng-click="openProfileModal(f._id)">
+          <div class="head">{{f.nickname || 'Anonym' | characters:13}}</div>
+          <div class="main"><span class="in-color">@{{f.uniqueName || 'unknown'}}</span></div>
+        </div>
+        <button ng-if="!f.relation" class="apn-round-btn-outline bg-color left-drag" ng-click="addFriend(f)">
+          <div><i class="ion-ios-plus-empty"></i></div>
+        </button>
+        <button ng-if="f.relation && f.relation.state == 0" class="apn-round-btn-outline bg-color left-drag" ng-click="openProfileModal(f._id)">
+          <div><i class="ion-ios-more"></i></div>
+        </button>
+      </div>
+    </div>
+
+    <div class="list no-margin" ng-show="(facebookFriends|filter:externalFriendFilter).length>0">
+
+      <div class="list-divider">Facebookvorschläge</div>
+
+      <div class="apn-list-item"  style="opacity: 0.6"
+           ng-repeat="f in facebookFriends|filter:externalFriendFilter">
+        <div class="avatar-wrapper bg-color" ng-click="openProfileModal(f._id)">
+          <div>
+            <img ng-src="{{f.avatar || f.imageUrl || './img/avatar/avatar03.png'}}"/>
+          </div>
+        </div>
+        <div class="content" ng-click="openProfileModal(f._id)">
+          <div class="head">{{f.nickname || 'Anonym' | characters:13}}</div>
+          <div class="main">
+            <span class="in-color">@{{f.uniqueName || 'unknown'}}</span>
+          </div>
+        </div>
+        <div class="fb-badge">
+          <i class="ion-social-facebook"></i>
+        </div>
+        <button ng-if="!f.relation" class="apn-round-btn-outline bg-color left-drag" ng-click="addFriend(f)">
+          <div><i class="ion-ios-plus-empty"></i></div>
+        </button>
+        <button ng-if="f.relation && f.relation.state == 0" class="apn-round-btn-outline bg-color left-drag" ng-click="openProfileModal(f._id)">
+          <div><i class="ion-ios-more"></i></div>
+        </button>
+      </div>
+    </div>
+
+    <div class="list" ng-show="(currentFriends|filter:externalFriendFilter).length>0" style="margin-bottom:-2px;">
+
+      <div class="list-divider">Deine Freunde</div>
+
+      <div class="apn-list-item"
+           ng-click="openProfileModal(f.user._id)"
+           ng-repeat="f in currentFriends|filter:externalFriendFilter">
+        <div class="avatar-wrapper bg-color">
+          <div>
+
+            <img ng-src="{{f.user.avatar || f.user.imageUrl || './img/avatar/avatar03.png'}}"/>
+<!--            <img src="" image-cache="f.user.avatar || f.user.imageUrl || './img/avatar/avatar03.png'"/>-->
+          </div>
+        </div>
+        <div class="content">
+          <div class="head">{{f.user.nickname || 'Anonym' | characters:13}}</div>
+          <div class="main">
+            <span class="in-color">@{{f.user.uniqueName || 'unknown'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+
+</ion-modal-view>

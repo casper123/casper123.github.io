@@ -1,0 +1,18 @@
+<ion-view view-title="My Hyve">
+  <ion-content>
+    <div class="list">
+      <div ng-repeat="add in userAdd">
+        <a class="item item-thumbnail-left" ng-click="detail()">
+          <img src="http://curiouslabx.com/projects/allshook/novitrix/{{add.images[0].item_image || 'images/Photo-Not-Available.jpg'}}">
+          <p>{{add.itemDetails.item_title}}</p>
+          <p class="small">{{add.category}} <span class="small price">${{add.itemDetails.price | number}} ({{add.itemDetails.quantity}} in stock)</span></p>
+        </a>
+        <div class="button-bar">
+          <a class="button button-clear" ng-click="showProductModal(add.itemDetails.item_id)">View</a>
+          <a class="button button-clear" ng-click="showEditPost(add.itemDetails.item_id)">Update</a>
+          <a class="button button-clear" ng-click="deleteAd(add.itemDetails.item_id)">Delete</a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

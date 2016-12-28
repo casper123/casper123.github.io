@@ -1,0 +1,114 @@
+<ion-view view-title="<img src='img/logo_wide.png' alt='Medical Lending' class='top_logo'>" >
+  <ion-content class="padding has-header light_bg">
+    <div class="row">
+	    <div class="col col-30">
+		    <h3 class="white_title">Our Requests</h3>
+		   <ion-list>
+		      <ion-item ng-repeat="request in requests " ng-init="myIndex = $index"  class="dash_list">
+		        <div class="row no-padding" >
+			   
+		   		<div class="col">
+			   		 <div class="list card dash_card ">
+		           <div class="item item-body dash_list">
+			           <div class="row no-padding">
+				           <div class="col col-75 request_details">
+				           	<a href="#/tab/request/requestDetails/{{request.id}}"  class="request_date_time">
+
+					          <span class="request_date_time">{{request.posted}}</span><br/>
+					           <span class="request_item_title">{{request.item_name}}</span><br/>
+					           <span class="request_quantity">{{request.quantity}}</span>
+							    <span class="request_item_type">{{request.units}}</span>
+							
+
+					           <span ng-show="request.status == 0" class="request_item_status">Pending</span>
+					           <span ng-show="request.status == 1" class="request_item_status">Approved</span>
+					           <span ng-show="request.status == 2" class="request_item_status">Processing</span>
+					           <span ng-show="request.status == 3" class="request_item_status">Ready For Pickup</span>
+					           <span ng-show="request.status == 4" class="request_item_status">En Route</span>
+					           <span ng-show="request.status == 5" class="request_item_status">Received</span>
+					           </a>
+				           </div>
+				           
+				           <div class="col col-25 right_button">
+					          <button class="button own_invisible_button" ng-click="updateRequest(request.request_id)">
+							  <i class="icon ion-android-create"></i> UPDATE
+							</button> 
+					         
+				           </div>
+			           </div>
+		        
+		       
+		      </div>
+		    </div>
+		    
+			   			   		
+		   		</div>
+		   	
+		        </div>     
+		      
+		      
+		  
+		      </ion-item>
+		    </ion-list>
+	    </div>
+        <div class="col col-40">
+	          <!--<div class="round-button"><div class="round-button-circle">
+		          
+		          
+		          <a class="round-button" ng-click="addRequest()"><i class="ion-android-add-circle button_icon"></i><br/>NEW REQUEST</a></div></div>-->
+	         
+		
+        </div>
+		<div class="col col-30 ">
+			 <h3 class="white_title">Incoming Requests</h3>
+		   <ion-list>
+		      <ion-item ng-repeat="inrequest in incomingrequests " ng-init="myIndex = $index" class="dash_list">
+		        <div class="row no-padding" >
+			   
+		   		<div class="col">
+			   		 <div class="list card dash_card">
+		           <div class="item item-body dash_list">
+			           <div class="row no-padding">
+				           <div class="col col-75 request_details">
+				           	<a href="#/tab/request/requestDetails/{{inrequest.id}}" class="" style="color:#ffffff">
+					           <span class="request_date_time">{{inrequest.posted}}</span>
+					           <span class="request_department_title">{{inrequest.name}}</span>
+					       
+					           <span class="request_item_title">{{inrequest.title}}</span><br/>
+							   <span class="request_quantity">{{inrequest.quantity}}</span>
+							    <span class="request_item_type">{{inrequest.units}}</span>
+					           
+							   <!--<span class="request_comments">{{request.comments}}</span>
+							   <span class="request_employee">{{request.employee}}</span>-->
+						      
+						      </a>
+				           </div>
+				           <div class="col col-25 right_button">
+					           <!--need to have a quick east button to update status possibly a modal after it's been accepted-->
+					          <button ng-click="acceptRequest(inrequest.request_id)" class="button invisible_button">
+							  <i class="icon ion-android-checkbox"></i> ACCEPT
+							</button> 
+					         
+				           </div>
+			           </div>
+		        
+		       
+		      </div>
+		    </div>
+		    
+			   			   		
+		   		</div>
+		   	
+		        </div>     
+		      
+		      
+		  
+		      </ion-item>
+		    </ion-list>
+	    
+	    </div>  
+        </div>
+
+    
+  </ion-content>
+</ion-view>

@@ -1,0 +1,25 @@
+<ion-view  hide-nav-bar="true">
+<ion-content class="background-screen">    
+  <div class="row log-row-margin">
+    <div class="col col-75 col-offset-10">
+      <img class="welcome-logo" src="img/welcome-screen/logo.png"/>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:20px;">
+    <a href="#/user/welcome/login"class="col col-33 col-offset-10" > 
+      <img src="img/welcome-screen/login.png" class="login-normal-btn">
+    </a>
+    <div class="col col-10 col-center" style="text-align:center;">
+      <img src="img/welcome-screen/chain.png" />
+    </div>
+    <a href="#/user/welcome/register" class="col col-33">
+      <img src="img/welcome-screen/signup.png" class="register-btn">
+    </a>
+  </div>
+  <div class="row">
+    <a class="col col-75 col-offset-10" ng-click="facebookLogin()">
+      <img src="img/welcome-screen/facebook.png" class="login-fb-btn"/>
+    </a>
+  </div>
+</ion-content>
+</ion-view>

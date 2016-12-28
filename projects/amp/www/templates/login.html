@@ -1,0 +1,49 @@
+<ion-view view-title="Login" class="main-wrapper">
+  <ion-content has-header >
+    <div class="row">
+      <div class="col col-10">&nbsp;</div>
+      <div class="col">
+        <img src="img/logo_700x200.png" class="logo-image">
+      </div>
+      <div class="col col-10">&nbsp;</div>
+    </div>
+    <form name="user" novalidate="" ng-submit="doLogin(user)">
+      <div class="list form-margin">
+
+        <label class="item item-input" ng-class="{ 'has-error' : user.email.$invalid && user.$submitted}">
+          <span class="input-label">{{'email_address' | translate}}</span>
+          <input name="email" required type="email" ng-model="userCredentials.username" placeholder="Bitte eingeben">
+        </label>
+        <div class="form-errors"
+               ng-show="user.email.$error && user.$submitted"
+               ng-messages="user.email.$error"
+               ng-messages-include="form-errors.html"></div>
+
+        <label class="item item-input" ng-class="{ 'has-error' : user.userPassword.$invalid && user.$submitted}">
+          <span class="input-label">{{'password' | translate}}</span>
+          <input name="userPassword" required type="password" ng-model="userCredentials.password" placeholder="Bitte eingeben">
+        </label>
+        <div class="form-errors"
+               ng-show="user.userPassword.$error && user.$submitted"
+               ng-messages="user.userPassword.$error"
+               ng-messages-include="form-errors.html"></div>
+
+        <label class="item item-toggle">
+          {{'remember_me' | translate}}
+          <label class="toggle toggle-balanced">
+            <input type="checkbox" ng-model="userCredentials.save">
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+          </label>
+        </label>
+        <div class="form-error" ng-show="error.messageKey !== undefined">
+            {{error.messageKey | translate}}
+          </div>
+        <label class="item login-btn-row">
+          <button class="button button-block button-clear button-positive" type="submit"><span class="login-btn-text">{{'login' | translate}}</span></button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col">
+    <div class="avatar-wrapper bg-color">
+      <div>
+        <img ng-if="help.friend != null" ng-src="{{help.friend.avatar || help.friend.imageUrl || './img/avatar/avatar03.png'}}" />
+        <i class="{{help.icon}}" ng-if="help.friend == null"></i>
+      </div>
+    </div>
+    <h2 class="screen-head" ng-if="help.friend != null">{{help.friend.name}}</h2>
+    <h2 class="screen-head" ng-if="help.friend == null">{{help.head | translate}}</h2>
+    <p class="in-color small-text">{{help.text | translate}}</p>
+  </div>
+</div>

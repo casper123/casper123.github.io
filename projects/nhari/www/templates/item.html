@@ -1,0 +1,103 @@
+<ion-view view-title="{{item.item_title}}" ng-init="getItemDetails()">
+    
+    <ion-content>
+        <div class="row">
+            <div class="col">
+                <h5 class="overlay-lt light bg-dark p5 fw600">{{item.item_title}}</h5>
+                <h5 class="overlay-rt light bg-assertive p5 fw400">{{item.price | currency:USD$:0}}</h5>
+                
+            </div>
+        </div>
+
+        <div class="row" style="padding-top:40px;">
+            <div class="col">
+                <ion-slide-box style="width:100%;" auto-play="true" show-pager="false">
+                    <ion-slide style="width:100%;" ng-repeat="img in image_data">
+                        <img src="http://www.nhari.nl/mobileapp/{{img.item_image}}" ng-click="zoom(img.item_image)" style="width:100%;">
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+        </div>
+        
+        <div class="list">
+        <div class="row">
+          <div class="col">
+            <div class="item item-icon-left">
+              <i class="icon ion-person"></i>
+              {{item.item_title}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div ng-if="item.location" class="item item-icon-left">
+              <i class="icon ion-location"></i>
+              {{item.location}}
+            </div>
+            <div ng-if="!item.location" class="item item-icon-left">
+              <i class="icon ion-location"></i>
+              N.A
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="item item-icon-left">
+              <i class="icon ion-calendar"></i>
+              {{item.create_date * 1000 | date:'MMM dd yyyy'}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="wrap">
+              <h4>Description:</h4>
+              {{item.description}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <span class="button-bar">
+            <a ng-click="itemDetails()" class="button bg-light-gray pt10 assertive">
+                <i class="material-icons">info</i>
+            </a>
+            <a ng-show="currentUser" ng-click="addToFavourites(item.item_id)" class="button bg-light-gray pt10 assertive">
+                <i class="material-icons">favorite</i>
+            </a>
+            <a ng-click="onShare()" class="button bg-light-gray pt10 assertive">
+                <i class="material-icons">share</i>
+            </a>
+            <a ng-show="currentUser" ng-href="tel:{{item.phone}}" class="button bg-light-gray pt10 assertive">
+                <i class="material-icons">phonelink_ring</i>
+            </a>
+            <a ng-show="currentUser && item.email" ng-href="mailto:{{item.email}}?subject=New message for {{item.item_title}}" class="button bg-light-gray pt10 assertive">
+                <i class="material-icons">email</i>
+            </a>
+            <a ng-hide="(item.lat == 0 && item.lon == 0)" ng-click="itemMap()" class="button bg-light-gray pt10 assertive">
+                <i class="material-icons">map</i>
+            </a>
+            <a ng-show="currentUser" ng-click="comment(item.item_id)" class="button bg-light-gray pt10 assertive">
+                <i class="material-icons">comment</i>
+            </a>
+            
+        </span>
+        
+        <div id="mapDisplay" class="">
+            <map 
+                 center="{{item.latitude}},{{item.longitude}}" 
+                 zoom="14"
+                 disable-default-u-i="true"
+                 disable-double-click-zoom="true"
+                 draggable="true">
+                <marker
+                    position="[{{item.latitude}},{{item.longitude}}]"
+                    animation="Animation.BOUNCE"
+                    draggable="false"
+                    icon="img/marker.png"></marker>
+            </map>
+        </div>
+        
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,34 @@
+<ion-view view-title="Profile">
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
+        <div class="hero " style="background-image: url('{{videoDetails.snippet.thumbnails.medium.url}}');">
+            <div class="content">
+                <div class="avatar" style="background-image: url('{{videoDetails.snippet.thumbnails.medium.url}}');"></div>
+                <h3><a class="light">{{videoDetails.snippet.title}}</a></h3>
+                <h4>{{videoDetails.snippet.publishedAt}}</h4>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col">
+                <iframe id="video" width="100%" src="{{ videoDetails.id | youtubeEmbedUrl }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div> -->
+        <h4 class="content padding">Statistics</h4>
+        <div class="list padding">
+            
+                <p>Likes: {{videoDetails.statistics.likeCount}} </p>
+
+			
+                <p>Dislikes: {{videoDetails.statistics.dislikeCount}}</p>
+
+			
+                <p>Views: {{videoDetails.statistics.viewCount}}</p>
+
+			
+                <p>Favourites:{{videoDetails.statistics.favoriteCount}}</p>
+ 
+			
+                <p>Comment:{{videoDetails.statistics.commentCount}}</p>
+     
+        </div>
+    </ion-content>
+</ion-view>

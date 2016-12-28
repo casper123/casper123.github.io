@@ -1,0 +1,16 @@
+<ion-view title="上传头像" hide-back-button="true">
+  <ion-nav-buttons side="right">
+    <button class="button icon-right button-clear button-white " ng-click="gotoList()">跳过
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <form name="uploadForm" novalidate>
+      <div class="item profile-upload">
+        <img class="placeholder" ng-src="{{profile.picture}}">
+        <img style="margin: 0 auto; display:block;" src="img/loader.gif" ng-show="uploadfile" />
+        <button class="button button-block button-stable" ng-file-select="onProfilePictureUpload($files)" accept="image/*">上传头像</button>
+        <button class="button button-block button-positive" ng-click="doUpdateProfile()" ng-disabled="! profile.pictureOriginal">确定</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

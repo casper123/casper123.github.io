@@ -1,0 +1,124 @@
+<ion-header-bar class="main-header-bar" ng-class="{'force-dropdown': headerDropdown == true}" style="padding:0 !important;" >
+  <div class="header-icon-right left left-icon-anim" ng-click="openDropDown()" style="color:white;z-index:9999999;top:3px;">
+    <i style="font-size: 30px;" class="ion-navicon"></i>
+  </div>
+<!--
+  <div class="header-icon-right left left-icon-anim" ng-if="quickieMode == true" ng-click="openQuestionOptions()" style="color:white;z-index:9999999;top:3px;">
+    <i style="font-size: 30px;" class="ion-android-more-vertical"></i>
+  </div>
+-->
+
+  <div class="bg-color-soft user-header in-tab main-header" ng-class="{'apn-collapse':headerDropdown == false, 'apn-dropdown': headerDropdown == true}" style="width: 100%;position: absolute;left:0;right:0">
+    <div class="headerWrapper">
+
+<!--      <div class="img-bg" style="background:url('{{loggedInUser.avatar || loggedInUser.imageUrl || './img/avatar/avatar03.png'}}')"></div>-->
+      <div class="user-name">Level {{loggedInUser.level}}</div>
+      <div style="position: relative;z-index: 500;">
+        <span class="user-indicator left indicator-left">{{loggedInUser.coins}} <i class="ion-home"></i></span>
+
+        <div class="profil-progress-wrap header-avatar" ng-click="openAvatarClick()">
+          <div round-progress
+               max="100"
+               current="reverseProgress"
+               color="#fff"
+               bgcolor="transparent"
+               radius="100"
+               stroke="20"
+               semi="false"
+               rounded="false"
+               clockwise="false"
+               responsive="true"
+               duration="0"
+               animation="easeInOutQuart"
+               animation-delay="0">
+          </div>
+          <div class="avatar-wrapper-big bg-color">
+            <div>
+              <img ui-sref="tabMenuGame.ranking" ng-src="{{loggedInUser.avatar || loggedInUser.imageUrl || './img/avatar/avatar03.png'}}" />
+            </div>
+          </div>
+        </div>
+
+        <span class="user-indicator right indicator-right">{{loggedInUser.xp}} XP</span>
+      </div>
+
+      <div ng-if="badgePreview != null && badgePreview.length>0"  class="badge-preview">
+<!--        <div class="headline">Letzte Auszeichnungen</div>-->
+        <div class="apn-badge-list" ng-click="openMeModal()">
+          <div class="item-wrapper"
+               ng-class="{muted:!b.rewarded && b.level == 1}"
+               ng-repeat="b in badgePreview track by $index|orderBy:['-level', '-rewarded']">
+            <div class="avatar-wrapper" ng-class="{'with-addon':b.type == 'marbleStoneAndIron' && loggedInUser.oldLevel,'bg-color': b.level == 1 && b.done && b.rewarded,
+            'bronze': b.level == 2 && !b.done && !b.rewarded, 'silver': b.level == 3 && !b.rewarded, 'gold': b.level == 3 && b.rewarded}">
+              <div>
+                <i class="{{b.icon}}" ng-class="{'color-icon':b.done && b.level == 1}"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="badgePreview.length==0" class="badge-preview correction">
+<!--        <div class="headline">Auszeichnungen ab Level 5</div>-->
+        <div class="apn-badge-list blur">
+          <div class="item-wrapper">
+            <div class="avatar-wrapper bg-color">
+              <div>
+                <i class="ion-ios-locked"></i>
+              </div>
+            </div>
+          </div>
+          <div class="item-wrapper">
+            <div class="avatar-wrapper bg-color">
+              <div>
+                <i class="ion-ios-locked"></i>
+              </div>
+            </div>
+          </div>
+          <div class="item-wrapper">
+            <div class="avatar-wrapper bg-color">
+              <div>
+                <i class="ion-ios-locked"></i>
+              </div>
+            </div>
+          </div>
+          <div class="item-wrapper">
+            <div class="avatar-wrapper bg-color">
+              <div>
+                <i class="ion-ios-locked"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="header-icon-right right-icon-anim" ng-if="quickieMode == false" ng-click="openFriendList()" style="color:white;top:2px;">
+    <i style="font-size: 23px;position: relative;top:4px" class="ion-person-add"></i>
+  </div>
+  <div class="header-icon-right apn-bell-icon right-icon-anim" ng-if="quickieMode == true" ng-click="openSurveyList()">
+    <div ng-class="{shake: availableSurvey > 0 || companySurveysError}">
+      <i class="ion-ios-bell color-icon"></i>
+    </div>
+  </div>
+</ion-header-bar>
+
+<ion-tabs class="tabs-striped tabs-background-dark tabs-color-light">
+  <ion-tab title="appinio" icon-off="ion-chatbox" icon-on="ion-chatbox" href="#/tabMenuMain/quickies">
+    <ion-nav-view name="tab-quickies"></ion-nav-view>
+  </ion-tab>
+  <ion-tab title="antworten" icon-off="ion-pie-graph" icon-on="ion-pie-graph" href="#/tabMenuMain/answer">
+    <ion-nav-view name="tab-answer"></ion-nav-view>
+  </ion-tab>
+  <ion-tab class="highlight" title="fragen" icon-off="ion-android-add" icon-on="ion-android-add"
+           ng-click="openCreateQuestionModal()">
+  </ion-tab>
+  <ion-tab icon-off="ion-trophy" title="ranking" icon-on="ion-trophy" href="#/tabMenuMain/ranking">
+    <ion-nav-view name="tab-ranking"></ion-nav-view>
+  </ion-tab>
+  <ion-tab title="aktivitäten" icon-off="ion-earth" icon-on="ion-earth" href="#/tabMenuMain/feed" badge="feedCounter">
+    <ion-nav-view name="tab-feed"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>

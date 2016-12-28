@@ -1,0 +1,19 @@
+<ion-view view-title="Videos List">
+  <ion-content>
+  <div class="content has-header ionic-pseudo">
+
+      <div class="list">
+        <a ng-repeat="list in listDetails" class="item item-thumbnail-left" href="#/app/songDetails/{{list.id.videoId}}">
+          <img src="{{list.snippet.thumbnails.medium.url}}">
+          <h2>{{list.snippet.title}}</h2>
+          <p>{{list.snippet.description}}</p>
+        </a>
+      </div>
+    </div>
+    <ion-list>
+      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+        {{playlist.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,116 @@
+<ion-modal-view class="big-modal profile-modal" ng-controller="ProfileCtrl">
+
+  <ion-header-bar style="background: none!important;" no-tap-scroll="true">
+    <div class="title">
+      <h2 class="apn-header-title"></h2>
+      <div class="header-icon-right" ng-click="closeProfileModal()">
+        <i class="ion-ios-close-empty"></i>
+      </div>
+      <div class="header-icon-right left" ng-if="memberData.relation"
+           ng-click="openProfileMenu(memberData.relation._id, memberData.nickname || 'Anonym', memberData.relation)">
+        <i class="ion-ios-more"></i>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-content scroll="true" style="top:0!important;" ng-class="{
+    'green-theme':memberData.color == 'green' || !memberData.color,
+    'blue-theme':memberData.color == 'blue',
+    'red-theme':memberData.color == 'red',
+    'gold-theme':memberData.color == 'gold'}" class="fixed-color">
+
+    <div class="bg-color user-header">
+
+      <div class="user-name">{{memberData.nickname || 'Anonym'}} <span>- Lvl {{memberData.level}}</span></div>
+      <div class="avatar-wrapper bg-color">
+        <div>
+          <img ng-src="{{memberData.avatar || memberData.imageUrl || './img/avatar/avatar03.png'}}" />
+        </div>
+      </div>
+      <div class="user-xp">
+        100<span> XP</span>
+      </div>
+      <div style="position: relative;z-index:2;">
+        <div class="user-figure">
+          <i class="ion-ios-chatboxes"></i>
+          <div>{{memberData.countSurveys}}</div>
+        </div>
+        <div class="user-figure">
+          <i class="ion-ios-help"></i>
+          <div>{{100*memberData.quizRight/(memberData.quizRight+memberData.quizWrong)||0|number:0}}%</div>
+        </div>
+        <div class="user-figure">
+          <i class="ion-ios-basketball"></i>
+          <div>{{memberData.countQuickies/1000|number:0}}K</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-80 col-offset-10">
+          <div ng-if="!memberData.relation">
+            <button ng-click="addFriend(memberData._id)" class="apn-main-btn bg-color">
+              <div>{{'add_friend_button' | translate}}</div>
+            </button>
+          </div>
+          <div ng-if="memberData.relation && memberData.relation.state == 0">
+            <button ng-click="" class="apn-main-btn bg-color">
+              <div>{{'pending_friend_button' | translate}}</div>
+            </button>
+          </div>
+          <div ng-if="memberData.relation && memberData.relation.state == 1">
+            <button ng-click="createQuestion()" class="apn-main-btn bg-color">
+              <div>{{'ask_question' | translate}}</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+
+      <div ng-if="memberData.badges == null || memberData.badges.length == 0" class="locked-screen">
+        <div class="row">
+          <div class="col">
+            <div class="avatar-wrapper-big bg-color auto-margin">
+              <div><i class="ion-locked"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-80 col-offset-10">
+            <h3 class="in-color screen-head-date">Keine Badges</h3>
+            <h2 class="screen-head">Badges</h2>
+            <p class="in-color small-text">Hat noch keine Badges</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="apn-badge-list fixed-color"
+           ng-class="{
+    'green-theme':memberData.color == 'green' || !memberData.color,
+    'blue-theme':memberData.color == 'blue',
+    'red-theme':memberData.color == 'red',
+    'gold-theme':memberData.color == 'gold'}"
+           style="padding-top: 25px;" ng-if="!(memberData.badges == null || memberData.badges.length == 0)">
+
+        <div class="item-wrapper"
+             ng-repeat="b in memberData.badges">
+          <div class="avatar-wrapper"
+               ng-class="{'with-addon':b.type == 'marbleStoneAndIron' && memberData.oldLevel, 'bg-color': b.level == 1 && b.done, 'bronze': b.level == 1 && !b.done,
+             'silver': b.level == 2, 'gold': b.level == 3}">
+            <div>
+              <div class="badge-addon bg-color">{{memberData.oldLevel}}</div>
+              <i class="{{b.icon}}" ng-class="{'color-icon':b.done && b.level == 1}"></i>
+            </div>
+          </div>
+          <div class="avatar-footer">{{b.name|characters:15}}</div>
+        </div>
+        <div style="height:50px;"></div>
+      </div>
+
+    </div>
+
+
+  </ion-content>
+
+</ion-modal-view>
